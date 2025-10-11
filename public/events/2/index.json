@@ -1,0 +1,25 @@
+{
+  "id": 2,
+  "title": "Privacy and Verifiability Hackathon",
+  "date": "2025-03-08",
+  "time": "10:00 - 12:00 (26 hours)",
+  "location": "BC Building, Room 410, EPFL, Lausanne",
+  "description": "36-hour hackathon challenging participants to develop innovative solutions focusing on privacy and verifiability in blockchain technology.",
+  "attendees": 36,
+  "type": "Hackathon",
+  "registrationUrl": null,
+  "detailedDescription": "Following the successful conference, the Privacy and Verifiability Hackathon was an epic 36-hour event that challenged participants to develop innovative solutions focusing on privacy and verifiability in blockchain technology. The hackathon featured 23 project submissions from 36 hackers, all working on cutting-edge blockchain applications. Supported by industry-leading sponsors including Mina, the Hedera Hashgraph Association, and Hylé, participants had access to a total prize pool of 15,000 USD. The event was open to all students, professionals, and enthusiasts with an interest in blockchain technology. Projects were judged based on innovation, technical execution, and how well they addressed privacy concerns while ensuring verifiability in blockchain. The hackathon fostered intense collaboration and innovation, with teams working around the clock to build and present their solutions. The event concluded with project presentations and the announcement of winners, showcasing the incredible talent and creativity in the blockchain community.",
+  "photos": [
+    "/events/2/IMG_0492.JPG",
+    "/events/2/IMG_0578.JPG", 
+    "/events/2/IMG_3494.JPG"
+  ],
+  "highlights": [
+    "36 hackers participated in 26-hour event",
+    "23 project submissions",
+    "15,000 USD total prize pool",
+    "Sponsored by Mina, Hedera Hashgraph Association, Hylé",
+    "Focus on privacy and verifiability solutions",
+    "Intensive collaboration and innovation"
+  ]
+}

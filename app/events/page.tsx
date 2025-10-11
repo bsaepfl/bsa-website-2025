@@ -5,9 +5,46 @@ import { Calendar, Clock, MapPin, Users, ExternalLink, X, ChevronLeft, ChevronRi
 import { LUMA_URL } from "@/lib/constants"
 import { useState, useEffect } from "react"
 
+interface Event {
+  id: number
+  title: string
+  date: string
+  time: string
+  location: string
+  description: string
+  attendees: number
+  type: string
+  registrationUrl?: string | null
+  detailedDescription: string
+  photos: string[]
+  highlights: string[]
+}
+
 export default function EventsPage() {
-  const [selectedEvent, setSelectedEvent] = useState<any>(null)
+  const [selectedEvent, setSelectedEvent] = useState<Event | null>(null)
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0)
+  const [events, setEvents] = useState<Event[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await fetch('/api/events')
+        if (response.ok) {
+          const eventsData = await response.json()
+          setEvents(eventsData)
+        } else {
+          console.error('Failed to fetch events')
+        }
+      } catch (error) {
+        console.error('Error fetching events:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchEvents()
+  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -30,89 +67,9 @@ export default function EventsPage() {
     return () => {
       scrollTriggers.forEach((el) => observer.unobserve(el))
     }
-  }, [])
+  }, [events])
 
-  // Sample event data - you can replace this with real data
-  const pastEvents = [
-    {
-      id: 1,
-      title: "EPFL BSA Conference - Privacy x Verifiability",
-      date: "2025-03-07",
-      time: "9:30 - 18:00 CET",
-      location: "BC Building (building of the IC faculty), EPFL, Ecublens",
-      description: "Deep dive into the latest in blockchain privacy and verifiability with cutting-edge talks, panel discussions, and networking opportunities.",
-      attendees: 363,
-      type: "Conference",
-      registrationUrl: null,
-      detailedDescription: "The EPFL BSA Conference - Privacy x Verifiability was a groundbreaking event that brought together leading minds in blockchain technology to explore the critical intersection of privacy and verifiability. Organized by EPFL students in the BC building, this conference offered cutting-edge talks, panel discussions, and plenty of opportunities to network with fellow enthusiasts. The event featured exciting talks with some of the best minds in the space discussing Privacy-Preserving Payments, Data Security & Confidentiality, Private DeFi, MEV, Secure Hardware, Privacy infrastructure (ZKP, MPC, TEE), Scalability infrastructure, and AI & Privacy. Whether participants were seasoned experts or just curious about data confidentiality, digital privacy, or blockchain scalability, they found valuable insights and a vibrant community ready to share ideas. The conference included breakfast at the beginning, networking lunch at midday, and snacks and refreshments in the afternoon, all provided by our sponsors: The Hashgraph Association, Aleph Zero, Common Finance, Mina Foundation, and Taurus. This event was organized in collaboration with Privacy Guardians (PG), the CVA, and IEE Blockchain, establishing strong connections between communities and leading protocols in the privacy space.",
-      photos: [
-        "/bsa_events/IMG_0492.JPG",
-        "/bsa_events/IMG_0578.JPG", 
-        "/bsa_events/IMG_3494.JPG"
-      ],
-      highlights: [
-        "363 attendees from diverse backgrounds",
-        "Cutting-edge talks on privacy and verifiability",
-        "Panel discussions with industry leaders",
-        "Networking with leading protocols and companies",
-        "Sponsored by major blockchain organizations",
-        "Collaboration with Privacy Guardians and IEE Blockchain"
-      ]
-    },
-    {
-      id: 2,
-      title: "Privacy and Verifiability Hackathon",
-      date: "2025-03-08",
-      time: "10:00 - 12:00 (26 hours)",
-      location: "BC Building, Room 410, EPFL, Lausanne",
-      description: "36-hour hackathon challenging participants to develop innovative solutions focusing on privacy and verifiability in blockchain technology.",
-      attendees: 36,
-      type: "Hackathon",
-      registrationUrl: null,
-      detailedDescription: "Following the successful conference, the Privacy and Verifiability Hackathon was an epic 36-hour event that challenged participants to develop innovative solutions focusing on privacy and verifiability in blockchain technology. The hackathon featured 23 project submissions from 36 hackers, all working on cutting-edge blockchain applications. Supported by industry-leading sponsors including Mina, the Hedera Hashgraph Association, and Hylé, participants had access to a total prize pool of 15,000 USD. The event was open to all students, professionals, and enthusiasts with an interest in blockchain technology. Projects were judged based on innovation, technical execution, and how well they addressed privacy concerns while ensuring verifiability in blockchain. The hackathon fostered intense collaboration and innovation, with teams working around the clock to build and present their solutions. The event concluded with project presentations and the announcement of winners, showcasing the incredible talent and creativity in the blockchain community.",
-      photos: [
-        "/bsa_events/IMG_0492.JPG",
-        "/bsa_events/IMG_0578.JPG", 
-        "/bsa_events/IMG_3494.JPG"
-      ],
-      highlights: [
-        "36 hackers participated in 26-hour event",
-        "23 project submissions",
-        "15,000 USD total prize pool",
-        "Sponsored by Mina, Hedera Hashgraph Association, Hylé",
-        "Focus on privacy and verifiability solutions",
-        "Intensive collaboration and innovation"
-      ]
-    },
-    {
-      id: 3,
-      title: "SUI <> BSA Hackathon 2nd Edition 💧",
-      date: "2024-10-12",
-      time: "48 hours (October 12-13)",
-      location: "BC Building (building of the IC faculty), EPFL, Ecublens",
-      description: "European Sui Hackathon in partnership with Sui Foundation, featuring a $20,000+ prize pool and intensive Move language development.",
-      attendees: 50,
-      type: "Hackathon",
-      registrationUrl: "https://bsaepfl.ch/hackathon/",
-      detailedDescription: "The SUI <> BSA Hackathon 2nd Edition was a groundbreaking event that brought together blockchain enthusiasts and developers for an intensive 48-hour coding experience. Organized by EPFL's Blockchain Club in partnership with the Sui Foundation, this hackathon offered participants a unique opportunity to develop their skills in the Move language while exploring the revolutionary Sui ecosystem. With a substantial prize pool exceeding $20,000, the event attracted teams of 3-5 developers eager to build innovative blockchain applications. The hackathon took place in the dedicated BC building at EPFL, providing participants with a complete environment including relaxation spaces, shower facilities, and complimentary food throughout the two-day event. To ensure all participants could succeed regardless of their Move language experience, the organizers provided comprehensive pre-hackathon workshops: a Sui Overview and installation session on September 23rd, a Move language fundamentals workshop on September 30th, and an advanced features workshop on October 7th covering Move language intricacies, Zklogin, deep book, and Kiosk functionality, led by a developer from the Sui Foundation. The event fostered intense collaboration, innovation, and skill development, with teams working around the clock to create cutting-edge applications on the Sui blockchain. This hackathon not only provided valuable learning opportunities but also strengthened the connection between the academic blockchain community and industry leaders, showcasing the potential of the next generation of blockchain developers.",
-      photos: [
-        "/bsa_events/hackathon-sui-1.jpg",
-        "/bsa_events/hackathon-sui-2.jpg",
-        "/bsa_events/hackathon-sui-3.jpg"
-      ],
-      highlights: [
-        "48-hour intensive hackathon experience",
-        "$20,000+ prize pool",
-        "Partnership with Sui Foundation",
-        "Pre-hackathon Move language workshops",
-        "Complete facility access with food and amenities",
-        "Focus on Sui ecosystem and Move language development"
-      ]
-    }
-    
-  ]
-
-  const openEventModal = (event: any) => {
+  const openEventModal = (event: Event) => {
     setSelectedEvent(event)
     setCurrentPhotoIndex(0)
   }
@@ -136,6 +93,17 @@ export default function EventsPage() {
         prev === 0 ? selectedEvent.photos.length - 1 : prev - 1
       )
     }
+  }
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-[#0a0a0a] to-[#1a1a1a] flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-[#6366f1] mx-auto mb-4"></div>
+          <p className="text-xl text-gray-300">Loading events...</p>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -214,7 +182,7 @@ export default function EventsPage() {
               </h2>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {pastEvents.map((event, idx) => (
+              {events.map((event: Event, idx: number) => (
                 <div 
                   key={event.id} 
                   className="scroll-trigger glass rounded-2xl overflow-hidden border border-[#6366f1]/20 hover-lift cursor-pointer"
@@ -227,7 +195,11 @@ export default function EventsPage() {
                         {event.type}
                       </span>
                       <span className="text-sm text-gray-400">
-                        {new Date(event.date).toLocaleDateString()}
+                        {new Date(event.date).toLocaleDateString('en-US', { 
+                          month: '2-digit', 
+                          day: '2-digit', 
+                          year: 'numeric' 
+                        })}
                       </span>
                     </div>
                     <h3 className="text-xl font-bold mb-3 text-white">{event.title}</h3>
@@ -463,4 +435,4 @@ export default function EventsPage() {
       )}
     </div>
   )
-} 
+}

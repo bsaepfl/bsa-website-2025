@@ -33,7 +33,7 @@ export default function ContactPage() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('animate')
-            console.log('Contact element animated:', entry.target)
+            // console.log('Contact element animated:', entry.target)
           } else {
             // Remove animate class when element goes out of view to allow re-animation
             entry.target.classList.remove('animate')

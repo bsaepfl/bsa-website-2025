@@ -19,7 +19,7 @@ export default function ArticlesPage() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('animate')
-            console.log('Element animated:', entry.target)
+            // console.log('Element animated:', entry.target)
           } else {
             // Remove animate class when element goes out of view to allow re-animation
             entry.target.classList.remove('animate')
@@ -34,7 +34,7 @@ export default function ArticlesPage() {
 
     const observeElements = () => {
       const scrollTriggers = document.querySelectorAll('.scroll-trigger')
-      console.log('Found scroll triggers:', scrollTriggers.length)
+      // console.log('Found scroll triggers:', scrollTriggers.length)
       scrollTriggers.forEach((el) => observer.observe(el))
     }
 
@@ -313,7 +313,7 @@ export default function ArticlesPage() {
                         asChild
                         className="w-full bg-gradient-to-r from-[#6366f1] to-[#7c3aed] hover:from-[#7c3aed] hover:to-[#ec4899] text-white border-0 hover-lift"
                       >
-                        <a href={article.link} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+                        <a href={article.link.startsWith('http') ? article.link : `/articles/${article.id || 'unknown'}`} target={article.link.startsWith('http') ? "_blank" : "_self"} rel={article.link.startsWith('http') ? "noopener noreferrer" : undefined} className="flex items-center justify-center gap-2">
                           Read Article
                           <ExternalLink size={16} />
                         </a>
@@ -363,4 +363,4 @@ export default function ArticlesPage() {
       </section>
     </div>
   )
-} 
+}

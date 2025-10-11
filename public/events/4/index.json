@@ -1,0 +1,25 @@
+{
+  "id": 4,
+  "title": "SUI <> BSA Hackathon 3rd Edition 💧",
+  "date": "2025-9-27",
+  "time": "48 hours (September 27-28)",
+  "location": "BC Building (building of the IC faculty), EPFL, Ecublens",
+  "description": "European Sui Hackathon in partnership with Sui Foundation, featuring a $20,000+ prize pool and intensive Move language development.",
+  "attendees": 200,
+  "type": "Hackathon",
+  "registrationUrl": "https://bsaepfl.ch/hackathon/",
+  "detailedDescription": "The SUI <> BSA Hackathon 3rd Edition was a groundbreaking event that brought together blockchain enthusiasts and developers for an intensive 48-hour coding experience. Organized by EPFL's Blockchain Club in partnership with the Sui Foundation, this hackathon offered participants a unique opportunity to develop their skills in the Move language while exploring the revolutionary Sui ecosystem. With a substantial prize pool exceeding $20,000, the event attracted teams of 3-5 developers eager to build innovative blockchain applications. The hackathon took place in the dedicated BC building at EPFL, providing participants with a complete environment including relaxation spaces, shower facilities, and complimentary food throughout the two-day event. To ensure all participants could succeed regardless of their Move language experience, the organizers provided comprehensive pre-hackathon workshops: a Sui Overview and installation session on September 23rd, a Move language fundamentals workshop on September 30th, and an advanced features workshop on October 7th covering Move language intricacies, Zklogin, deep book, and Kiosk functionality, led by a developer from the Sui Foundation. The event fostered intense collaboration, innovation, and skill development, with teams working around the clock to create cutting-edge applications on the Sui blockchain. This hackathon not only provided valuable learning opportunities but also strengthened the connection between the academic blockchain community and industry leaders, showcasing the potential of the next generation of blockchain developers.",
+  "photos": [
+    "/events/3/hackathon-sui-1.jpg",
+    "/events/3/hackathon-sui-2.jpg",
+    "/events/3/hackathon-sui-3.jpg"
+  ],
+  "highlights": [
+    "48-hour intensive hackathon experience",
+    "$20,000+ prize pool",
+    "Partnership with Sui Foundation",
+    "Pre-hackathon Move language workshops",
+    "Complete facility access with food and amenities",
+    "Focus on Sui ecosystem and Move language development"
+  ]
+}

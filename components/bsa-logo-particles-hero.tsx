@@ -288,12 +288,12 @@ export default function BSAHeroLogoParticles() {
       />
 
       {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 left-20 w-2 h-2 bg-[#6366f1] rounded-full animate-pulse-glow opacity-60"></div>
         <div className="absolute top-40 right-32 w-1 h-1 bg-[#7c3aed] rounded-full animate-float opacity-40"></div>
         <div className="absolute bottom-32 left-1/4 w-1.5 h-1.5 bg-[#ec4899] rounded-full animate-pulse-glow opacity-50"></div>
         <div className="absolute top-1/2 right-20 w-1 h-1 bg-[#6366f1] rounded-full animate-float opacity-30"></div>
-      </div>
+      </div> */}
 
       {/* Content Layout */}
       <div className="relative z-10 w-full max-w-7xl px-6 md:px-10 lg:px-0">

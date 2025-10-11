@@ -1,0 +1,25 @@
+{
+  "id": 1,
+  "title": "EPFL BSA Conference - Privacy x Verifiability",
+  "date": "2025-03-07",
+  "time": "9:30 - 18:00 CET",
+  "location": "BC Building (building of the IC faculty), EPFL, Ecublens",
+  "description": "Deep dive into the latest in blockchain privacy and verifiability with cutting-edge talks, panel discussions, and networking opportunities.",
+  "attendees": 363,
+  "type": "Conference",
+  "registrationUrl": null,
+  "detailedDescription": "The EPFL BSA Conference - Privacy x Verifiability was a groundbreaking event that brought together leading minds in blockchain technology to explore the critical intersection of privacy and verifiability. Organized by EPFL students in the BC building, this conference offered cutting-edge talks, panel discussions, and plenty of opportunities to network with fellow enthusiasts. The event featured exciting talks with some of the best minds in the space discussing Privacy-Preserving Payments, Data Security & Confidentiality, Private DeFi, MEV, Secure Hardware, Privacy infrastructure (ZKP, MPC, TEE), Scalability infrastructure, and AI & Privacy. Whether participants were seasoned experts or just curious about data confidentiality, digital privacy, or blockchain scalability, they found valuable insights and a vibrant community ready to share ideas. The conference included breakfast at the beginning, networking lunch at midday, and snacks and refreshments in the afternoon, all provided by our sponsors: The Hashgraph Association, Aleph Zero, Common Finance, Mina Foundation, and Taurus. This event was organized in collaboration with Privacy Guardians (PG), the CVA, and IEE Blockchain, establishing strong connections between communities and leading protocols in the privacy space.",
+  "photos": [
+    "/events/1/IMG_0492.JPG",
+    "/events/1/IMG_0578.JPG", 
+    "/events/1/IMG_3494.JPG"
+  ],
+  "highlights": [
+    "363 attendees from diverse backgrounds",
+    "Cutting-edge talks on privacy and verifiability",
+    "Panel discussions with industry leaders",
+    "Networking with leading protocols and companies",
+    "Sponsored by major blockchain organizations",
+    "Collaboration with Privacy Guardians and IEE Blockchain"
+  ]
+}

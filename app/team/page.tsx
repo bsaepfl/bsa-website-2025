@@ -1,10 +1,26 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Users, Award, Briefcase, GraduationCap, Linkedin, Twitter, Github, Mail, UserPlus, Heart, Zap } from "lucide-react"
-import { useEffect, useRef } from "react"
+import { ArrowRight, Users, Award, Briefcase, GraduationCap, UserPlus, Heart, Zap } from "lucide-react"
+import { useEffect, useState } from "react"
+import Member, { MemberData } from "@/components/team/Member"
+
+function groupMembersBySection(members: MemberData[]): { [section: string]: MemberData[] } {
+  return members.reduce((groups, member) => {
+    const section = member.section
+    if (!groups[section]) {
+      groups[section] = []
+    }
+    groups[section].push(member)
+    return groups
+  }, {} as { [section: string]: MemberData[] })
+}
 
 export default function TeamPage() {
+  const [members, setMembers] = useState<MemberData[]>([])
+  const [membersBySection, setMembersBySection] = useState<{ [section: string]: MemberData[] }>({})
+  const [loading, setLoading] = useState(true)
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -28,71 +44,24 @@ export default function TeamPage() {
     }
   }, [])
 
-  const leadershipTeam = [
-    {
-      name: "Alex Chen",
-      role: "President",
-      image: "/placeholder-user.jpg",
-      bio: "Computer Science student passionate about DeFi and blockchain infrastructure. Leading BSA's strategic initiatives and community growth.",
-      linkedin: "https://linkedin.com/in/alexchen",
-      twitter: "https://twitter.com/alexchen",
-      github: "https://github.com/alexchen"
-    },
-    {
-      name: "Sarah Kim",
-      role: "Vice President",
-      image: "/placeholder-user.jpg", 
-      bio: "Data Science major focused on blockchain analytics and research. Overseeing educational programs and workshop coordination.",
-      linkedin: "https://linkedin.com/in/sarahkim",
-      twitter: "https://twitter.com/sarahkim",
-      github: "https://github.com/sarahkim"
-    },
-    {
-      name: "Marcus Rodriguez",
-      role: "Technical Lead",
-      image: "/placeholder-user.jpg",
-      bio: "Electrical Engineering student specializing in smart contracts and Web3 development. Leading technical workshops and hackathons.",
-      linkedin: "https://linkedin.com/in/marcusrodriguez", 
-      twitter: "https://twitter.com/marcusrodriguez",
-      github: "https://github.com/marcusrodriguez"
-    },
-    {
-      name: "Emma Thompson",
-      role: "Events Coordinator",
-      image: "/placeholder-user.jpg",
-      bio: "Mathematics student with expertise in blockchain governance and DAOs. Organizing networking events and industry partnerships.",
-      linkedin: "https://linkedin.com/in/emmathompson",
-      twitter: "https://twitter.com/emmathompson", 
-      github: "https://github.com/emmathompson"
+  useEffect(() => {
+    const loadMembers = async () => {
+      try {
+        const response = await fetch('/api/members')
+        if (response.ok) {
+          const membersData = await response.json()
+          setMembers(membersData)
+          setMembersBySection(groupMembersBySection(membersData))
+        }
+      } catch (error) {
+        console.error('Error loading members:', error)
+      } finally {
+        setLoading(false)
+      }
     }
-  ]
 
-  const advisors = [
-    {
-      name: "Dr. Michael Zhang",
-      role: "Faculty Advisor",
-      image: "/placeholder-user.jpg",
-      bio: "Professor of Computer Science at EPFL, specializing in distributed systems and blockchain technology.",
-      linkedin: "https://linkedin.com/in/michaelzhang",
-      email: "michael.zhang@epfl.ch"
-    },
-    {
-      name: "Dr. Lisa Patel",
-      role: "Research Advisor", 
-      image: "/placeholder-user.jpg",
-      bio: "Research scientist focusing on blockchain scalability and consensus mechanisms. Leading academic collaborations.",
-      linkedin: "https://linkedin.com/in/lisapatel",
-      email: "lisa.patel@epfl.ch"
-    },
-    {
-      name: "David Wilson",
-      role: "Industry Advisor",
-      image: "/placeholder-user.jpg", 
-      bio: "CTO at BlockchainCorp, former Google engineer. Providing industry insights and career mentorship.",
-      linkedin: "https://linkedin.com/in/davidwilson",
-      email: "david.wilson@blockchaincorp.com"
-    }
-  ]
+    loadMembers()
+  }, [])
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0a0a0a] to-[#1a1a1a]">
@@ -115,116 +84,52 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* Leadership Team */}
+      {/* Team Members by Section */}
       <section className="py-12 md:py-16 bg-gradient-to-b from-transparent to-[#0a0a0a]/50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-6xl mx-auto">
-            <div className="scroll-trigger text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">
-                Leadership
-                <span className="gradient-text block">Team</span>
-              </h2>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {leadershipTeam.map((member, idx) => (
-                <div key={idx} className="scroll-trigger glass rounded-2xl p-6 border border-[#6366f1]/20 hover-lift" style={{ animationDelay: `${0.2 + idx * 0.1}s` }}>
-                  <div className="text-center mb-6">
-                    <div className="w-24 h-24 bg-gradient-to-r from-[#6366f1] to-[#7c3aed] rounded-full flex items-center justify-center mx-auto mb-4">
-                      <img 
-                        src={member.image} 
-                        alt={member.name}
-                        className="w-20 h-20 rounded-full object-cover"
-                      />
+            {loading ? (
+              <div className="text-center">
+                <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#6366f1]"></div>
+                <p className="text-gray-300 mt-4">Loading team members...</p>
+              </div>
+            ) : (
+              
+              (() => {
+                // Custom section ordering: Presidency first, Alumnis last
+                const sectionOrder = ['Presidency', 'Executive', 'Development', 'Marketing', 'Alumnis'];
+                const sortedSections = Object.entries(membersBySection).sort(([a], [b]) => {
+                  const indexA = sectionOrder.indexOf(a);
+                  const indexB = sectionOrder.indexOf(b);
+                  
+                  // If section not in order array, put it before Alumnis (position 3.5)
+                  const posA = indexA === -1 ? 3.5 : indexA;
+                  const posB = indexB === -1 ? 3.5 : indexB;
+                  
+                  return posA - posB;
+                });
+                
+                return sortedSections.map(([section, sectionMembers]) => (
+                  <div key={section} className="mb-16">
+                    <div className="text-center mb-12">
+                      <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">
+                        {section} Team
+                      </h2>
+                      <div className="w-24 h-1 bg-gradient-to-r from-[#6366f1] to-[#7c3aed] mx-auto rounded-full"></div>
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-1">{member.name}</h3>
-                    <p className="text-[#6366f1] font-medium">{member.role}</p>
-                  </div>
-                  
-                  <p className="text-gray-300 text-sm leading-relaxed mb-4">
-                    {member.bio}
-                  </p>
-                  
-                  <div className="flex justify-center gap-3">
-                    <a
-                      href={member.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-8 h-8 bg-gradient-to-r from-[#6366f1] to-[#7c3aed] rounded-lg flex items-center justify-center hover:from-[#7c3aed] hover:to-[#ec4899] transition-all duration-300"
-                    >
-                      <Linkedin size={16} className="text-white" />
-                    </a>
-                    <a
-                      href={member.twitter}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-8 h-8 bg-gradient-to-r from-[#6366f1] to-[#7c3aed] rounded-lg flex items-center justify-center hover:from-[#7c3aed] hover:to-[#ec4899] transition-all duration-300"
-                    >
-                      <Twitter size={16} className="text-white" />
-                    </a>
-                    <a
-                      href={member.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-8 h-8 bg-gradient-to-r from-[#6366f1] to-[#7c3aed] rounded-lg flex items-center justify-center hover:from-[#7c3aed] hover:to-[#ec4899] transition-all duration-300"
-                    >
-                      <Github size={16} className="text-white" />
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Advisors */}
-      <section className="py-12 md:py-16 bg-gradient-to-b from-[#0a0a0a]/50 to-transparent">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="scroll-trigger text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">
-                Our
-                <span className="gradient-text block">Advisors</span>
-              </h2>
-            </div>
-            <div className="grid md:grid-cols-3 gap-8">
-              {advisors.map((advisor, idx) => (
-                <div key={idx} className="scroll-trigger glass rounded-2xl p-6 border border-[#6366f1]/20 hover-lift" style={{ animationDelay: `${0.2 + idx * 0.1}s` }}>
-                  <div className="text-center mb-6">
-                    <div className="w-20 h-20 bg-gradient-to-r from-[#6366f1] to-[#7c3aed] rounded-full flex items-center justify-center mx-auto mb-4">
-                      <img 
-                        src={advisor.image} 
-                        alt={advisor.name}
-                        className="w-16 h-16 rounded-full object-cover"
-                      />
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                      {sectionMembers.map((member, idx) => (
+                        <Member 
+                          key={member.id} 
+                          member={member} 
+                          animationDelay={0.2 + idx * 0.1} 
+                        />
+                      ))}
                     </div>
-                    <h3 className="text-lg font-bold text-white mb-1">{advisor.name}</h3>
-                    <p className="text-[#6366f1] font-medium text-sm">{advisor.role}</p>
                   </div>
-                  
-                  <p className="text-gray-300 text-sm leading-relaxed mb-4">
-                    {advisor.bio}
-                  </p>
-                  
-                  <div className="flex justify-center gap-3">
-                    <a
-                      href={advisor.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-8 h-8 bg-gradient-to-r from-[#6366f1] to-[#7c3aed] rounded-lg flex items-center justify-center hover:from-[#7c3aed] hover:to-[#ec4899] transition-all duration-300"
-                    >
-                      <Linkedin size={16} className="text-white" />
-                    </a>
-                    <a
-                      href={`mailto:${advisor.email}`}
-                      className="w-8 h-8 bg-gradient-to-r from-[#6366f1] to-[#7c3aed] rounded-lg flex items-center justify-center hover:from-[#7c3aed] hover:to-[#ec4899] transition-all duration-300"
-                    >
-                      <Mail size={16} className="text-white" />
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
+                ));
+              })()
+            )}
           </div>
         </div>
       </section>
@@ -326,4 +231,4 @@ export default function TeamPage() {
       </section>
     </div>
   )
-} 
+}

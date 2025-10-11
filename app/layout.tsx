@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Roboto, Noto_Serif } from "next/font/google"
+import { Roboto, Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
 import Navbar from "@/components/navbar"
@@ -12,7 +12,7 @@ const roboto = Roboto({
   variable: "--font-sans",
 })
 
-const notoSerif = Noto_Serif({
+const inter = Inter({
   weight: ['700'],
   subsets: ["latin"],
   variable: "--font-serif",
@@ -35,10 +35,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className="dark">
-      <body className={`${roboto.variable} ${notoSerif.variable} font-sans antialiased transition-colors duration-300`}>
+      <body className={`${roboto.variable} ${inter.variable} font-sans antialiased transition-colors duration-300`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <Navbar />
-          {children}
+          <main className="pt-16 md:pt-20">
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
       </body>
