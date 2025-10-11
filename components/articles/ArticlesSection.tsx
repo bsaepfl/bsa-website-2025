@@ -160,7 +160,7 @@ export default function ArticlesSection() {
                         asChild
                         className="w-full bg-gradient-to-r from-[#6366f1] to-[#7c3aed] hover:from-[#7c3aed] hover:to-[#ec4899] text-white border-0 hover-lift"
                       >
-                        <Link href={article.link.startsWith('http') ? article.link : `/articles/${article.id || idx + 1}`} target={article.link.startsWith('http') ? "_blank" : "_self"} rel={article.link.startsWith('http') ? "noopener noreferrer" : undefined} className="flex items-center gap-2">
+                        <Link href={`/articles/${article.id || idx + 1}`} className="flex items-center gap-2">
                           <ExternalLink size={16} />
                           Read Article
                         </Link>

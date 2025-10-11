@@ -11,9 +11,9 @@ export async function GET(
   try {
     const resolvedParams = await params
     id = resolvedParams.id
-    const articlesDir = path.join(process.cwd(), 'public', 'articles')
+    const articlesDir = path.join(process.cwd(), 'data', 'articles')
     const articlePath = path.join(articlesDir, id, 'index.md')
-    const headerImagePath = path.join(articlesDir, id, 'header.jpg')
+    const headerImagePath = path.join(process.cwd(), 'public', 'articles', id, 'header.jpg')
     
     // Check if article exists
     if (!fs.existsSync(articlePath)) {

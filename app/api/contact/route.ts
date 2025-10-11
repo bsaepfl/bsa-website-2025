@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
@@ -31,6 +29,7 @@ export async function POST(request: NextRequest) {
     // Send email notification to BSA team
     if (process.env.RESEND_API_KEY) {
       try {
+        const resend = new Resend(process.env.RESEND_API_KEY)
         await resend.emails.send({
           from: 'BSA Website <noreply@bsa-epfl.ch>',
           to: ['bsa@epfl.ch'], // Replace with actual BSA email
@@ -88,4 +87,4 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     )
   }
-} 
+}

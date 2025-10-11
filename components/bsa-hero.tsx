@@ -8,8 +8,11 @@ import BSALogo from "./bsa-logo"
 
 export default function HeroSection() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
+    setIsClient(true)
+    
     const handleMouseMove = (e: MouseEvent) => {
       // Normalize mouse position to be between -1 and 1
       const x = (e.clientX / window.innerWidth) * 2 - 1
@@ -26,15 +29,17 @@ export default function HeroSection() {
 
   return (
     <div className="relative w-full h-screen bg-[#1f273a]">
-      <div className="absolute inset-0 z-10">
-        <Canvas camera={{ position: [0, 0, 15], fov: 45 }}>
-          <color attach="background" args={["#1f273a"]} />
-          <ambientLight intensity={0.5} />
-          <pointLight position={[10, 10, 10]} intensity={1} />
-          <Environment preset="night" />
-          <BlockchainChain mousePosition={mousePosition} />
-        </Canvas>
-      </div>
+      {isClient && (
+        <div className="absolute inset-0 z-10">
+          <Canvas camera={{ position: [0, 0, 15], fov: 45 }}>
+            <color attach="background" args={["#1f273a"]} />
+            <ambientLight intensity={0.5} />
+            <pointLight position={[10, 10, 10]} intensity={1} />
+            <Environment preset="night" />
+            <BlockchainChain mousePosition={mousePosition} />
+          </Canvas>
+        </div>
+      )}
 
       {/* Move text to the left side */}
       <div className="absolute inset-0 z-20 flex flex-col items-start justify-center px-8 md:px-16 lg:px-24">

@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { Line } from '@react-three/drei';
@@ -87,10 +87,16 @@ const HeroScene: React.FC = () => {
 // --- BSAHero component ---
 // Combines the 3D scene with a logo watermark overlay and a text overlay.
 const BSAHero: React.FC = () => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
     <section className="relative w-full h-screen bg-[#1f273a] overflow-hidden">
       {/* 3D Scene */}
-      <HeroScene />
+      {isClient && <HeroScene />}
 
       {/* Logo watermark overlay */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10">

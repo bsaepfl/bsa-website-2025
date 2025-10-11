@@ -313,7 +313,7 @@ export default function ArticlesPage() {
                         asChild
                         className="w-full bg-gradient-to-r from-[#6366f1] to-[#7c3aed] hover:from-[#7c3aed] hover:to-[#ec4899] text-white border-0 hover-lift"
                       >
-                        <a href={article.link.startsWith('http') ? article.link : `/articles/${article.id || 'unknown'}`} target={article.link.startsWith('http') ? "_blank" : "_self"} rel={article.link.startsWith('http') ? "noopener noreferrer" : undefined} className="flex items-center justify-center gap-2">
+                        <a href={`/articles/${article.id || 'unknown'}`} className="flex items-center justify-center gap-2">
                           Read Article
                           <ExternalLink size={16} />
                         </a>

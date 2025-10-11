@@ -5,7 +5,7 @@ import matter from 'gray-matter'
 
 export async function GET() {
   try {
-    const articlesDir = path.join(process.cwd(), 'public', 'articles')
+    const articlesDir = path.join(process.cwd(), 'data', 'articles')
     
     // Check if articles directory exists
     if (!fs.existsSync(articlesDir)) {
@@ -21,7 +21,7 @@ export async function GET() {
     const articles = articleDirs.map(dir => {
       try {
         const articlePath = path.join(articlesDir, dir, 'index.md')
-        const headerImagePath = path.join(articlesDir, dir, 'header.jpg')
+        const headerImagePath = path.join(process.cwd(), 'public', 'articles', dir, 'header.jpg')
         
         // Check if index.md exists
         if (!fs.existsSync(articlePath)) {
