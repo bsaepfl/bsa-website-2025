@@ -51,11 +51,8 @@ export default function Navbar() {
             <Link href="/members" className="text-gray-300 hover:text-white transition-colors duration-200">
               Members
             </Link>
-            <Link href="/contact" className="text-gray-300 hover:text-white transition-colors duration-200">
-              Contact
-            </Link>
             <Button asChild className="bg-white hover:bg-white text-black border-0 px-6 py-2 font-semibold">
-              <Link href="/join">Join Us</Link>
+              <Link href="/contact">Contact</Link>
             </Button>
           </nav>
 
