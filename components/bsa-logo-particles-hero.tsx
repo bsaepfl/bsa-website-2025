@@ -302,22 +302,6 @@ export default function BSAHeroLogoParticles() {
               collaboration, and hands-on experience. Join our community of builders, 
               thinkers, and creators.
             </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center animate-slide-up" style={{ animationDelay: '0.4s' }}>
-              <Button asChild size="lg" className="bg-gradient-to-r from-[#6366f1] to-[#7c3aed] hover:from-[#7c3aed] hover:to-[#ec4899] text-white border-0 px-8 py-3 text-lg font-semibold hover-lift">
-                <Link href="/join" className="flex items-center gap-2">
-                  Join the Community
-                  <ArrowRight size={20} />
-                </Link>
-              </Button>
-              
-              <Button asChild variant="outline" size="lg" className="border-[#6366f1] text-[#6366f1] hover:bg-[#6366f1] hover:text-white px-8 py-3 text-lg font-semibold hover-lift">
-                <Link href="/events" className="flex items-center gap-2">
-                  <Users size={20} />
-                  Explore Events
-                </Link>
-              </Button>
-            </div>
           </div>
 
           {/* Logo area on the right */}
