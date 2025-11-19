@@ -3,7 +3,7 @@
 import { useRef, useEffect, useState } from "react"
 import { BSA_LOGO_PATH } from "./bsa-logo-path"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Sparkles, Zap, Users } from "lucide-react"
+import { ArrowRight, Zap, Users } from "lucide-react"
 import Link from "next/link"
 
 export default function BSAHeroLogoParticles() {
@@ -300,13 +300,6 @@ export default function BSAHeroLogoParticles() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center h-[70vh]">
           {/* Text content on the left */}
           <div className="text-white">
-            <div className="mb-6 flex justify-center lg:justify-start">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#6366f1]/10 border border-[#6366f1]/20 rounded-full text-sm text-[#6366f1] animate-fade-in">
-                <Sparkles size={16} />
-                <span>Building the Future of Web3</span>
-              </div>
-            </div>
-            
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 tracking-tight animate-slide-up text-center lg:text-left">
               <span className="gradient-text">Blockchain</span>
               <br />
