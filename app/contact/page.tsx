@@ -131,7 +131,7 @@ export default function ContactPage() {
 
   if (!isClient) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#0a0a0a] to-[#1a1a1a]">
+      <div className="min-h-screen">
         <div className="container mx-auto px-4 md:px-6 py-12 md:py-16">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#6366f1]/10 border border-[#6366f1]/20 rounded-full text-sm text-[#6366f1] mb-6">
@@ -152,28 +152,51 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0a0a0a] to-[#1a1a1a]">
+    <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-12 md:py-16 bg-gradient-to-b from-[#0a0a0a]/50 to-transparent">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="scroll-trigger inline-flex items-center gap-2 px-4 py-2 bg-[#6366f1]/10 border border-[#6366f1]/20 rounded-full text-sm text-[#6366f1] mb-6">
-              <Mail size={16} />
-              <span>Contact</span>
-            </div>
             <h1 className="scroll-trigger text-4xl md:text-6xl font-bold mb-8 text-white">
-              Get in
-              <span className="gradient-text block">Touch</span>
+              <span className="gradient-text block">Contact Us</span>
             </h1>
-            <p className="scroll-trigger text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-              Have questions? Want to collaborate? We'd love to hear from you
-            </p>
+          </div>
+        </div>
+      </section>
+
+
+
+      {/* FAQ Section */}
+      <section className="py-12 md:py-16">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="scroll-trigger text-center mb-12">
+              <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">
+                Frequently Asked Questions
+              </h2>
+            </div>
+            <div className="space-y-4">
+              {faqs.map((faq, idx) => (
+                <div key={idx} className="scroll-trigger glass rounded-2xl border border-[#6366f1]/20" style={{ animationDelay: `${0.2 + idx * 0.1}s` }}>
+                  <Accordion type="single" collapsible>
+                    <AccordionItem value={`item-${idx}`}>
+                      <AccordionTrigger className="text-white hover:text-[#6366f1] px-6 py-4">
+                        {faq.question}
+                      </AccordionTrigger>
+                      <AccordionContent className="px-6 pb-4 text-gray-300 leading-relaxed">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-12 md:py-16 bg-gradient-to-b from-transparent to-[#0a0a0a]/50">
+      <section className="py-12 md:py-16">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12">
@@ -304,101 +327,6 @@ export default function ContactPage() {
                     </div>
                   </div>
                 </div>
-                
-                <div className="glass rounded-2xl p-6 border border-[#6366f1]/20">
-                  <h4 className="text-lg font-semibold text-white mb-3">Follow us</h4>
-                  <div className="flex gap-3">
-                    <a
-                      href="https://twitter.com/bsaepfl"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 bg-gradient-to-r from-[#6366f1] to-[#7c3aed] rounded-lg flex items-center justify-center hover:from-[#7c3aed] hover:to-[#ec4899] transition-all duration-300"
-                    >
-                      <Twitter size={20} className="text-white" />
-                    </a>
-                    <a
-                      href="https://linkedin.com/company/bsaepfl"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 bg-gradient-to-r from-[#6366f1] to-[#7c3aed] rounded-lg flex items-center justify-center hover:from-[#7c3aed] hover:to-[#ec4899] transition-all duration-300"
-                    >
-                      <Linkedin size={20} className="text-white" />
-                    </a>
-                    <a
-                      href="https://github.com/bsaepfl"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 bg-gradient-to-r from-[#6366f1] to-[#7c3aed] rounded-lg flex items-center justify-center hover:from-[#7c3aed] hover:to-[#ec4899] transition-all duration-300"
-                    >
-                      <Github size={20} className="text-white" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-12 md:py-16 bg-gradient-to-b from-[#0a0a0a]/50 to-transparent">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-4xl mx-auto">
-            <div className="scroll-trigger text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">
-                Frequently Asked
-                <span className="gradient-text block">Questions</span>
-              </h2>
-            </div>
-            <div className="space-y-4">
-              {faqs.map((faq, idx) => (
-                <div key={idx} className="scroll-trigger glass rounded-2xl border border-[#6366f1]/20" style={{ animationDelay: `${0.2 + idx * 0.1}s` }}>
-                  <Accordion type="single" collapsible>
-                    <AccordionItem value={`item-${idx}`}>
-                      <AccordionTrigger className="text-white hover:text-[#6366f1] px-6 py-4">
-                        {faq.question}
-                      </AccordionTrigger>
-                      <AccordionContent className="px-6 pb-4 text-gray-300 leading-relaxed">
-                        {faq.answer}
-                      </AccordionContent>
-                    </AccordionItem>
-                  </Accordion>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-12 md:py-16 bg-gradient-to-b from-transparent to-[#0a0a0a]/50">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="scroll-trigger glass rounded-2xl p-12 border border-[#6366f1]/20">
-              <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">
-                Ready to
-                <span className="gradient-text block">Connect?</span>
-              </h2>
-              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                Join our community and stay updated with the latest blockchain events, 
-                workshops, and opportunities at EPFL.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
-                  asChild
-                  className="bg-gradient-to-r from-[#6366f1] to-[#7c3aed] hover:from-[#7c3aed] hover:to-[#ec4899] text-white border-0 hover-lift"
-                >
-                  <a href="/join">
-                    <Users size={16} className="mr-2" />
-                    Join BSA
-                  </a>
-                </Button>
-                <Button 
-                  variant="outline" 
-                  className="border-[#6366f1] text-[#6366f1] hover:bg-[#6366f1] hover:text-white hover-lift"
-                >
-                  <a href="/events">View Events</a>
-                </Button>
               </div>
             </div>
           </div>
