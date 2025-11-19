@@ -19,7 +19,7 @@ export default function Footer() {
             </div>
             <div className="flex flex-wrap gap-3">
               <a
-                href="https://twitter.com/bsa_epfl"
+                href="https://twitter.com/bsaepfl"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-[#6366f1]/10 border border-[#6366f1]/20 rounded-xl flex items-center justify-center text-[#6366f1] hover:bg-[#6366f1] hover:text-white transition-all duration-300 hover-lift"
@@ -45,7 +45,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://www.linkedin.com/company/blockchain-student-association/mycompany/"
+                href="https://www.linkedin.com/company/bsaepfl/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-[#6366f1]/10 border border-[#6366f1]/20 rounded-xl flex items-center justify-center text-[#6366f1] hover:bg-[#6366f1] hover:text-white transition-all duration-300 hover-lift"

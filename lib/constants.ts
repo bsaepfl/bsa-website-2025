@@ -1,1 +1,1 @@
-export const LUMA_URL = 'https://lu.ma/Bsa_epfl'; 
+export const LUMA_URL = 'https://lu.ma/bsaepfl';

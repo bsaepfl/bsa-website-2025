@@ -319,7 +319,7 @@ export default function ContactPage() {
                   <h4 className="text-lg font-semibold text-white mb-3">Follow us</h4>
                   <div className="flex gap-3">
                     <a
-                      href="https://twitter.com/bsa_epfl"
+                      href="https://twitter.com/bsaepfl"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-10 h-10 bg-gradient-to-r from-[#6366f1] to-[#7c3aed] rounded-lg flex items-center justify-center hover:from-[#7c3aed] hover:to-[#ec4899] transition-all duration-300"
@@ -327,7 +327,7 @@ export default function ContactPage() {
                       <Twitter size={20} className="text-white" />
                     </a>
                     <a
-                      href="https://linkedin.com/company/bsa-epfl"
+                      href="https://linkedin.com/company/bsaepfl"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-10 h-10 bg-gradient-to-r from-[#6366f1] to-[#7c3aed] rounded-lg flex items-center justify-center hover:from-[#7c3aed] hover:to-[#ec4899] transition-all duration-300"
@@ -335,7 +335,7 @@ export default function ContactPage() {
                       <Linkedin size={20} className="text-white" />
                     </a>
                     <a
-                      href="https://github.com/bsa-epfl"
+                      href="https://github.com/bsaepfl"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-10 h-10 bg-gradient-to-r from-[#6366f1] to-[#7c3aed] rounded-lg flex items-center justify-center hover:from-[#7c3aed] hover:to-[#ec4899] transition-all duration-300"
