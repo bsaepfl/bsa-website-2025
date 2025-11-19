@@ -15,7 +15,7 @@ export default function Member({ member, animationDelay }: MemberProps) {
       <CardContent className="p-6">
         <div className="flex flex-col items-center text-center space-y-4">
           {/* Member Image */}
-          <div className="relative w-24 h-24 rounded-full overflow-hidden bg-[#1a1a1a]">
+          <div className="relative w-full aspect-[1/1] mx-auto rounded-2xl overflow-hidden bg-[#1a1a1a]">
             {member.hasImage ? (
               <Image
                 src={`/members/${member.tag}/image.jpg`}
@@ -24,20 +24,22 @@ export default function Member({ member, animationDelay }: MemberProps) {
                 className="object-cover"
               />
             ) : (
-              <div className="w-full h-full flex items-center justify-center bg-[#1a1a1a]">
+              <div className="absolute inset-0 flex items-center justify-center bg-[#1a1a1a]">
                 <User className="w-12 h-12 text-gray-400" />
               </div>
             )}
           </div>
 
           {/* Member Info */}
-          <div>
+          <div className="min-h-[48px] flex flex-col justify-center">
             <h3 className="font-semibold text-lg text-white">{member.name}</h3>
-            <p className="text-sm text-[#6366f1] font-medium">{member.title}</p>
+            <p className="text-sm text-white font-medium min-h-[18px]">
+              {member.title || ""}
+            </p>
           </div>
 
           {/* Social Links */}
-          <div className="flex space-x-2">
+          <div className="flex space-x-2 min-h-[40px]">
             {member.website && (
               <Button variant="outline" size="sm" asChild>
                 <a
@@ -50,6 +52,7 @@ export default function Member({ member, animationDelay }: MemberProps) {
                 </a>
               </Button>
             )}
+
             {member.github && (
               <Button variant="outline" size="sm" asChild>
                 <a
@@ -62,6 +65,7 @@ export default function Member({ member, animationDelay }: MemberProps) {
                 </a>
               </Button>
             )}
+
             {member.linkedin && (
               <Button variant="outline" size="sm" asChild>
                 <a
@@ -74,6 +78,7 @@ export default function Member({ member, animationDelay }: MemberProps) {
                 </a>
               </Button>
             )}
+
             {member.twitter && (
               <Button variant="outline" size="sm" asChild>
                 <a
@@ -85,6 +90,11 @@ export default function Member({ member, animationDelay }: MemberProps) {
                   <Twitter className="w-4 h-4" />
                 </a>
               </Button>
+            )}
+
+            {/* If no buttons → invisible placeholder keeps height */}
+            {!member.website && !member.github && !member.linkedin && !member.twitter && (
+              <div className="w-8 h-8 opacity-0" />
             )}
           </div>
         </div>
