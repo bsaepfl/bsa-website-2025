@@ -344,22 +344,4 @@ html {
       box-shadow: 0 0 40px rgba(99, 102, 241, 0.6);
     }
   }
-
-  /* Custom Scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #1a1a1a;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #6366f1, #7c3aed);
-    border-radius: 4px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #7c3aed, #ec4899);
-  }
 }
