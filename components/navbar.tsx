@@ -26,7 +26,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
           <div className="flex items-center">
-            <Link href="/" className="flex items-center hover-lift">
+            <Link href="/" className="flex items-center">
               <span className="text-xl md:text-2xl font-bold tracking-tight text-white">
                 <span className="gradient-text">BSA</span>
                 <span className="text-white"> - EPFL</span>
@@ -35,26 +35,26 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/about" className="text-gray-300 hover:text-white transition-colors duration-200 font-medium">
+          <nav className="hidden md:flex items-center space-x-8 font-semibold">
+            <Link href="/about" className="text-gray-300 hover:text-white transition-colors duration-200">
               About
             </Link>
-            <Link href="/events" className="text-gray-300 hover:text-white transition-colors duration-200 font-medium">
+            <Link href="/events" className="text-gray-300 hover:text-white transition-colors duration-200">
               Events
             </Link>
-            <Link href="/articles" className="text-gray-300 hover:text-white transition-colors duration-200 font-medium">
+            <Link href="/articles" className="text-gray-300 hover:text-white transition-colors duration-200">
               Articles
             </Link>
-            <Link href="/startups" className="text-gray-300 hover:text-white transition-colors duration-200 font-medium">
+            <Link href="/startups" className="text-gray-300 hover:text-white transition-colors duration-200">
               Startups
             </Link>
-            <Link href="/team" className="text-gray-300 hover:text-white transition-colors duration-200 font-medium">
-              Team
+            <Link href="/members" className="text-gray-300 hover:text-white transition-colors duration-200">
+              Members
             </Link>
-            <Link href="/contact" className="text-gray-300 hover:text-white transition-colors duration-200 font-medium">
+            <Link href="/contact" className="text-gray-300 hover:text-white transition-colors duration-200">
               Contact
             </Link>
-            <Button asChild className="bg-gradient-to-r from-[#6366f1] to-[#7c3aed] hover:from-[#7c3aed] hover:to-[#ec4899] text-white border-0 px-6 py-2 font-semibold hover-lift">
+            <Button asChild className="bg-white hover:bg-white text-black border-0 px-6 py-2 font-semibold">
               <Link href="/join">Join Us</Link>
             </Button>
           </nav>
@@ -106,11 +106,11 @@ export default function Navbar() {
                 Startups
               </Link>
               <Link
-                href="/team"
+                href="/members"
                 className="block px-4 py-3 text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-colors duration-200"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Team
+                Members
               </Link>
               <Link
                 href="/contact"
