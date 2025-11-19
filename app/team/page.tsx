@@ -69,13 +69,9 @@ export default function TeamPage() {
       <section className="py-12 md:py-16 bg-gradient-to-b from-[#0a0a0a]/50 to-transparent">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="scroll-trigger inline-flex items-center gap-2 px-4 py-2 bg-[#6366f1]/10 border border-[#6366f1]/20 rounded-full text-sm text-[#6366f1] mb-6">
-              <Users size={16} />
-              <span>Our Team</span>
-            </div>
             <h1 className="scroll-trigger text-4xl md:text-6xl font-bold mb-8 text-white">
-              Meet Our
-              <span className="gradient-text block">Team</span>
+              Meet our
+              <span className="gradient-text block">Members</span>
             </h1>
             <p className="scroll-trigger text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
               The passionate individuals driving innovation in blockchain at EPFL
@@ -96,8 +92,16 @@ export default function TeamPage() {
             ) : (
               
               (() => {
-                // Custom section ordering: Presidency first, Alumnis last
-                const sectionOrder = ['Presidency', 'Executive', 'Development', 'Marketing', 'Alumnis'];
+                const sectionOrder = [
+                  'Executive Committee',
+                  'Research',
+                  'Education',
+                  'Communication',
+                  'Logistics',
+                  'Technology',
+                  'Sponsoring',
+                  'Alumnis'
+                ];
                 const sortedSections = Object.entries(membersBySection).sort(([a], [b]) => {
                   const indexA = sectionOrder.indexOf(a);
                   const indexB = sectionOrder.indexOf(b);
@@ -113,14 +117,14 @@ export default function TeamPage() {
                   <div key={section} className="mb-16">
                     <div className="text-center mb-12">
                       <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">
-                        {section} Team
+                        {section} {section !== "Executive Committee" && section !== "Alumnis" && "Team"}
                       </h2>
                       <div className="w-24 h-1 bg-gradient-to-r from-[#6366f1] to-[#7c3aed] mx-auto rounded-full"></div>
                     </div>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                       {sectionMembers.map((member, idx) => (
                         <Member 
-                          key={member.id} 
+                          key={member.tag}
                           member={member} 
                           animationDelay={0.2 + idx * 0.1} 
                         />

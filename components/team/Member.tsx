@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Github, Linkedin, Twitter, User } from "lucide-react"
+import { Github, Linkedin, Twitter, User, Globe } from "lucide-react"
 import Image from "next/image"
 import { MemberData } from "@/lib/members"
 
@@ -18,7 +18,7 @@ export default function Member({ member, animationDelay }: MemberProps) {
           <div className="relative w-24 h-24 rounded-full overflow-hidden bg-[#1a1a1a]">
             {member.hasImage ? (
               <Image
-                src={`/members/${member.id}/image.jpg`}
+                src={`/members/${member.tag}/image.jpg`}
                 alt={member.name}
                 fill
                 className="object-cover"
@@ -33,11 +33,23 @@ export default function Member({ member, animationDelay }: MemberProps) {
           {/* Member Info */}
           <div>
             <h3 className="font-semibold text-lg text-white">{member.name}</h3>
-            <p className="text-sm text-[#6366f1] font-medium">{member.section}</p>
+            <p className="text-sm text-[#6366f1] font-medium">{member.title}</p>
           </div>
 
           {/* Social Links */}
           <div className="flex space-x-2">
+            {member.website && (
+              <Button variant="outline" size="sm" asChild>
+                <a
+                  href={`https://${member.website}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 border-[#6366f1]/20 text-[#6366f1] hover:bg-[#6366f1] hover:text-white"
+                >
+                  <Globe className="w-4 h-4" />
+                </a>
+              </Button>
+            )}
             {member.github && (
               <Button variant="outline" size="sm" asChild>
                 <a
@@ -65,7 +77,7 @@ export default function Member({ member, animationDelay }: MemberProps) {
             {member.twitter && (
               <Button variant="outline" size="sm" asChild>
                 <a
-                  href={`https://twitter.com/${member.twitter}`}
+                  href={`https://x.com/${member.twitter}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 border-[#6366f1]/20 text-[#6366f1] hover:bg-[#6366f1] hover:text-white"
