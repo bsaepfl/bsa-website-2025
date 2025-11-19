@@ -40,9 +40,6 @@ export default function StartupsPage() {
               BSA
               <span className="gradient-text block">Startups</span>
             </h1>
-            <p className="scroll-trigger text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-              Discover innovative startups created and shaped by BSA members
-            </p>
           </div>
         </div>
       </section>
@@ -51,12 +48,6 @@ export default function StartupsPage() {
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="scroll-trigger text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">
-                Featured
-                <span className="gradient-text block">Startups</span>
-              </h2>
-            </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {startups.map((startup, idx) => (
