@@ -41,53 +41,49 @@ export default function Member({ member, animationDelay }: MemberProps) {
           {/* Social Links */}
           <div className="flex space-x-2 min-h-[40px]">
             {member.website && (
-              <Button variant="outline" size="sm" asChild>
+              <Button size="sm" asChild>
                 <a
                   href={`https://${member.website}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 border-[#6366f1]/20 text-[#6366f1] hover:bg-[#6366f1] hover:text-white"
                 >
                   <Globe className="w-4 h-4" />
                 </a>
               </Button>
             )}
 
-            {member.github && (
-              <Button variant="outline" size="sm" asChild>
+            {member.twitter && (
+              <Button size="sm" asChild>
                 <a
-                  href={`https://github.com/${member.github}`}
+                  href={`https://x.com/${member.twitter}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 border-[#6366f1]/20 text-[#6366f1] hover:bg-[#6366f1] hover:text-white"
                 >
-                  <Github className="w-4 h-4" />
+                  <Twitter className="w-4 h-4" />
                 </a>
               </Button>
             )}
 
             {member.linkedin && (
-              <Button variant="outline" size="sm" asChild>
+              <Button size="sm" asChild>
                 <a
                   href={`https://linkedin.com/in/${member.linkedin}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 border-[#6366f1]/20 text-[#6366f1] hover:bg-[#6366f1] hover:text-white"
                 >
                   <Linkedin className="w-4 h-4" />
                 </a>
               </Button>
             )}
 
-            {member.twitter && (
-              <Button variant="outline" size="sm" asChild>
+            {member.github && (
+              <Button size="sm" asChild>
                 <a
-                  href={`https://x.com/${member.twitter}`}
+                  href={`https://github.com/${member.github}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 border-[#6366f1]/20 text-[#6366f1] hover:bg-[#6366f1] hover:text-white"
                 >
-                  <Twitter className="w-4 h-4" />
+                  <Github className="w-4 h-4" />
                 </a>
               </Button>
             )}

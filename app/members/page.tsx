@@ -73,9 +73,6 @@ export default function TeamPage() {
               Meet our
               <span className="gradient-text block">Members</span>
             </h1>
-            <p className="scroll-trigger text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-              The passionate individuals driving innovation in blockchain at EPFL
-            </p>
           </div>
         </div>
       </section>
@@ -83,7 +80,7 @@ export default function TeamPage() {
       {/* Team Members by Section */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-7xl mx-auto">
             {loading ? (
               <div className="text-center">
                 <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#6366f1]"></div>
@@ -99,7 +96,7 @@ export default function TeamPage() {
                   'Communication',
                   'Logistics',
                   'Technology',
-                  'Sponsoring',
+                  'Sponsorship',
                   'Alumnis'
                 ];
                 const sortedSections = Object.entries(membersBySection).sort(([a], [b]) => {
