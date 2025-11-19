@@ -186,15 +186,6 @@ export default function ArticlesSection() {
                 </Button>
               </div>
             )}
-            
-            <div className="text-center mt-16">
-              <Button asChild size="lg" className="bg-gradient-to-r from-[#6366f1] to-[#7c3aed] hover:from-[#7c3aed] hover:to-[#ec4899] text-white border-0 px-8 py-3 text-lg font-semibold hover-lift">
-                <Link href="https://medium.com/bsa-epfl" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                  <ExternalLink size={20} />
-                  Visit our Medium
-                </Link>
-              </Button>
-            </div>
           </>
         )}
       </div>
