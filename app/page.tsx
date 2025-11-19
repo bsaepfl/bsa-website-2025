@@ -150,22 +150,6 @@ export default function Home() {
                 </Link>
               </Button>
             </div>
-            
-            {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-              <div className="glass rounded-xl p-6 border border-[#6366f1]/20 hover-lift">
-                <div className="text-3xl font-bold gradient-text mb-2">500+</div>
-                <div className="text-gray-300">Active Members</div>
-              </div>
-              <div className="glass rounded-xl p-6 border border-[#6366f1]/20 hover-lift">
-                <div className="text-3xl font-bold gradient-text mb-2">50+</div>
-                <div className="text-gray-300">Events Hosted</div>
-              </div>
-              <div className="glass rounded-xl p-6 border border-[#6366f1]/20 hover-lift">
-                <div className="text-3xl font-bold gradient-text mb-2">20+</div>
-                <div className="text-gray-300">Startups Launched</div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
