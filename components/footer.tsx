@@ -143,7 +143,6 @@ export default function Footer() {
               <div className="flex items-start gap-3 lg:justify-end">
                 <MapPin size={20} className="text-[#6366f1] mt-0.5 lg:order-2" />
                 <div className="text-gray-400 lg:text-right lg:order-1">
-                  <p>EPFL Innovation Park</p>
                   <p>Lausanne, Switzerland</p>
                 </div>
               </div>
