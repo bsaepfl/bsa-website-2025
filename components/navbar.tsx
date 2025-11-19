@@ -29,7 +29,7 @@ export default function Navbar() {
             <Link href="/" className="flex items-center hover-lift">
               <span className="text-xl md:text-2xl font-bold tracking-tight text-white">
                 <span className="gradient-text">BSA</span>
-                <span className="text-white"> EPFL</span>
+                <span className="text-white"> - EPFL</span>
               </span>
             </Link>
           </div>

@@ -47,7 +47,7 @@ export default function HeroSection() {
           <div className="mb-6">
             <BSALogo classname="w-48 md:w-64 lg:w-72 h-auto" />
           </div>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">Blockchain Student Association</h1>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">Blockchain Student Association - EPFL</h1>
           <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl">
             Connecting students with blockchain technology, innovation, and industry opportunities
           </p>

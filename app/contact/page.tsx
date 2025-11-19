@@ -300,17 +300,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h4 className="text-lg font-semibold text-white mb-1">Location</h4>
-                      <p className="text-gray-300">EPFL, Lausanne, Switzerland</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-[#ec4899] to-[#f59e0b] rounded-xl flex items-center justify-center">
-                      <Clock size={24} className="text-white" />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-semibold text-white mb-1">Response Time</h4>
-                      <p className="text-gray-300">Usually within 24 hours</p>
+                      <p className="text-gray-300">Lausanne, Switzerland</p>
                     </div>
                   </div>
                 </div>
