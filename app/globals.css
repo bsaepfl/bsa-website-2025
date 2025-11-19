@@ -4,6 +4,7 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: black;
 }
 
 @layer base {
@@ -97,8 +98,16 @@ html {
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-sans);
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-    min-height: 100vh;
+    background: linear-gradient(
+            to bottom,
+            #000000 0%,
+            #000000 5%,
+            #08111f 15%,
+            #0c1829 30%,
+            #101e32 50%,
+            #152239 100%
+    );
+      min-height: 100vh;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-serif);
@@ -204,7 +213,6 @@ html {
   .glass {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   /* Scroll Animations */
