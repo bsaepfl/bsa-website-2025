@@ -149,7 +149,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3 lg:justify-end">
                 <Mail size={20} className="text-[#6366f1] lg:order-2" />
-                <a href="mailto:info@bsa-epfl.ch" className="text-gray-400 hover:text-white transition-colors duration-200 lg:order-1">
+                <a href="mailto:bsa@epfl.ch" className="text-gray-400 hover:text-white transition-colors duration-200 lg:order-1">
                   info@bsa-epfl.ch
                 </a>
               </div>

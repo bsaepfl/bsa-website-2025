@@ -290,7 +290,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h4 className="text-lg font-semibold text-white mb-1">Email</h4>
-                      <p className="text-gray-300">contact@bsa-epfl.ch</p>
+                      <p className="text-gray-300">bsa@epfl.ch</p>
                     </div>
                   </div>
                   
