@@ -21,7 +21,7 @@ export default function Navbar() {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'glass backdrop-blur-md' : 'bg-transparent'
+      isScrolled ? 'glass backdrop-blur-3xl' : 'bg-transparent'
     }`}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
@@ -36,19 +36,19 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8 font-semibold">
-            <Link href="/about" className="text-gray-300 hover:text-white transition-colors duration-200">
+            <Link href="/about" className="transition-colors duration-200">
               About
             </Link>
-            <Link href="/events" className="text-gray-300 hover:text-white transition-colors duration-200">
+            <Link href="/events" className="transition-colors duration-200">
               Events
             </Link>
-            <Link href="/articles" className="text-gray-300 hover:text-white transition-colors duration-200">
+            <Link href="/articles" className="transition-colors duration-200">
               Articles
             </Link>
-            <Link href="/startups" className="text-gray-300 hover:text-white transition-colors duration-200">
+            <Link href="/startups" className="transition-colors duration-200">
               Startups
             </Link>
-            <Link href="/members" className="text-gray-300 hover:text-white transition-colors duration-200">
+            <Link href="/members" className="transition-colors duration-200">
               Members
             </Link>
             <Button asChild className="bg-white hover:bg-white text-black border-0 px-6 py-2 font-semibold">
