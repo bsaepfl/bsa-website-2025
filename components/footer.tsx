@@ -4,19 +4,10 @@ import Image from "next/image"
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-t from-[#0a0a0a] to-[#1a1a1a] text-white py-16 md:py-20 border-t border-[#6366f1]/20">
+    <footer className="text-white py-16 md:py-20">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+        <div className="grid grid-cols-1">
           <div className="lg:col-span-1">
-            <div className="mb-6">
-              <h3 className="text-2xl font-bold mb-2">
-                <span className="gradient-text">BSA</span>
-                <span className="text-white"> EPFL</span>
-              </h3>
-              <p className="text-gray-400 leading-relaxed">
-                Empowering the next generation of blockchain innovators through education, collaboration, and hands-on experience.
-              </p>
-            </div>
             <div className="flex flex-wrap gap-3">
               <a
                 href="https://twitter.com/bsaepfl"
@@ -66,17 +57,17 @@ export default function Footer() {
                   <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
                 </svg>
               </a>
-              <a
-                href="https://www.youtube.com/channel/UCk24QUxKrSrJNxmp9EHICAg"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-[#6366f1]/10 border border-[#6366f1]/20 rounded-xl flex items-center justify-center text-[#6366f1] hover:bg-[#6366f1] hover:text-white transition-all duration-300 hover-lift"
-              >
-                <span className="sr-only">YouTube</span>
-                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-              </a>
+              {/*<a*/}
+              {/*  href="https://www.youtube.com/channel/UCk24QUxKrSrJNxmp9EHICAg"*/}
+              {/*  target="_blank"*/}
+              {/*  rel="noopener noreferrer"*/}
+              {/*  className="w-10 h-10 bg-[#6366f1]/10 border border-[#6366f1]/20 rounded-xl flex items-center justify-center text-[#6366f1] hover:bg-[#6366f1] hover:text-white transition-all duration-300 hover-lift"*/}
+              {/*>*/}
+              {/*  <span className="sr-only">YouTube</span>*/}
+              {/*  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">*/}
+              {/*    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>*/}
+              {/*  </svg>*/}
+              {/*</a>*/}
               <a
                 href="https://www.instagram.com/bsaepfl/"
                 target="_blank"
@@ -90,73 +81,9 @@ export default function Footer() {
               </a>
             </div>
           </div>
-          
-          <div>
-            <h3 className="text-lg font-semibold mb-6 text-white">Quick Links</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link href="/about" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
-                  <span className="w-1 h-1 bg-[#6366f1] rounded-full group-hover:scale-150 transition-transform"></span>
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/events" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
-                  <span className="w-1 h-1 bg-[#6366f1] rounded-full group-hover:scale-150 transition-transform"></span>
-                  Events
-                </Link>
-              </li>
-              <li>
-                <Link href="/articles" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
-                  <span className="w-1 h-1 bg-[#6366f1] rounded-full group-hover:scale-150 transition-transform"></span>
-                  Articles
-                </Link>
-              </li>
-              <li>
-                <Link href="/startups" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
-                  <span className="w-1 h-1 bg-[#6366f1] rounded-full group-hover:scale-150 transition-transform"></span>
-                  Startups
-                </Link>
-              </li>
-              <li>
-                <Link href="/team" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
-                  <span className="w-1 h-1 bg-[#6366f1] rounded-full group-hover:scale-150 transition-transform"></span>
-                  Team
-                </Link>
-              </li>
-            </ul>
-          </div>
-          
-          {/* <div className="flex justify-center lg:justify-end">
-            <Image 
-              src="/big-logo.png" 
-              alt="BSA EPFL Logo" 
-              width={234} 
-              height={81}
-              className="opacity-80 hover:opacity-100 transition-opacity duration-300 max-w-full h-auto"
-            />
-          </div> */}
-          
-          <div className="lg:text-right">
-            <h3 className="text-lg font-semibold mb-6 text-white">Contact</h3>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3 lg:justify-end">
-                <MapPin size={20} className="text-[#6366f1] mt-0.5 lg:order-2" />
-                <div className="text-gray-400 lg:text-right lg:order-1">
-                  <p>Lausanne, Switzerland</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 lg:justify-end">
-                <Mail size={20} className="text-[#6366f1] lg:order-2" />
-                <a href="mailto:bsa@epfl.ch" className="text-gray-400 hover:text-white transition-colors duration-200 lg:order-1">
-                  bsa@epfl.ch
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
         
-        <div className="border-t border-[#6366f1]/20 mt-12 pt-8 text-center">
+        <div className="mt-12 pt-8 text-center">
           <p className="text-gray-400">
             © {new Date().getFullYear()} Blockchain Student Association. All rights reserved.
           </p>
