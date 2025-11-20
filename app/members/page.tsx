@@ -80,7 +80,7 @@ export default function TeamPage() {
       {/* Team Members by Section */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-7xl mx-auto">
+          <div className="mx-auto">
             {loading ? (
               <div className="text-center">
                 <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#6366f1]"></div>
@@ -122,7 +122,7 @@ export default function TeamPage() {
                       {sectionMembers.map((member, idx) => (
                         <div
                           key={member.tag}
-                          className="w-full sm:w-1/2 lg:w-1/4 xl:w-1/4 max-w-xs"
+                          className="w-full max-w-xs"
                         >
                           <Member
                             member={member}
