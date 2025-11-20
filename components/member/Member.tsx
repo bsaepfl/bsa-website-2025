@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Github, Linkedin, Twitter, User, Globe } from "lucide-react"
+import { Github, Linkedin, Twitter, User, Globe, Mail } from "lucide-react"
 import Image from "next/image"
 import { MemberData } from "@/lib/members"
 
@@ -84,6 +84,18 @@ export default function Member({ member, animationDelay }: MemberProps) {
                   rel="noopener noreferrer"
                 >
                   <Github className="w-4 h-4" />
+                </a>
+              </Button>
+            )}
+
+            {member.mail && (
+              <Button size="sm" asChild>
+                <a
+                  href={`mailto:${member.mail}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Mail className="w-4 h-4" />
                 </a>
               </Button>
             )}

@@ -10,6 +10,7 @@ export interface MemberData {
   twitter?: string
   linkedin?: string
   github?: string
+  mail?: string
   hasImage: boolean
 }
 
@@ -55,6 +56,7 @@ export async function getAllMembers(): Promise<MemberData[]> {
             twitter: memberInfo.twitter,
             linkedin: memberInfo.linkedin,
             github: memberInfo.github,
+            mail: memberInfo.mail,
             hasImage
           })
         } catch (error) {
