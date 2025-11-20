@@ -15,7 +15,7 @@ export default function Footer() {
           </a>
 
           <a
-            href="https://twitter.com/bsaepfl"
+            href="https://x.com/bsaepfl"
             target="_blank"
             rel="noopener noreferrer"
             className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300"
