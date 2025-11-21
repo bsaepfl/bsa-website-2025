@@ -82,55 +82,12 @@ export default function AboutPage() {
                     "Startup incubation support"
                   ].map((item, idx) => (
                     <div key={idx} className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-gradient-to-r from-[#6366f1] to-[#7c3aed] rounded-full mt-2 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
                       <span className="text-gray-300">{item}</span>
                     </div>
                   ))}
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Values Section */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="scroll-trigger text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">
-                Our
-                <span className="gradient-text block">Values</span>
-              </h2>
-            </div>
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  icon: "🎓",
-                  title: "Education",
-                  description: "We believe in accessible, high-quality blockchain education for all students, regardless of their background or experience level."
-                },
-                {
-                  icon: "🤝", 
-                  title: "Collaboration",
-                  description: "We foster a collaborative environment where students can learn from each other, share ideas, and build meaningful connections."
-                },
-                {
-                  icon: "💡",
-                  title: "Innovation", 
-                  description: "We encourage creative thinking and innovative approaches to solving real-world problems using blockchain technology."
-                }
-              ].map((value, idx) => (
-                <div key={idx} className="scroll-trigger glass rounded-2xl p-8 border border-[#6366f1]/20 hover-lift" style={{ animationDelay: `${0.2 + idx * 0.1}s` }}>
-                  <div className="w-16 h-16 bg-gradient-to-r from-[#6366f1] to-[#7c3aed] rounded-2xl flex items-center justify-center mb-6 text-2xl">
-                    {value.icon}
-                  </div>
-                  <h3 className="text-xl font-bold mb-4 text-white">{value.title}</h3>
-                  <p className="text-gray-300 leading-relaxed">
-                    {value.description}
-                  </p>
-                </div>
-              ))}
             </div>
           </div>
         </div>
