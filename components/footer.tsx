@@ -43,6 +43,15 @@ export default function Footer() {
           </a>
 
           <a
+            href="https://www.youtube.com/@bsaepfl"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300"
+          >
+            <Youtube className="w-5 h-5" />
+          </a>
+
+          <a
             href="https://github.com/bsaepfl"
             target="_blank"
             rel="noopener noreferrer"
@@ -50,15 +59,6 @@ export default function Footer() {
           >
             <Github className="w-5 h-5" />
           </a>
-
-          {/*<a*/}
-          {/*  href="https://www.youtube.com/channel/UCk24QUxKrSrJNxmp9EHICAg"*/}
-          {/*  target="_blank"*/}
-          {/*  rel="noopener noreferrer"*/}
-          {/*  className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300"*/}
-          {/*>*/}
-          {/*  <Youtube className="w-5 h-5" />*/}
-          {/*</a>*/}
 
         </div>
 
