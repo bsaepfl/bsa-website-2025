@@ -180,7 +180,7 @@ export default function ContactPage() {
                 <div key={idx} className="scroll-trigger glass rounded-2xl border border-[#6366f1]/20" style={{ animationDelay: `${0.2 + idx * 0.1}s` }}>
                   <Accordion type="single" collapsible>
                     <AccordionItem value={`item-${idx}`}>
-                      <AccordionTrigger className="text-white hover:text-[#6366f1] px-6 py-4">
+                      <AccordionTrigger className="text-white hover:text-[#2020ff]/60 px-6 py-4">
                         {faq.question}
                       </AccordionTrigger>
                       <AccordionContent className="px-6 pb-4 text-gray-300 leading-relaxed">
@@ -200,102 +200,7 @@ export default function ContactPage() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12">
-              {/* Contact Form */}
-              <div>
-                <h2 className="text-3xl font-bold mb-8 text-white">Send us a message</h2>
-                <form onSubmit={handleSubmit} className="space-y-6" suppressHydrationWarning>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <Label htmlFor="firstName" className="text-white">First Name</Label>
-                      <Input
-                        id="firstName"
-                        name="firstName"
-                        type="text"
-                        value={formData.firstName}
-                        onChange={handleChange}
-                        className="bg-[#1a1a1a] border-[#6366f1]/20 text-white placeholder-gray-400 focus:border-[#6366f1]"
-                        placeholder="Your first name"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="lastName" className="text-white">Last Name</Label>
-                      <Input
-                        id="lastName"
-                        name="lastName"
-                        type="text"
-                        value={formData.lastName}
-                        onChange={handleChange}
-                        className="bg-[#1a1a1a] border-[#6366f1]/20 text-white placeholder-gray-400 focus:border-[#6366f1]"
-                        placeholder="Your last name"
-                        required
-                      />
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="email" className="text-white">Email</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="bg-[#1a1a1a] border-[#6366f1]/20 text-white placeholder-gray-400 focus:border-[#6366f1]"
-                      placeholder="your.email@example.com"
-                      required
-                    />
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="subject" className="text-white">Subject</Label>
-                    <Select value={formData.subject} onValueChange={(value) => setFormData({...formData, subject: value})}>
-                      <SelectTrigger className="bg-[#1a1a1a] border-[#6366f1]/20 text-white focus:border-[#6366f1]">
-                        <SelectValue placeholder="Select a subject" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-[#1a1a1a] border-[#6366f1]/20">
-                        <SelectItem value="general">General Inquiry</SelectItem>
-                        <SelectItem value="events">Events & Workshops</SelectItem>
-                        <SelectItem value="partnership">Partnership</SelectItem>
-                        <SelectItem value="join">Join BSA</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="message" className="text-white">Message</Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      className="bg-[#1a1a1a] border-[#6366f1]/20 text-white placeholder-gray-400 focus:border-[#6366f1] min-h-[120px]"
-                      placeholder="Tell us more about your inquiry..."
-                      required
-                    />
-                  </div>
-                  
-                  <Button 
-                    type="submit" 
-                    disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-[#6366f1] to-[#7c3aed] hover:from-[#7c3aed] hover:to-[#ec4899] text-white border-0 hover-lift"
-                  >
-                    {isSubmitting ? (
-                      <div className="flex items-center gap-2">
-                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                        Sending...
-                      </div>
-                    ) : (
-                      <>
-                        <Send size={16} className="mr-2" />
-                        Send Message
-                      </>
-                    )}
-                  </Button>
-                </form>
-              </div>
-              
+
               {/* Contact Info */}
               <div className="scroll-trigger space-y-8">
                 <div>
@@ -307,18 +212,18 @@ export default function ContactPage() {
                 </div>
                 
                 <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-[#6366f1] to-[#7c3aed] rounded-xl flex items-center justify-center">
+                  <a href="mailto:bsa@epfl.ch" className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center">
                       <Mail size={24} className="text-white" />
                     </div>
                     <div>
                       <h4 className="text-lg font-semibold text-white mb-1">Email</h4>
                       <p className="text-gray-300">bsa@epfl.ch</p>
                     </div>
-                  </div>
+                  </a>
                   
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-[#7c3aed] to-[#ec4899] rounded-xl flex items-center justify-center">
+                    <div className="w-12 h-12 bg-gradient-to-r rounded-xl flex items-center justify-center">
                       <MapPin size={24} className="text-white" />
                     </div>
                     <div>
