@@ -119,17 +119,6 @@ export default function EventsPage() {
             <p className="scroll-trigger text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
               Join us for workshops, hackathons, networking events, and more
             </p>
-            <div className="scroll-trigger flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                asChild
-                className="bg-gradient-to-r from-[#6366f1] to-[#7c3aed] hover:from-[#7c3aed] hover:to-[#ec4899] text-white border-0 hover-lift"
-              >
-                <a href={LUMA_URL} target="_blank" rel="noopener noreferrer">
-                  <ExternalLink size={16} className="mr-2" />
-                  View All Events on Luma
-                </a>
-              </Button>
-            </div>
           </div>
         </div>
       </section>
@@ -138,17 +127,7 @@ export default function EventsPage() {
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="scroll-trigger text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">
-                Live Event
-                <span className="gradient-text block">Calendar</span>
-              </h2>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                Browse and register for our upcoming events directly through our integrated calendar. 
-                All events are automatically updated and synchronized with our Luma platform.
-              </p>
-            </div>
-            
+
             <div className="scroll-trigger glass rounded-2xl p-8 border border-[#6366f1]/20">
               <div className="flex justify-center w-full">
                 <div className="w-full max-w-[1200px]">
