@@ -66,13 +66,9 @@ export default function ArticlesSection() {
   const articlesToShow = displayedArticles.length > 0 ? displayedArticles : fallbackArticles
 
   return (
-    <section id="articles" className="py-12 md:py-16 bg-gradient-to-b from-[#0a0a0a]/50 to-transparent">
+    <section id="articles" className="py-12 md:py-16">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#6366f1]/10 border border-[#6366f1]/20 rounded-full text-sm text-[#6366f1] mb-6">
-            <BookOpen size={16} />
-            <span>Latest Articles</span>
-          </div>
           <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">
             Stay Updated with
             <span className="gradient-text block">Latest Insights</span>
@@ -190,15 +186,6 @@ export default function ArticlesSection() {
                 </Button>
               </div>
             )}
-            
-            <div className="text-center mt-16">
-              <Button asChild size="lg" className="bg-gradient-to-r from-[#6366f1] to-[#7c3aed] hover:from-[#7c3aed] hover:to-[#ec4899] text-white border-0 px-8 py-3 text-lg font-semibold hover-lift">
-                <Link href="https://medium.com/bsa-epfl" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                  <ExternalLink size={20} />
-                  Visit our Medium
-                </Link>
-              </Button>
-            </div>
           </>
         )}
       </div>

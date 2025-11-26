@@ -19,7 +19,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Blockchain Student Association | EPFL",
+  title: "BSA - EPFL",
   description: "The official website of the Blockchain Student Association at EPFL",
   icons: {
     icon: [

@@ -97,7 +97,7 @@ export default function EventsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#0a0a0a] to-[#1a1a1a] flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-[#6366f1] mx-auto mb-4"></div>
           <p className="text-xl text-gray-300">Loading events...</p>
@@ -107,15 +107,11 @@ export default function EventsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0a0a0a] to-[#1a1a1a]">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-12 md:py-16 bg-gradient-to-b from-[#0a0a0a]/50 to-transparent">
+      <section className="py-12 md:py-16">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="scroll-trigger inline-flex items-center gap-2 px-4 py-2 bg-[#6366f1]/10 border border-[#6366f1]/20 rounded-full text-sm text-[#6366f1] mb-6">
-              <Calendar size={16} />
-              <span>Events</span>
-            </div>
             <h1 className="scroll-trigger text-4xl md:text-6xl font-bold mb-8 text-white">
               Join Our
               <span className="gradient-text block">Events</span>
@@ -123,42 +119,21 @@ export default function EventsPage() {
             <p className="scroll-trigger text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
               Join us for workshops, hackathons, networking events, and more
             </p>
-            <div className="scroll-trigger flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                asChild
-                className="bg-gradient-to-r from-[#6366f1] to-[#7c3aed] hover:from-[#7c3aed] hover:to-[#ec4899] text-white border-0 hover-lift"
-              >
-                <a href={LUMA_URL} target="_blank" rel="noopener noreferrer">
-                  <ExternalLink size={16} className="mr-2" />
-                  View All Events on Luma
-                </a>
-              </Button>
-            </div>
           </div>
         </div>
       </section>
 
       {/* Large Luma Embedding */}
-      <section className="py-12 md:py-16 bg-gradient-to-b from-transparent to-[#0a0a0a]/50">
+      <section className="py-12 md:py-16">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="scroll-trigger text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">
-                Live Event
-                <span className="gradient-text block">Calendar</span>
-              </h2>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                Browse and register for our upcoming events directly through our integrated calendar. 
-                All events are automatically updated and synchronized with our Luma platform.
-              </p>
-            </div>
-            
+
             <div className="scroll-trigger glass rounded-2xl p-8 border border-[#6366f1]/20">
               <div className="flex justify-center w-full">
                 <div className="w-full max-w-[1200px]">
                   <iframe
                     src="https://lu.ma/embed/calendar/cal-KuAvNkii7TFKkpK/events"
-                    className="w-full h-[450px]"
+                    className="w-full h-[700px]"
                     style={{ border: '1px solid rgba(99, 102, 241, 0.2)', borderRadius: '8px' }}
                     allowFullScreen
                     aria-hidden="false"
@@ -171,153 +146,10 @@ export default function EventsPage() {
         </div>
       </section>
 
-      {/* Past Events */}
-      <section className="py-12 md:py-16 bg-gradient-to-b from-[#0a0a0a]/50 to-transparent">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="scroll-trigger text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">
-                Past
-                <span className="gradient-text block">Events</span>
-              </h2>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {events.map((event: Event, idx: number) => (
-                <div 
-                  key={event.id} 
-                  className="scroll-trigger glass rounded-2xl overflow-hidden border border-[#6366f1]/20 hover-lift cursor-pointer"
-                  onClick={() => openEventModal(event)}
-                  style={{ animationDelay: `${0.2 + idx * 0.1}s` }}
-                >
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="px-3 py-1 bg-[#6366f1]/10 text-[#6366f1] text-sm rounded-full border border-[#6366f1]/20">
-                        {event.type}
-                      </span>
-                      <span className="text-sm text-gray-400">
-                        {new Date(event.date).toLocaleDateString('en-US', { 
-                          month: '2-digit', 
-                          day: '2-digit', 
-                          year: 'numeric' 
-                        })}
-                      </span>
-                    </div>
-                    <h3 className="text-xl font-bold mb-3 text-white">{event.title}</h3>
-                    <p className="text-gray-300 mb-4 line-clamp-3">{event.description}</p>
-                    
-                    <div className="space-y-2">
-                      <div className="flex items-center text-sm text-gray-400">
-                        <Clock size={16} className="mr-2" />
-                        {event.time}
-                      </div>
-                      <div className="flex items-center text-sm text-gray-400">
-                        <MapPin size={16} className="mr-2" />
-                        {event.location}
-                      </div>
-                      <div className="flex items-center text-sm text-gray-400">
-                        <Users size={16} className="mr-2" />
-                        {event.attendees} attendees
-                      </div>
-                    </div>
-                    
-                    <div className="mt-4 text-sm text-[#6366f1] font-medium">
-                      Click to view details →
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Event Types */}
-      <section className="py-12 md:py-16 bg-gradient-to-b from-transparent to-[#0a0a0a]/50">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="scroll-trigger text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">
-                Event
-                <span className="gradient-text block">Types</span>
-              </h2>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                {
-                  icon: "🎓",
-                  title: "Workshops",
-                  description: "Hands-on learning sessions covering blockchain fundamentals and advanced topics."
-                },
-                {
-                  icon: "💻",
-                  title: "Hackathons",
-                  description: "Intensive coding competitions to build innovative blockchain applications."
-                },
-                {
-                  icon: "🤝",
-                  title: "Networking",
-                  description: "Connect with industry professionals, researchers, and fellow students."
-                },
-                {
-                  icon: "🎯",
-                  title: "Competitions",
-                  description: "Pitch competitions, research challenges, and innovation contests."
-                }
-              ].map((eventType, idx) => (
-                <div key={idx} className="scroll-trigger text-center glass rounded-2xl p-6 border border-[#6366f1]/20 hover-lift" style={{ animationDelay: `${0.2 + idx * 0.1}s` }}>
-                  <div className="w-16 h-16 bg-gradient-to-r from-[#6366f1] to-[#7c3aed] rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
-                    {eventType.icon}
-                  </div>
-                  <h3 className="text-xl font-bold mb-3 text-white">{eventType.title}</h3>
-                  <p className="text-gray-300 leading-relaxed">
-                    {eventType.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-12 md:py-16 bg-gradient-to-b from-[#0a0a0a]/50 to-transparent">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="scroll-trigger glass rounded-2xl p-12 border border-[#6366f1]/20">
-              <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">
-                Stay
-                <span className="gradient-text block">Updated</span>
-              </h2>
-              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                Don't miss out on our upcoming events. Follow us on social media and 
-                subscribe to our newsletter for the latest updates.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
-                  asChild
-                  className="bg-gradient-to-r from-[#6366f1] to-[#7c3aed] hover:from-[#7c3aed] hover:to-[#ec4899] text-white border-0 hover-lift"
-                >
-                  <a href={LUMA_URL} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink size={16} className="mr-2" />
-                    View All Events
-                  </a>
-                </Button>
-                <Button 
-                  variant="outline" 
-                  className="border-[#6366f1] text-[#6366f1] hover:bg-[#6366f1] hover:text-white hover-lift"
-                >
-                  <a href="/contact">Contact Us</a>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Event Detail Modal */}
       {selectedEvent && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-[#1a1a1a] rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-[#6366f1]/20">
+        <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
+          <div className="rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-[#6366f1]/20">
             <div className="p-6">
               <div className="flex justify-between items-start mb-6">
                 <div>
