@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Menu, X, ChevronDown } from "lucide-react"
-import { LUMA_URL } from "@/lib/constants"
+import { LUMA_URL, HACKATHON_URL } from "@/lib/constants"
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -20,9 +20,8 @@ export default function Navbar() {
   }, [])
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'glass backdrop-blur-3xl' : 'bg-transparent'
-    }`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'glass backdrop-blur-3xl' : 'bg-transparent'
+      }`}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
           <div className="flex items-center">
@@ -51,6 +50,14 @@ export default function Navbar() {
             <Link href="/members" className="transition-colors duration-200">
               Members
             </Link>
+            <a
+              href={HACKATHON_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1 rounded-full text-sm font-semibold bg-[#6366f1]/15 text-[#818cf8] border border-[#6366f1]/25 hover:bg-[#6366f1]/25 transition-colors duration-200"
+            >
+              Conference & Hackathon
+            </a>
             <Button asChild className="bg-white hover:bg-white text-black border-0 px-6 py-2 font-semibold">
               <Link href="/contact">Contact</Link>
             </Button>
@@ -109,6 +116,15 @@ export default function Navbar() {
               >
                 Members
               </Link>
+              <a
+                href={HACKATHON_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block px-4 py-3 text-base font-semibold text-[#818cf8] hover:text-white hover:bg-white/5 rounded-xl transition-colors duration-200"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Conference & Hackathon
+              </a>
               <Link
                 href="/contact"
                 className="block px-4 py-3 text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-colors duration-200"
