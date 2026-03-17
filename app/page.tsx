@@ -7,6 +7,7 @@ import EventsSection from "@/components/events/EventsSection"
 import StartupsSection from "@/components/startups/StartupsSection"
 import ArticlesSection from "@/components/articles/ArticlesSection"
 import BSAHeroLogoParticles from "@/components/bsa-logo-particles-hero"
+import ConferenceHackathonBanner from "@/components/ConferenceHackathonBanner"
 import { useEffect, useRef } from "react"
 
 export default function Home() {
@@ -37,8 +38,10 @@ export default function Home() {
 
   return (
     <main className="flex flex-col min-h-screen">
-      
+
       <BSAHeroLogoParticles />
+
+      <ConferenceHackathonBanner />
 
       {/* About Section */}
       <section ref={aboutRef} id="about" className="py-12 md:py-16">
@@ -64,7 +67,7 @@ export default function Home() {
                 </Link>
               </Button>
             </div>
-            
+
             <div className="scroll-trigger" style={{ animationDelay: '0.2s' }}>
               <div className="glass rounded-2xl p-8 border border-[#6366f1]/20 min-h-[400px]">
                 <h3 className="text-2xl font-bold mb-8 text-white">What We Do</h3>
@@ -78,7 +81,7 @@ export default function Home() {
                       <p className="text-gray-300 leading-relaxed">Regular workshops on blockchain technology, smart contract development, and DeFi protocols</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start gap-4 group hover-lift">
                     <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-[#7c3aed] to-[#ec4899] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                       <Users size={24} className="text-white" />
@@ -88,7 +91,7 @@ export default function Home() {
                       <p className="text-gray-300 leading-relaxed">Connect with industry professionals, researchers, and like-minded students</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start gap-4 group hover-lift">
                     <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-[#ec4899] to-[#f59e0b] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                       <Rocket size={24} className="text-white" />
