@@ -39,9 +39,9 @@ export default function Home() {
   return (
     <main className="flex flex-col min-h-screen">
 
-      <BSAHeroLogoParticles />
-
       <ConferenceHackathonBanner />
+
+      <BSAHeroLogoParticles />
 
       {/* About Section */}
       <section ref={aboutRef} id="about" className="py-12 md:py-16">
