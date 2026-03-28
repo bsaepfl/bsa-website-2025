@@ -2,148 +2,176 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Menu, X, ChevronDown } from "lucide-react"
-import { LUMA_URL, HACKATHON_URL } from "@/lib/constants"
+import { HACKATHON_URL } from "@/lib/constants"
+
+const navLinks = [
+  { href: "/about", label: "About" },
+  { href: "/events", label: "Events" },
+  { href: "/articles", label: "Articles" },
+  { href: "/startups", label: "Startups" },
+  { href: "/members", label: "Members" },
+]
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-    }
-
-    window.addEventListener('scroll', handleScroll)
+    const handleScroll = () => setIsScrolled(window.scrollY > 10)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'glass backdrop-blur-3xl' : 'bg-transparent'
-      }`}>
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          <div className="flex items-center">
-            <Link href="/" className="flex items-center">
-              <span className="text-xl md:text-2xl font-bold tracking-tight text-white">
-                <span className="gradient-text">BSA</span>
-                <span className="text-white"> - EPFL</span>
-              </span>
-            </Link>
-          </div>
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => { document.body.style.overflow = '' }
+  }, [isMenuOpen])
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8 font-semibold">
-            <Link href="/about" className="transition-colors duration-200">
-              About
+  return (
+    <header className="fixed top-0 left-0 right-0 z-40 flex justify-center px-4 pt-4">
+      <nav
+        className={`
+          w-full max-w-3xl rounded-full border border-zinc-800
+          px-6 py-3 flex items-center justify-between
+          transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]
+          ${isScrolled
+            ? 'bg-zinc-950/90 backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,0.4)]'
+            : 'bg-zinc-900/80'
+          }
+        `}
+      >
+        {/* Logo */}
+        <Link href="/" className="text-zinc-50 font-sans text-sm font-medium tracking-wide">
+          BSA
+          <span className="text-zinc-500 ml-1">EPFL</span>
+        </Link>
+
+        {/* Desktop links */}
+        <div className="hidden md:flex items-center gap-6">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-zinc-400 text-sm hover:text-zinc-50 transition-colors duration-200"
+            >
+              {link.label}
             </Link>
-            <Link href="/events" className="transition-colors duration-200">
-              Events
+          ))}
+          <a
+            href={HACKATHON_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-zinc-300 text-sm font-medium border border-zinc-700 rounded-full px-3 py-1 hover:border-zinc-500 hover:text-zinc-50 transition-all duration-200"
+          >
+            Conference
+          </a>
+          <Link
+            href="/contact"
+            className="text-zinc-950 bg-zinc-50 text-sm font-medium rounded-full px-4 py-1.5 hover:bg-zinc-300 active:scale-[0.98] transition-all duration-200"
+          >
+            Contact
+          </Link>
+        </div>
+
+        {/* Mobile hamburger */}
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="md:hidden relative w-6 h-4 flex flex-col justify-between"
+          aria-label="Toggle menu"
+        >
+          <span
+            className={`block h-px w-full bg-zinc-300 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center ${
+              isMenuOpen ? 'rotate-45 translate-y-[7.5px]' : ''
+            }`}
+          />
+          <span
+            className={`block h-px w-full bg-zinc-300 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+              isMenuOpen ? 'opacity-0 scale-x-0' : ''
+            }`}
+          />
+          <span
+            className={`block h-px w-full bg-zinc-300 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center ${
+              isMenuOpen ? '-rotate-45 -translate-y-[7.5px]' : ''
+            }`}
+          />
+        </button>
+      </nav>
+
+      {/* Mobile overlay */}
+      <div
+        className={`
+          fixed inset-0 z-50 bg-zinc-950/95 backdrop-blur-sm
+          flex flex-col items-center justify-center
+          transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]
+          ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}
+        `}
+      >
+        {/* Close button */}
+        <button
+          onClick={() => setIsMenuOpen(false)}
+          className="absolute top-6 right-6 w-8 h-8 flex items-center justify-center"
+          aria-label="Close menu"
+        >
+          <span className="block h-px w-6 bg-zinc-300 rotate-45 absolute" />
+          <span className="block h-px w-6 bg-zinc-300 -rotate-45 absolute" />
+        </button>
+
+        <div className="flex flex-col items-center gap-8">
+          {navLinks.map((link, i) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setIsMenuOpen(false)}
+              className={`
+                text-2xl font-display text-zinc-300 hover:text-zinc-50
+                transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]
+                ${isMenuOpen
+                  ? 'opacity-100 translate-y-0'
+                  : 'opacity-0 translate-y-4'
+                }
+              `}
+              style={{ transitionDelay: isMenuOpen ? `${(i + 1) * 80}ms` : '0ms' }}
+            >
+              {link.label}
             </Link>
-            <Link href="/articles" className="transition-colors duration-200">
-              Articles
-            </Link>
-            <Link href="/startups" className="transition-colors duration-200">
-              Startups
-            </Link>
-            <Link href="/members" className="transition-colors duration-200">
-              Members
-            </Link>
+          ))}
+
+          <div className="flex flex-col items-center gap-4 mt-4">
             <a
               href={HACKATHON_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3 py-1 rounded-full text-sm font-semibold bg-[#6366f1]/15 text-[#818cf8] border border-[#6366f1]/25 hover:bg-[#6366f1]/25 transition-colors duration-200"
+              onClick={() => setIsMenuOpen(false)}
+              className={`
+                text-zinc-400 text-sm border border-zinc-700 rounded-full px-4 py-2
+                hover:text-zinc-50 hover:border-zinc-500
+                transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]
+                ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
+              `}
+              style={{ transitionDelay: isMenuOpen ? `${(navLinks.length + 1) * 80}ms` : '0ms' }}
             >
               Conference & Hackathon
             </a>
-            <Button asChild className="bg-white hover:bg-white text-black border-0 px-6 py-2 font-semibold">
-              <Link href="/contact">Contact</Link>
-            </Button>
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-lg text-white hover:bg-white/10 transition-colors duration-200"
+            <Link
+              href="/contact"
+              onClick={() => setIsMenuOpen(false)}
+              className={`
+                text-zinc-950 bg-zinc-50 text-sm font-medium rounded-full px-6 py-2.5
+                hover:bg-zinc-300 active:scale-[0.98]
+                transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]
+                ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
+              `}
+              style={{ transitionDelay: isMenuOpen ? `${(navLinks.length + 2) * 80}ms` : '0ms' }}
             >
-              <span className="sr-only">Open main menu</span>
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+              Contact
+            </Link>
           </div>
         </div>
       </div>
-
-      {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <div className="md:hidden">
-          <div className="glass backdrop-blur-md border-t border-[#6366f1]/20">
-            <div className="px-4 pt-4 pb-6 space-y-2">
-              <Link
-                href="/about"
-                className="block px-4 py-3 text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-colors duration-200"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                About
-              </Link>
-              <Link
-                href="/events"
-                className="block px-4 py-3 text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-colors duration-200"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Events
-              </Link>
-              <Link
-                href="/articles"
-                className="block px-4 py-3 text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-colors duration-200"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Articles
-              </Link>
-              <Link
-                href="/startups"
-                className="block px-4 py-3 text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-colors duration-200"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Startups
-              </Link>
-              <Link
-                href="/members"
-                className="block px-4 py-3 text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-colors duration-200"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Members
-              </Link>
-              <a
-                href={HACKATHON_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block px-4 py-3 text-base font-semibold text-[#818cf8] hover:text-white hover:bg-white/5 rounded-xl transition-colors duration-200"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Conference & Hackathon
-              </a>
-              <Link
-                href="/contact"
-                className="block px-4 py-3 text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-colors duration-200"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Contact
-              </Link>
-              <div className="px-4 py-2">
-                <Button asChild className="w-full bg-gradient-to-r from-[#6366f1] to-[#7c3aed] hover:from-[#7c3aed] hover:to-[#ec4899] text-white border-0 font-semibold hover-lift">
-                  <Link href="/join" onClick={() => setIsMenuOpen(false)}>
-                    Join Us
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </header>
   )
 }
-
