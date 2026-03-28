@@ -1,102 +1,31 @@
 "use client"
 
-import { Metadata } from "next"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { Mail, MapPin, Phone, Linkedin, Twitter, Github, Send, MessageCircle, Clock } from "lucide-react"
-import { useState, useEffect } from "react"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { useState } from "react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Users } from "lucide-react"
 
 export default function ContactPage() {
-  const [isClient, setIsClient] = useState(false)
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    subject: "",
-    message: ""
+    firstName: "", lastName: "", email: "", subject: "", message: ""
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
-
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate')
-            // console.log('Contact element animated:', entry.target)
-          } else {
-            // Remove animate class when element goes out of view to allow re-animation
-            entry.target.classList.remove('animate')
-          }
-        })
-      },
-      {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px',
-      }
-    )
-
-    const observeElements = () => {
-      const scrollTriggers = document.querySelectorAll('.scroll-trigger')
-      console.log('Contact found scroll triggers:', scrollTriggers.length)
-      scrollTriggers.forEach((el) => observer.observe(el))
-    }
-
-    // Initial observation
-    observeElements()
-
-    // Re-observe after a short delay
-    const timeoutId = setTimeout(observeElements, 100)
-
-    return () => {
-      clearTimeout(timeoutId)
-      const scrollTriggers = document.querySelectorAll('.scroll-trigger')
-      scrollTriggers.forEach((el) => observer.unobserve(el))
-    }
-  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus("idle")
-    
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       })
-
-      if (!response.ok) {
-        const errorData = await response.json()
-        throw new Error(errorData.error || 'Failed to send message')
-      }
-
-      const result = await response.json()
-      console.log("Contact form submitted successfully:", result)
-      
+      if (!response.ok) throw new Error('Failed to send')
       setSubmitStatus("success")
       setFormData({ firstName: "", lastName: "", email: "", subject: "", message: "" })
-      
-      // Reset success message after 5 seconds
       setTimeout(() => setSubmitStatus("idle"), 5000)
-    } catch (error) {
-      console.error("Error submitting contact form:", error)
+    } catch {
       setSubmitStatus("error")
-      
-      // Reset error message after 5 seconds
       setTimeout(() => setSubmitStatus("idle"), 5000)
     } finally {
       setIsSubmitting(false)
@@ -104,134 +33,94 @@ export default function ContactPage() {
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
   const faqs = [
-    {
-      question: "How can I join the BSA?",
-      answer: "All EPFL students are welcome to join! Simply attend our events, follow us on social media, or reach out to us directly. We're always looking for passionate students interested in blockchain technology."
-    },
-    {
-      question: "Do I need blockchain experience to participate?",
-      answer: "Not at all! We welcome students of all experience levels. Our workshops and events are designed to accommodate beginners while also providing value to more experienced participants."
-    },
-    {
-      question: "How can I collaborate with the BSA?",
-      answer: "We're open to collaborations with other student organizations, companies, and academic institutions. Contact us to discuss potential partnerships, sponsorships, or joint events."
-    },
-    {
-      question: "Can non-EPFL students participate?",
-      answer: "While our primary focus is EPFL students, we occasionally host events open to the broader blockchain community. Check our events page for public events or contact us for specific inquiries."
-    }
+    { question: "How can I join the BSA?", answer: "All EPFL students are welcome! Simply attend our events, follow us on social media, or reach out to us directly." },
+    { question: "Do I need blockchain experience to participate?", answer: "Not at all! We welcome students of all experience levels. Our workshops are designed to accommodate beginners while also providing value to experienced participants." },
+    { question: "How can I collaborate with the BSA?", answer: "We are open to collaborations with other student organizations, companies, and academic institutions. Contact us to discuss potential partnerships, sponsorships, or joint events." },
+    { question: "Can non-EPFL students participate?", answer: "While our primary focus is EPFL students, we occasionally host events open to the broader blockchain community. Check our events page for public events." },
   ]
-
-  if (!isClient) {
-    return (
-      <div className="min-h-screen">
-        <div className="container mx-auto px-4 md:px-6 py-12 md:py-16">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#6366f1]/10 border border-[#6366f1]/20 rounded-full text-sm text-[#6366f1] mb-6">
-              <Mail size={16} />
-              <span>Contact</span>
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-8 text-white">
-              Get in
-              <span className="gradient-text block">Touch</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-              Have questions? Want to collaborate? We'd love to hear from you
-            </p>
-          </div>
-        </div>
-      </div>
-    )
-  }
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="py-12 md:py-16 bg-gradient-to-b from-[#0a0a0a]/50 to-transparent">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="scroll-trigger text-4xl md:text-6xl font-bold mb-8 text-white">
-              <span className="gradient-text block">Contact Us</span>
-            </h1>
-          </div>
-        </div>
-      </section>
+      <section className="py-16 md:py-24">
+        <div className="max-w-6xl mx-auto px-6">
+          <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
+            Contact
+          </p>
+          <h1 className="text-5xl md:text-8xl font-display text-zinc-50 leading-[0.9] mb-16 title-shimmer">
+            Get in touch
+          </h1>
 
+          <div className="grid lg:grid-cols-2 gap-16">
+            {/* Contact info + form */}
+            <div>
+              <p className="text-zinc-400 text-lg leading-relaxed mb-8">
+                Have questions about our events, want to collaborate, or just want to say hello?
+                We would love to hear from you.
+              </p>
 
+              <div className="space-y-4 mb-12">
+                <a href="mailto:bsa@epfl.ch" className="flex items-center gap-3 text-zinc-300 hover:text-zinc-50 transition-colors">
+                  <span className="text-xs font-mono text-zinc-600">Email</span>
+                  <span>bsa@epfl.ch</span>
+                </a>
+                <div className="flex items-center gap-3 text-zinc-400">
+                  <span className="text-xs font-mono text-zinc-600">Location</span>
+                  <span>EPFL, Lausanne, Switzerland</span>
+                </div>
+              </div>
 
-      {/* FAQ Section */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-4xl mx-auto">
-            <div className="scroll-trigger text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">
-                Frequently Asked Questions
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <input name="firstName" value={formData.firstName} onChange={handleChange} placeholder="First name" required
+                    className="w-full px-4 py-3 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-50 placeholder-zinc-600 focus:border-zinc-600 focus:outline-none transition-colors text-sm" />
+                  <input name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Last name" required
+                    className="w-full px-4 py-3 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-50 placeholder-zinc-600 focus:border-zinc-600 focus:outline-none transition-colors text-sm" />
+                </div>
+                <input name="email" type="email" value={formData.email} onChange={handleChange} placeholder="Email" required
+                  className="w-full px-4 py-3 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-50 placeholder-zinc-600 focus:border-zinc-600 focus:outline-none transition-colors text-sm" />
+                <input name="subject" value={formData.subject} onChange={handleChange} placeholder="Subject"
+                  className="w-full px-4 py-3 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-50 placeholder-zinc-600 focus:border-zinc-600 focus:outline-none transition-colors text-sm" />
+                <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Your message" required rows={5}
+                  className="w-full px-4 py-3 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-50 placeholder-zinc-600 focus:border-zinc-600 focus:outline-none transition-colors text-sm resize-none" />
+
+                {submitStatus === "success" && (
+                  <p className="text-emerald-400 text-sm">Message sent successfully.</p>
+                )}
+                {submitStatus === "error" && (
+                  <p className="text-red-400 text-sm">Failed to send. Please try again.</p>
+                )}
+
+                <button type="submit" disabled={isSubmitting}
+                  className="text-zinc-950 bg-zinc-50 text-sm font-medium rounded-full px-6 py-2.5 hover:bg-zinc-300 active:scale-[0.98] transition-all duration-200 disabled:opacity-50">
+                  {isSubmitting ? "Sending..." : "Send message"}
+                </button>
+              </form>
+            </div>
+
+            {/* FAQ */}
+            <div>
+              <h2 className="text-2xl md:text-3xl font-display text-zinc-50 mb-8">
+                Frequently asked questions
               </h2>
-            </div>
-            <div className="space-y-4">
-              {faqs.map((faq, idx) => (
-                <div key={idx} className="scroll-trigger glass rounded-2xl border border-[#6366f1]/20" style={{ animationDelay: `${0.2 + idx * 0.1}s` }}>
-                  <Accordion type="single" collapsible>
-                    <AccordionItem value={`item-${idx}`}>
-                      <AccordionTrigger className="text-white hover:text-[#2020ff]/60 px-6 py-4">
-                        {faq.question}
-                      </AccordionTrigger>
-                      <AccordionContent className="px-6 pb-4 text-gray-300 leading-relaxed">
-                        {faq.answer}
-                      </AccordionContent>
-                    </AccordionItem>
-                  </Accordion>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Form Section */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-4xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12">
-
-              {/* Contact Info */}
-              <div className="scroll-trigger space-y-8">
-                <div>
-                  <h3 className="text-2xl font-bold mb-6 text-white">Get in touch</h3>
-                  <p className="text-gray-300 leading-relaxed mb-6">
-                    Have questions about our events, want to collaborate, or just want to say hello? 
-                    We'd love to hear from you. Reach out and we'll get back to you as soon as possible.
-                  </p>
-                </div>
-                
-                <div className="space-y-6">
-                  <a href="mailto:bsa@epfl.ch" className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center">
-                      <Mail size={24} className="text-white" />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-semibold text-white mb-1">Email</h4>
-                      <p className="text-gray-300">bsa@epfl.ch</p>
-                    </div>
-                  </a>
-                  
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-r rounded-xl flex items-center justify-center">
-                      <MapPin size={24} className="text-white" />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-semibold text-white mb-1">Location</h4>
-                      <p className="text-gray-300">Lausanne, Switzerland</p>
-                    </div>
+              <div className="space-y-3">
+                {faqs.map((faq, i) => (
+                  <div key={i} className="rounded-lg border border-zinc-800 bg-zinc-900/50">
+                    <Accordion type="single" collapsible>
+                      <AccordionItem value={`item-${i}`} className="border-0">
+                        <AccordionTrigger className="text-zinc-200 hover:text-zinc-50 px-5 py-4 text-sm text-left">
+                          {faq.question}
+                        </AccordionTrigger>
+                        <AccordionContent className="px-5 pb-4 text-zinc-400 text-sm leading-relaxed">
+                          {faq.answer}
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
@@ -239,4 +128,4 @@ export default function ContactPage() {
       </section>
     </div>
   )
-} 
+}

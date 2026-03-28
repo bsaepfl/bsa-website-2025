@@ -56,5 +56,12 @@ export const startups: StartupType[] = [
     description:
       "Join the Crypties community and be part of the first NFT collection on Starknet, with unique art and exclusive benefits.",
     link: "https://crypties.xyz",
+  },
+  {
+    img: "/startups/zyfai.svg",
+    title: "AI-powered DeFi portfolio management:",
+    description:
+      "Zyfai leverages artificial intelligence to optimize DeFi yield strategies and portfolio management.",
+    link: "https://zyfai.com",
   }
 ]; 

@@ -1,92 +1,53 @@
 "use client"
 
-import { useEffect, useRef } from "react"
-
 export default function AboutPage() {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate')
-          }
-        })
-      },
-      {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px',
-      }
-    )
-
-    const scrollTriggers = document.querySelectorAll('.scroll-trigger')
-    scrollTriggers.forEach((el) => observer.observe(el))
-
-    return () => {
-      scrollTriggers.forEach((el) => observer.unobserve(el))
-    }
-  }, [])
-
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="py-12 md:py-16 bg-gradient-to-b from-[#0a0a0a]/50 to-transparent">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="scroll-trigger text-4xl md:text-6xl font-bold mb-8 text-white">
-              About the
-              <span className="gradient-text block">BSA</span>
-            </h1>
-            <p className="scroll-trigger text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-              Empowering the next generation of blockchain innovators at EPFL
-            </p>
-          </div>
-        </div>
-      </section>
+      <section className="py-16 md:py-24">
+        <div className="max-w-6xl mx-auto px-6">
+          <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
+            About
+          </p>
+          <h1 className="text-5xl md:text-8xl font-display text-zinc-50 leading-[0.9] mb-12 title-shimmer">
+            About the BSA
+          </h1>
 
-      {/* Mission Section */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="scroll-trigger text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">
-                Our
-                <span className="gradient-text block">Mission</span>
-              </h2>
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <div className="space-y-6">
+              <p className="text-zinc-400 text-lg leading-relaxed">
+                The Blockchain Student Association at EPFL is dedicated to fostering
+                blockchain education, innovation, and community among students passionate
+                about decentralized technologies.
+              </p>
+              <p className="text-zinc-400 text-lg leading-relaxed">
+                We believe in the transformative potential of blockchain technology to
+                reshape industries, create new economic models, and build a more
+                transparent and equitable digital future.
+              </p>
+              <p className="text-zinc-400 text-lg leading-relaxed">
+                Through workshops, hackathons, networking events, and collaborative
+                projects, we provide students with the knowledge, skills, and
+                connections needed to become leaders in the blockchain space.
+              </p>
             </div>
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="scroll-trigger space-y-6">
-                <p className="text-lg text-gray-300 leading-relaxed">
-                  The Blockchain Student Association (BSA) at EPFL is dedicated to fostering 
-                  blockchain education, innovation, and community among students passionate 
-                  about decentralized technologies.
-                </p>
-                <p className="text-lg text-gray-300 leading-relaxed">
-                  We believe in the transformative potential of blockchain technology to 
-                  reshape industries, create new economic models, and build a more 
-                  transparent and equitable digital future.
-                </p>
-                <p className="text-lg text-gray-300 leading-relaxed">
-                  Through workshops, hackathons, networking events, and collaborative 
-                  projects, we provide students with the knowledge, skills, and 
-                  connections needed to become leaders in the blockchain space.
-                </p>
-              </div>
-              <div className="scroll-trigger glass rounded-2xl p-8 border border-[#6366f1]/20">
-                <h3 className="text-2xl font-bold mb-6 text-white">What We Do</h3>
-                <div className="space-y-4">
-                  {[
-                    "Educational workshops and seminars",
-                    "Blockchain hackathons and competitions", 
-                    "Industry networking events",
-                    "Research collaboration opportunities",
-                    "Startup incubation support"
-                  ].map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
-                      <span className="text-gray-300">{item}</span>
-                    </div>
-                  ))}
-                </div>
+
+            <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-8">
+              <h3 className="text-xl font-medium text-zinc-50 mb-6">What we do</h3>
+              <div className="space-y-4">
+                {[
+                  "Educational workshops and seminars",
+                  "Blockchain hackathons and competitions",
+                  "Industry networking events",
+                  "Research collaboration opportunities",
+                  "Startup incubation support"
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <span className="text-xs font-mono text-zinc-600 tabular-nums mt-1 shrink-0 w-5">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <span className="text-zinc-300">{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -94,4 +55,4 @@ export default function AboutPage() {
       </section>
     </div>
   )
-} 
+}

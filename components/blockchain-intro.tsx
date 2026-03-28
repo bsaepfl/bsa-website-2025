@@ -136,18 +136,18 @@ export default function BlockchainIntro() {
         el.style.transform = `scale(${dp * dp})`
       })
 
-      // BSA Logo
-      const logoEl = document.querySelector<HTMLElement>('[data-bsa-logo]')
-      if (logoEl) {
+      // BSA Logo (animate ALL instances for desktop/mobile)
+      document.querySelectorAll<HTMLElement>('[data-bsa-logo]').forEach((logoEl) => {
         const ease = logoPhase * logoPhase * (3 - 2 * logoPhase)
         logoEl.style.opacity = String(logoPhase)
         logoEl.style.transform = `translate(-50%, -50%) scale(${0.1 + ease * 0.9})`
-      }
+      })
 
-      const logoPath = document.querySelector<SVGPathElement>('[data-bsa-path]')
-      if (logoPath && logoPhase > 0) {
-        logoPath.style.filter = `drop-shadow(0 0 ${logoPhase * 25}px rgba(0,255,170,0.3)) drop-shadow(0 0 ${logoPhase * 50}px rgba(77,156,255,0.15))`
-      }
+      document.querySelectorAll<SVGPathElement>('[data-bsa-path]').forEach((logoPath) => {
+        if (logoPhase > 0) {
+          logoPath.style.filter = `drop-shadow(0 0 ${logoPhase * 25}px rgba(0,255,170,0.3)) drop-shadow(0 0 ${logoPhase * 50}px rgba(77,156,255,0.15))`
+        }
+      })
 
       // Title fade
       const titleEl = document.querySelector<HTMLElement>('[data-intro-title]')

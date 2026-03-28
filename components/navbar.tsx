@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { HACKATHON_URL } from "@/lib/constants"
 
 const navLinks = [
   { href: "/about", label: "About" },
@@ -66,14 +65,6 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <a
-            href={HACKATHON_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-zinc-300 text-sm font-medium border border-zinc-700 rounded-full px-3 py-1 hover:border-zinc-500 hover:text-zinc-50 transition-all duration-200"
-          >
-            Conference
-          </a>
           <Link
             href="/contact"
             className="text-zinc-950 bg-zinc-50 text-sm font-medium rounded-full px-4 py-1.5 hover:bg-zinc-300 active:scale-[0.98] transition-all duration-200"
@@ -146,21 +137,6 @@ export default function Navbar() {
           ))}
 
           <div className="flex flex-col items-center gap-4 mt-4">
-            <a
-              href={HACKATHON_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setIsMenuOpen(false)}
-              className={`
-                text-zinc-400 text-sm border border-zinc-700 rounded-full px-4 py-2
-                hover:text-zinc-50 hover:border-zinc-500
-                transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]
-                ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
-              `}
-              style={{ transitionDelay: isMenuOpen ? `${(navLinks.length + 1) * 80}ms` : '0ms' }}
-            >
-              Conference & Hackathon
-            </a>
             <Link
               href="/contact"
               onClick={() => setIsMenuOpen(false)}
