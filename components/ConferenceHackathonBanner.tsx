@@ -1,36 +1,35 @@
 "use client"
 
-import { ArrowRight } from "lucide-react"
 import { HACKATHON_URL } from "@/lib/constants"
 
 export default function ConferenceHackathonBanner() {
   return (
     <section className="py-6 md:py-10">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="scroll-trigger">
-          <a
-            href={HACKATHON_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group block rounded-2xl border border-[#6366f1]/30 bg-gradient-to-b from-[#6366f1]/15 to-[#6366f1]/[0.03] px-6 py-10 md:px-16 md:py-14 text-center transition-all duration-300 hover:border-[#6366f1]/50 hover:from-[#6366f1]/20 hover:to-[#6366f1]/[0.06]"
-          >
-            <p className="text-xs font-semibold uppercase tracking-widest text-[#818cf8] mb-4">
-              March 20 – 22 | EPFL Campus
-            </p>
-
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-2">
-              Stablecoin & Payments
-            </h2>
-            <p className="text-lg md:text-xl font-medium text-gray-400 mb-8">
-              Conference & Hackathon
-            </p>
-
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-3 text-base font-semibold text-white group-hover:bg-white/15 transition-all duration-300">
-              Visit Event Website
-              <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
+      <div className="max-w-6xl mx-auto px-6">
+        <a
+          href={HACKATHON_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group block rounded-lg border border-zinc-800 bg-zinc-900/50 px-6 py-8 md:px-12 md:py-10 transition-all duration-300 hover:border-zinc-700"
+        >
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+              <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-2">
+                March 20-22 / EPFL Campus
+              </p>
+              <h2 className="text-2xl md:text-3xl font-display text-zinc-50">
+                Stablecoin & Payments
+              </h2>
+              <p className="text-zinc-400 mt-1">
+                Conference & Hackathon
+              </p>
+            </div>
+            <span className="text-sm text-zinc-400 border border-zinc-700 rounded-full px-4 py-2 w-fit group-hover:text-zinc-50 group-hover:border-zinc-500 transition-colors duration-200">
+              Visit event site
+              <span className="inline-block ml-1.5 transition-transform duration-200 group-hover:translate-x-0.5">&rarr;</span>
             </span>
-          </a>
-        </div>
+          </div>
+        </a>
       </div>
     </section>
   )
