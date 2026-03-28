@@ -65,12 +65,12 @@ export default function BlockchainIntro() {
     }, 700)
 
     animate('[data-scroll-cue]', {
-      opacity: [0, 0.5, 0],
-      translateY: [0, 8, 0],
-      duration: 2400,
+      opacity: [0.3, 1, 0.3],
+      translateY: [0, 6, 0],
+      duration: 2000,
       loop: true,
       easing: 'easeInOutSine',
-      delay: 1400,
+      delay: 1200,
     })
   }, [])
 
@@ -328,9 +328,9 @@ export default function BlockchainIntro() {
         </div>
 
         {/* Scroll cue */}
-        <div data-scroll-cue className="absolute bottom-10 flex flex-col items-center gap-2 opacity-0">
-          <span className="text-zinc-600 text-[10px] font-mono uppercase tracking-[0.3em]">scroll down</span>
-          <div className="w-px h-6 bg-gradient-to-b from-zinc-600 to-transparent" />
+        <div data-scroll-cue className="absolute bottom-10 flex flex-col items-center gap-3">
+          <span className="text-zinc-400 text-xs font-mono uppercase tracking-[0.3em]">scroll down</span>
+          <div className="w-px h-8 bg-gradient-to-b from-zinc-400 to-transparent" />
         </div>
       </div>
     </section>
