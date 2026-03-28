@@ -79,16 +79,16 @@ export default function BlockchainIntro() {
     const update = () => {
       const p = getProgress()
 
-      if (p >= 0.8) {
+      if (p >= 0.7) {
         document.documentElement.classList.remove('intro-active')
       } else {
         document.documentElement.classList.add('intro-active')
       }
 
-      // Phases (shorter, snappier)
-      const blockPhase = Math.min(1, p / 0.5)
-      const logoPhase = Math.max(0, Math.min(1, (p - 0.52) / 0.15))
-      const fadePhase = Math.max(0, Math.min(1, (p - 0.75) / 0.15))
+      // Phases (tight)
+      const blockPhase = Math.min(1, p / 0.45)
+      const logoPhase = Math.max(0, Math.min(1, (p - 0.48) / 0.12))
+      const fadePhase = Math.max(0, Math.min(1, (p - 0.65) / 0.15))
 
       // Blocks
       document.querySelectorAll<HTMLElement>('[data-block-i]').forEach((el) => {
@@ -157,10 +157,12 @@ export default function BlockchainIntro() {
         titleEl.style.transform = `translateY(${-p * 120}px) scale(${1 - p * 0.15})`
       }
 
-      // Overall fade
+      // Overall fade + disable pointer events when faded
       const sticky = document.querySelector<HTMLElement>('[data-intro-sticky]')
       if (sticky) {
-        sticky.style.opacity = String(1 - fadePhase)
+        const op = 1 - fadePhase
+        sticky.style.opacity = String(op)
+        sticky.style.pointerEvents = op < 0.1 ? 'none' : 'auto'
       }
 
       rafId.current = requestAnimationFrame(update)
@@ -185,7 +187,7 @@ export default function BlockchainIntro() {
     <section
       ref={sectionRef}
       className="relative -mt-20 md:-mt-24"
-      style={{ height: '220vh' }}
+      style={{ height: '200vh' }}
     >
       <div
         data-intro-sticky

@@ -103,7 +103,7 @@ export default function ContactPage() {
 
             {/* FAQ */}
             <div>
-              <h2 className="text-2xl md:text-3xl font-display text-zinc-50 mb-8">
+              <h2 className="text-3xl md:text-5xl font-display text-zinc-50 mb-8">
                 Frequently asked questions
               </h2>
               <div className="space-y-3">
@@ -111,10 +111,10 @@ export default function ContactPage() {
                   <div key={i} className="rounded-lg border border-zinc-800 bg-zinc-900/50">
                     <Accordion type="single" collapsible>
                       <AccordionItem value={`item-${i}`} className="border-0">
-                        <AccordionTrigger className="text-zinc-200 hover:text-zinc-50 px-5 py-4 text-sm text-left">
+                        <AccordionTrigger className="text-zinc-200 hover:text-zinc-50 px-5 py-5 text-base md:text-lg text-left font-medium">
                           {faq.question}
                         </AccordionTrigger>
-                        <AccordionContent className="px-5 pb-4 text-zinc-400 text-sm leading-relaxed">
+                        <AccordionContent className="px-5 pb-5 text-zinc-400 text-base leading-relaxed">
                           {faq.answer}
                         </AccordionContent>
                       </AccordionItem>

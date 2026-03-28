@@ -40,7 +40,7 @@ export default function Navbar() {
   return (
     <>
       {/* Nav bar - visual only, fades but never loses pointer-events */}
-      <header className="fixed top-0 left-0 right-0 z-[55] flex justify-center px-4 pt-4">
+      <header className="fixed top-0 left-0 right-0 z-40 flex justify-center px-4 pt-4">
         <nav
           className={`
             w-full max-w-3xl rounded-full border border-zinc-800
