@@ -32,6 +32,7 @@ function getArcPosition(index: number, total: number, radius: number) {
 export default function BlockchainIntro() {
   const sectionRef = useRef<HTMLElement>(null)
   const hasInit = useRef(false)
+  const isDone = useRef(false)
   const rafId = useRef<number>(0)
 
   const getProgress = useCallback(() => {
@@ -157,12 +158,26 @@ export default function BlockchainIntro() {
         titleEl.style.transform = `translateY(${-p * 120}px) scale(${1 - p * 0.15})`
       }
 
-      // Overall fade + disable pointer events when faded
+      // Overall fade + collapse when done
       const sticky = document.querySelector<HTMLElement>('[data-intro-sticky]')
       if (sticky) {
         const op = 1 - fadePhase
         sticky.style.opacity = String(op)
         sticky.style.pointerEvents = op < 0.1 ? 'none' : 'auto'
+      }
+
+      // Once fully faded, collapse the section so scrolling up doesn't replay
+      if (fadePhase >= 1 && !isDone.current && sectionRef.current) {
+        isDone.current = true
+        const sectionHeight = sectionRef.current.offsetHeight
+        const currentScroll = window.scrollY
+        sectionRef.current.style.height = '0px'
+        sectionRef.current.style.overflow = 'hidden'
+        // Adjust scroll position so the page doesn't jump
+        window.scrollTo(0, Math.max(0, currentScroll - sectionHeight + window.innerHeight))
+        document.documentElement.classList.remove('intro-active')
+        cancelAnimationFrame(rafId.current)
+        return
       }
 
       rafId.current = requestAnimationFrame(update)
