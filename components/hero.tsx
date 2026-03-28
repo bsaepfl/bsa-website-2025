@@ -68,7 +68,7 @@ export default function Hero() {
 
   return (
     <section ref={sectionRef} className="flex items-center">
-      <div className="max-w-6xl mx-auto px-6 w-full py-12 md:py-20">
+      <div className="max-w-6xl mx-auto px-6 w-full py-8 md:py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 items-center">
 
           {/* Logo */}

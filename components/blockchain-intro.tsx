@@ -185,7 +185,7 @@ export default function BlockchainIntro() {
     <section
       ref={sectionRef}
       className="relative -mt-20 md:-mt-24"
-      style={{ height: '280vh' }}
+      style={{ height: '220vh' }}
     >
       <div
         data-intro-sticky

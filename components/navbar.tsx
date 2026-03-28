@@ -14,7 +14,7 @@ const navLinks = [
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [introActive, setIntroActive] = useState(true)
+  const [introActive, setIntroActive] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,34 +35,31 @@ export default function Navbar() {
     return () => { document.body.style.overflow = '' }
   }, [isMenuOpen])
 
+  const navHidden = introActive && !isMenuOpen
+
   return (
     <>
-      {/* Nav bar */}
-      <header
-        className={`
-          fixed top-0 left-0 right-0 z-40 flex justify-center px-4 pt-4
-          transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]
-          ${introActive && !isMenuOpen ? 'opacity-0 -translate-y-4 pointer-events-none' : 'opacity-100 translate-y-0'}
-        `}
-      >
+      {/* Nav bar - visual only, fades but never loses pointer-events */}
+      <header className="fixed top-0 left-0 right-0 z-[55] flex justify-center px-4 pt-4">
         <nav
           className={`
             w-full max-w-3xl rounded-full border border-zinc-800
             px-6 py-3 flex items-center justify-between
             transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]
+            ${navHidden ? 'opacity-0 -translate-y-4' : 'opacity-100 translate-y-0'}
             ${isScrolled
               ? 'bg-[#152237]/90 backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,0.4)]'
               : 'bg-[#152237]/80'
             }
           `}
         >
-          <Link href="/" className="text-zinc-50 font-sans text-sm font-medium tracking-wide">
+          <Link href="/" className={`text-zinc-50 font-sans text-sm font-medium tracking-wide transition-opacity duration-300 ${navHidden ? 'pointer-events-none' : ''}`}>
             BSA
             <span className="text-zinc-500 ml-1">EPFL</span>
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className={`hidden md:flex items-center gap-6 transition-opacity duration-300 ${navHidden ? 'pointer-events-none' : ''}`}>
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -80,20 +77,20 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile hamburger */}
+          {/* Mobile hamburger - ALWAYS interactive */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden relative w-6 h-4 flex flex-col justify-between"
+            className="md:hidden relative w-8 h-8 flex items-center justify-center z-[70]"
             aria-label="Toggle menu"
           >
-            <span className={`block h-px w-full bg-zinc-300 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center ${isMenuOpen ? 'rotate-45 translate-y-[7.5px]' : ''}`} />
-            <span className={`block h-px w-full bg-zinc-300 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${isMenuOpen ? 'opacity-0 scale-x-0' : ''}`} />
-            <span className={`block h-px w-full bg-zinc-300 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center ${isMenuOpen ? '-rotate-45 -translate-y-[7.5px]' : ''}`} />
+            <span className={`absolute h-px w-5 bg-zinc-300 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center ${isMenuOpen ? 'rotate-45' : '-translate-y-1.5'}`} />
+            <span className={`absolute h-px w-5 bg-zinc-300 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${isMenuOpen ? 'opacity-0 scale-x-0' : ''}`} />
+            <span className={`absolute h-px w-5 bg-zinc-300 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center ${isMenuOpen ? '-rotate-45' : 'translate-y-1.5'}`} />
           </button>
         </nav>
       </header>
 
-      {/* Mobile overlay - rendered outside header for proper z-index */}
+      {/* Mobile overlay */}
       <div
         className={`
           fixed inset-0 z-[60] bg-[#0d1a2b]/98 backdrop-blur-sm
@@ -104,7 +101,7 @@ export default function Navbar() {
       >
         <button
           onClick={() => setIsMenuOpen(false)}
-          className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center"
+          className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center z-[70]"
           aria-label="Close menu"
         >
           <span className="block h-px w-6 bg-zinc-300 rotate-45 absolute" />
