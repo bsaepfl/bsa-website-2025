@@ -3,7 +3,7 @@
 import BlockchainIntro from "@/components/blockchain-intro"
 import Hero from "@/components/hero"
 import AboutSection from "@/components/about-section"
-import SwitzerlandSection from "@/components/switzerland-section"
+
 import LabsSection from "@/components/labs-section"
 import EventsSection from "@/components/events/EventsSection"
 import StartupsSection from "@/components/startups/StartupsSection"
@@ -30,7 +30,6 @@ export default function Home() {
       {showIntro && <BlockchainIntro />}
       <Hero />
       <AboutSection />
-      <SwitzerlandSection />
       <EventsSection />
       <StartupsSection />
       <UniversitiesSection />
