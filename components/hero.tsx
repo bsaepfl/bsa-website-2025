@@ -86,6 +86,21 @@ export default function Hero() {
     tl.add('[data-stat-item]', {
       opacity: [0, 1], translateY: [16, 0], duration: 500, delay: stagger(80),
     }, 1300)
+
+    // Typewriter effect on subtitle
+    const typeText = "Join us for workshops, conferences, hackathons, and more."
+    const target = document.querySelector<HTMLElement>('[data-typewriter-text]')
+    if (target) {
+      let i = 0
+      const typeInterval = setInterval(() => {
+        if (i <= typeText.length) {
+          target.textContent = typeText.slice(0, i)
+          i++
+        } else {
+          clearInterval(typeInterval)
+        }
+      }, 35)
+    }
   }, [])
 
   // Counting stats when visible
@@ -157,8 +172,9 @@ export default function Hero() {
               <br />
               at EPFL
             </h1>
-            <p data-hero-text className="text-zinc-400 text-lg leading-relaxed max-w-[50ch] mb-10 opacity-0">
-              Join us for workshops, conferences, hackathons, and more.
+            <p data-hero-text data-typewriter className="text-zinc-400 text-lg leading-relaxed max-w-[50ch] mb-10 opacity-0 font-mono">
+              <span data-typewriter-text></span>
+              <span className="inline-block w-[2px] h-[1.1em] bg-zinc-400 ml-0.5 align-middle animate-pulse" />
             </p>
             <div data-hero-text className="flex flex-wrap gap-3 opacity-0">
               <Link

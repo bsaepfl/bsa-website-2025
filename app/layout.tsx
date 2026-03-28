@@ -5,6 +5,7 @@ import "./globals.css"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import PageTransition from "@/components/page-transition"
+import BackToTop from "@/components/back-to-top"
 
 const instrumentSerif = Instrument_Serif({
   weight: ['400'],
@@ -94,6 +95,7 @@ export default function RootLayout({
           </PageTransition>
         </main>
         <Footer />
+        <BackToTop />
       </body>
     </html>
   )

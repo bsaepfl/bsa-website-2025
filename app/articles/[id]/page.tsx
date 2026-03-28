@@ -105,7 +105,10 @@ export default function ArticlePage({ params }: ArticlePageProps) {
 
         <div className="prose prose-invert prose-lg max-w-none
           prose-headings:font-display prose-headings:text-zinc-50
-          prose-p:text-zinc-400 prose-p:leading-relaxed
+          prose-h2:text-3xl prose-h2:md:text-4xl prose-h2:mt-16 prose-h2:mb-6
+          prose-h3:text-2xl prose-h3:md:text-3xl prose-h3:mt-12 prose-h3:mb-5
+          prose-h4:text-xl prose-h4:mt-10 prose-h4:mb-4
+          prose-p:text-zinc-400 prose-p:leading-relaxed prose-p:mb-6
           prose-a:text-zinc-300 prose-a:underline prose-a:underline-offset-4 hover:prose-a:text-zinc-50
           prose-strong:text-zinc-200
           prose-blockquote:border-zinc-700 prose-blockquote:text-zinc-400
