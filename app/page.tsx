@@ -1,5 +1,6 @@
 "use client"
 
+import BlockchainIntro from "@/components/blockchain-intro"
 import Hero from "@/components/hero"
 import ConferenceHackathonBanner from "@/components/ConferenceHackathonBanner"
 import AboutSection from "@/components/about-section"
@@ -15,6 +16,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col min-h-screen">
+      <BlockchainIntro />
       <ConferenceHackathonBanner />
       <Hero />
       <AboutSection />
