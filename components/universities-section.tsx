@@ -1,28 +1,35 @@
+import Image from "next/image"
+
 const universities = [
   {
     name: "EPFL",
     fullName: "Ecole Polytechnique Federale de Lausanne",
     href: "https://epfl.ch",
+    logo: "/universities/epfl.svg",
   },
   {
     name: "ETH Zurich",
     fullName: "Swiss Federal Institute of Technology",
     href: "https://ethz.ch",
+    logo: "/universities/eth-zurich.png",
   },
   {
     name: "HEC Lausanne",
     fullName: "Faculty of Business and Economics, UNIL",
     href: "https://hec.unil.ch",
+    logo: "/universities/hec-lausanne.svg",
   },
   {
     name: "HEIG-VD",
     fullName: "School of Engineering and Management",
     href: "https://heig-vd.ch",
+    logo: "/universities/heig-vd.png",
   },
   {
     name: "HSG",
     fullName: "University of St. Gallen",
     href: "https://unisg.ch",
+    logo: "/universities/hsg.svg",
   },
 ]
 
@@ -46,14 +53,14 @@ export default function UniversitiesSection() {
               href={uni.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group rounded-lg border border-zinc-800 bg-zinc-900/50 p-6 flex flex-col items-center justify-center text-center min-h-[120px] hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200"
+              className="group rounded-lg border border-zinc-800 bg-zinc-900/50 p-6 flex items-center justify-center min-h-[100px] hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200"
             >
-              <p className="text-lg md:text-xl font-mono font-light text-zinc-400 group-hover:text-zinc-50 transition-colors duration-200 tracking-tight">
-                {uni.name}
-              </p>
-              <p className="text-[10px] text-zinc-600 mt-2 leading-tight max-w-[140px]">
-                {uni.fullName}
-              </p>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={uni.logo}
+                alt={uni.fullName}
+                className="h-8 md:h-10 w-auto object-contain opacity-50 group-hover:opacity-90 transition-opacity duration-200"
+              />
             </a>
           ))}
         </div>

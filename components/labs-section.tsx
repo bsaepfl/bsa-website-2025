@@ -3,16 +3,19 @@ const labs = [
     acronym: "DEDIS",
     name: "Decentralized and Distributed Systems",
     href: "https://dedis.epfl.ch",
+    logo: null,
   },
   {
     acronym: "DCL",
     name: "Distributed Computing Lab",
     href: "https://dcl.epfl.ch",
+    logo: null,
   },
   {
-    acronym: "COMPSEC",
-    name: "Computer Security Lab",
-    href: "https://compsec.epfl.ch",
+    acronym: "SPRING",
+    name: "Security and Privacy Engineering",
+    href: "https://spring.epfl.ch",
+    logo: "/labs/compsec.svg",
   },
 ]
 
@@ -36,12 +39,23 @@ export default function LabsSection() {
               href={lab.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group rounded-lg border border-zinc-800 bg-zinc-900/50 p-8 md:p-10 flex flex-col justify-between min-h-[160px] hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200"
+              className="group rounded-lg border border-zinc-800 bg-zinc-900/50 p-8 md:p-10 flex flex-col justify-between min-h-[180px] hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200"
             >
               <div>
-                <h3 className="text-2xl md:text-3xl font-mono font-light text-zinc-50 tracking-tight mb-3">
-                  {lab.acronym}
-                </h3>
+                {lab.logo ? (
+                  <div className="mb-4">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={lab.logo}
+                      alt={lab.acronym}
+                      className="h-10 w-auto object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-200"
+                    />
+                  </div>
+                ) : (
+                  <h3 className="text-2xl md:text-3xl font-mono font-light text-zinc-300 group-hover:text-zinc-50 tracking-tight mb-3 transition-colors duration-200">
+                    {lab.acronym}
+                  </h3>
+                )}
                 <p className="text-sm text-zinc-500 leading-relaxed">
                   {lab.name}
                 </p>
