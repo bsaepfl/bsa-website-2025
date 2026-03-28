@@ -37,7 +37,7 @@ export default function StartupsClient() {
                   />
                 </div>
                 <div className="p-5">
-                  <h3 className="text-zinc-50 font-medium mb-2">{startup.title}</h3>
+                  <h3 className="text-xl md:text-2xl font-display text-zinc-50 mb-2">{startup.title}</h3>
                   <p className="text-zinc-500 text-sm leading-relaxed line-clamp-2">{startup.description}</p>
                   <span className="inline-block text-zinc-600 text-xs mt-3 group-hover:text-zinc-400 transition-colors">
                     Visit site &rarr;
