@@ -7,7 +7,7 @@ const activities = [
   },
   {
     label: "Hackathons",
-    description: "48-hour building sprints with $15k-$20k prize pools. We invite people from all around the world, with 20+ different universities represented on average.",
+    description: "36-hour building sprints with $15k-$20k prize pools. We invite people from all around the world, with 20+ different universities represented on average.",
   },
   {
     label: "Research",

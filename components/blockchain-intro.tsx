@@ -328,10 +328,16 @@ export default function BlockchainIntro() {
         </div>
 
         {/* Scroll cue */}
-        <div data-scroll-cue className="absolute bottom-10 flex flex-col items-center gap-3">
-          <span className="text-zinc-400 text-xs font-mono uppercase tracking-[0.3em]">scroll down</span>
-          <div className="w-px h-8 bg-gradient-to-b from-zinc-400 to-transparent" />
-        </div>
+        <button
+          data-scroll-cue
+          onClick={() => window.scrollBy({ top: window.innerHeight * 0.8, behavior: 'smooth' })}
+          className="absolute bottom-10 border border-zinc-600 rounded-full px-5 py-2.5 flex items-center gap-2 hover:border-zinc-400 hover:bg-white/5 active:scale-[0.97] transition-all duration-200 cursor-pointer"
+        >
+          <span className="text-zinc-300 text-xs font-mono uppercase tracking-[0.2em]">Scroll down</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="text-zinc-400">
+            <path d="M6 2v8M2 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
       </div>
     </section>
   )
