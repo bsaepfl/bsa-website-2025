@@ -58,10 +58,10 @@ export const startups: StartupType[] = [
     link: "https://crypties.xyz",
   },
   {
-    img: "/startups/zyfai.svg",
+    img: "/startups/zyfai.png",
     title: "AI-powered DeFi portfolio management:",
     description:
       "Zyfai leverages artificial intelligence to optimize DeFi yield strategies and portfolio management.",
-    link: "https://zyfai.com",
+    link: "https://www.zyf.ai/",
   }
 ]; 
