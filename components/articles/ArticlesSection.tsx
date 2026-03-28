@@ -56,8 +56,11 @@ export default function ArticlesSection() {
               Articles
             </p>
             <h2 className="text-5xl md:text-7xl font-display text-zinc-50 title-shimmer">
-              Recent writing
+              Read our latest research
             </h2>
+            <p className="text-zinc-400 mt-3 max-w-lg">
+              Blockchain technology, DeFi, privacy, and more from BSA members.
+            </p>
           </div>
           <Link
             href="/articles"

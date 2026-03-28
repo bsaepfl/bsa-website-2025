@@ -29,10 +29,10 @@ export default function Home() {
       {showIntro && <BlockchainIntro />}
       <Hero />
       <AboutSection />
-      <LabsSection />
       <EventsSection />
       <StartupsSection />
       <UniversitiesSection />
+      <LabsSection />
       <ArticlesSection />
     </main>
   )

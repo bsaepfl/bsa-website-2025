@@ -23,13 +23,26 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "BSA - EPFL",
-  description: "Blockchain Student Association at EPFL. Conferences, hackathons, research, and a DAO-governed community.",
+  title: {
+    default: "BSA - Blockchain Student Association at EPFL",
+    template: "%s | BSA EPFL",
+  },
+  description: "Blockchain Student Association at EPFL. Conferences, hackathons, research, and a DAO-governed community in Lausanne, Switzerland.",
+  metadataBase: new URL("https://www.bsaepfl.ch"),
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "BSA EPFL",
+    title: "BSA - Blockchain Student Association at EPFL",
+    description: "Conferences, hackathons, research, and a DAO-governed community at EPFL.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@bsaepfl",
+  },
   icons: {
-    icon: [
-      { url: '/favicon.ico', type: 'image/x-icon' },
-    ]
-  }
+    icon: [{ url: '/favicon.ico', type: 'image/x-icon' }],
+  },
 }
 
 export default function RootLayout({
@@ -37,8 +50,42 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Blockchain Student Association",
+    alternateName: "BSA EPFL",
+    url: "https://www.bsaepfl.ch",
+    logo: "https://www.bsaepfl.ch/big-logo.png",
+    foundingDate: "2018",
+    description: "Student-led DAO for blockchain at EPFL. Conferences, hackathons, research, and startup incubation.",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Lausanne",
+      addressCountry: "CH",
+    },
+    parentOrganization: {
+      "@type": "EducationalOrganization",
+      name: "EPFL",
+      url: "https://epfl.ch",
+    },
+    sameAs: [
+      "https://x.com/bsaepfl",
+      "https://instagram.com/bsaepfl",
+      "https://linkedin.com/company/bsaepfl",
+      "https://github.com/bsaepfl",
+      "https://www.youtube.com/@bsaepfl",
+    ],
+  }
+
   return (
     <html lang="en" className="dark">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className={`${instrumentSerif.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased noise`}>
         <Navbar />
         <main className="pt-20 md:pt-24">
