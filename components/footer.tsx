@@ -1,69 +1,52 @@
-import { Twitter, Github, Linkedin, Instagram, Youtube, Send } from "lucide-react"
+const socialLinks = [
+  { href: "https://instagram.com/bsaepfl", label: "Instagram" },
+  { href: "https://x.com/bsaepfl", label: "X" },
+  { href: "https://t.me/+1VsSQpBLMkI5ZGM0", label: "Telegram" },
+  { href: "https://linkedin.com/company/bsaepfl", label: "LinkedIn" },
+  { href: "https://www.youtube.com/@bsaepfl", label: "YouTube" },
+  { href: "https://github.com/bsaepfl", label: "GitHub" },
+]
 
 export default function Footer() {
   return (
-    <footer className="text-white py-16 md:py-20">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-wrap gap-3 justify-center justify-items-center">
-          <a
-            href="https://instagram.com/bsaepfl"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300"
-          >
-            <Instagram className="w-5 h-5" />
-          </a>
+    <footer className="py-16 md:py-20">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="border-t border-zinc-800 pt-12">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
 
-          <a
-            href="https://x.com/bsaepfl"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300"
-          >
-            <Twitter className="w-5 h-5" />
-          </a>
+            {/* Left: wordmark */}
+            <div>
+              <p className="text-zinc-50 font-sans text-sm font-medium tracking-wide">
+                BSA
+                <span className="text-zinc-500 ml-1">EPFL</span>
+              </p>
+              <p className="text-zinc-600 text-xs mt-1">
+                Blockchain Student Association
+              </p>
+            </div>
 
-          <a
-            href="https://t.me/+1VsSQpBLMkI5ZGM0"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300"
-          >
-            {/* Telegram → Lucide’s "Send" icon (closest equivalent) */}
-            <Send className="w-5 h-5" />
-          </a>
+            {/* Center: social links */}
+            <div className="flex flex-wrap gap-6">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-zinc-600 text-xs hover:text-zinc-300 transition-colors duration-200"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
 
-          <a
-            href="https://linkedin.com/company/bsaepfl"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300"
-          >
-            <Linkedin className="w-5 h-5" />
-          </a>
-
-          <a
-            href="https://www.youtube.com/@bsaepfl"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300"
-          >
-            <Youtube className="w-5 h-5" />
-          </a>
-
-          <a
-            href="https://github.com/bsaepfl"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300"
-          >
-            <Github className="w-5 h-5" />
-          </a>
-
+            {/* Right: EPFL reference */}
+            <p className="text-zinc-700 text-xs">
+              EPFL, Lausanne, Switzerland
+            </p>
+          </div>
         </div>
-
       </div>
     </footer>
   )
 }
-
