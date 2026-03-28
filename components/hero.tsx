@@ -40,8 +40,7 @@ export default function Hero() {
               at EPFL
             </h1>
             <p className="text-zinc-400 text-lg leading-relaxed max-w-[50ch] mb-10">
-              We run conferences, hackathons, and research.
-              We are structured as a DAO and governed by our members.
+              Join us for workshops, conferences, hackathons, and more.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
