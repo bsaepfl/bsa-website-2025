@@ -1,192 +1,281 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import { animate, stagger, createTimeline, utils } from "animejs"
+import { useEffect, useRef, useCallback } from "react"
+import { animate, createTimeline, stagger } from "animejs"
 
-const BLOCK_COUNT = 7
-const LINK_WIDTH = 48
+// Rainbow palette inspired by animejs.com
+const COLORS = [
+  '#ff4b4b', // red
+  '#ff7d36', // corail
+  '#ffa828', // orange
+  '#ffcc2a', // yellow
+  '#b7ff54', // lime
+  '#00ffaa', // turquoise
+  '#05dbe9', // cyan
+  '#4d9cff', // king blue
+  '#7c85ff', // indigo
+  '#a369ff', // lavender
+]
+
+const BLOCK_COUNT = 8
+
+function generateHash(seed: number): string {
+  const chars = '0123456789abcdef'
+  let hash = '0x'
+  for (let j = 0; j < 6; j++) {
+    hash += chars[(seed * 7 + j * 13 + 3) % chars.length]
+  }
+  return hash
+}
 
 export default function BlockchainIntro() {
   const sectionRef = useRef<HTMLElement>(null)
-  const canvasRef = useRef<HTMLDivElement>(null)
-  const hasPlayed = useRef(false)
-  const [scrollProgress, setScrollProgress] = useState(0)
+  const hasInit = useRef(false)
+  const rafId = useRef<number>(0)
 
-  // Scroll-driven progress
-  useEffect(() => {
-    const section = sectionRef.current
-    if (!section) return
-
-    const handleScroll = () => {
-      const rect = section.getBoundingClientRect()
-      const sectionHeight = section.offsetHeight - window.innerHeight
-      if (sectionHeight <= 0) return
-      const rawProgress = -rect.top / sectionHeight
-      setScrollProgress(Math.max(0, Math.min(1, rawProgress)))
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    handleScroll()
-    return () => window.removeEventListener('scroll', handleScroll)
+  const getProgress = useCallback(() => {
+    if (!sectionRef.current) return 0
+    const rect = sectionRef.current.getBoundingClientRect()
+    const scrollable = sectionRef.current.offsetHeight - window.innerHeight
+    if (scrollable <= 0) return 0
+    return Math.max(0, Math.min(1, -rect.top / scrollable))
   }, [])
 
-  // Entrance animation
   useEffect(() => {
-    if (hasPlayed.current || !canvasRef.current) return
-    hasPlayed.current = true
+    if (hasInit.current) return
+    hasInit.current = true
 
-    // Fade in the title text
-    animate('[data-intro-text]', {
+    // Mark intro as active (hides navbar)
+    document.documentElement.classList.add('intro-active')
+
+    // Entrance timeline
+    const tl = createTimeline({ defaults: { easing: 'easeOutCubic' } })
+
+    // Title chars animate in
+    tl.add('[data-intro-char]', {
       opacity: [0, 1],
-      translateY: [30, 0],
-      duration: 800,
-      delay: stagger(120),
-      easing: 'easeOutCubic',
-    })
+      translateY: [40, 0],
+      scale: [0.8, 1],
+      duration: 600,
+      delay: stagger(30),
+    }, 200)
 
-    // Subtle pulse on the scroll indicator
-    animate('[data-scroll-hint]', {
-      opacity: [0, 0.6, 0],
-      translateY: [0, 8, 0],
-      duration: 2000,
+    // Subtitle
+    tl.add('[data-intro-sub]', {
+      opacity: [0, 0.5],
+      duration: 800,
+    }, 800)
+
+    // Scroll hint pulse
+    animate('[data-scroll-cue]', {
+      opacity: [0, 0.4, 0],
+      translateY: [0, 6, 0],
+      duration: 2400,
       loop: true,
       easing: 'easeInOutSine',
-      delay: 1200,
+      delay: 1500,
     })
   }, [])
 
-  // Animate blocks based on scroll progress
+  // Scroll-driven animation loop
   useEffect(() => {
-    if (!canvasRef.current) return
+    const update = () => {
+      const p = getProgress()
 
-    const blocks = canvasRef.current.querySelectorAll('[data-block]')
-    const links = canvasRef.current.querySelectorAll('[data-link]')
-    const hashes = canvasRef.current.querySelectorAll('[data-hash]')
-
-    blocks.forEach((block, i) => {
-      const el = block as HTMLElement
-      const blockProgress = Math.max(0, Math.min(1,
-        (scrollProgress - (i * 0.1)) / 0.12
-      ))
-
-      el.style.opacity = String(blockProgress)
-      el.style.transform = `scale(${0.8 + blockProgress * 0.2}) translateY(${(1 - blockProgress) * 20}px)`
-    })
-
-    links.forEach((link, i) => {
-      const el = link as HTMLElement
-      const linkProgress = Math.max(0, Math.min(1,
-        (scrollProgress - ((i + 1) * 0.1 + 0.05)) / 0.08
-      ))
-
-      el.style.opacity = String(linkProgress)
-      el.style.transform = `scaleX(${linkProgress})`
-    })
-
-    hashes.forEach((hash, i) => {
-      const el = hash as HTMLElement
-      const hashProgress = Math.max(0, Math.min(1,
-        (scrollProgress - (i * 0.1 + 0.06)) / 0.06
-      ))
-      el.style.opacity = String(hashProgress * 0.5)
-    })
-  }, [scrollProgress])
-
-  // Generate pseudo-random hash strings
-  const hashes = useRef(
-    Array.from({ length: BLOCK_COUNT }, (_, i) => {
-      const chars = '0123456789abcdef'
-      let hash = '0x'
-      for (let j = 0; j < 8; j++) {
-        hash += chars[(i * 7 + j * 13) % chars.length]
+      // Toggle intro-active class
+      if (p >= 0.95) {
+        document.documentElement.classList.remove('intro-active')
+      } else {
+        document.documentElement.classList.add('intro-active')
       }
-      return hash
-    })
-  ).current
+
+      // Animate each block
+      document.querySelectorAll<HTMLElement>('[data-block-idx]').forEach((el) => {
+        const i = parseInt(el.dataset.blockIdx || '0')
+        const blockStart = i * 0.08
+        const blockProgress = Math.max(0, Math.min(1, (p - blockStart) / 0.1))
+
+        // Scale in with bounce feel
+        const scale = blockProgress < 1
+          ? 0.3 + blockProgress * 0.7
+          : 1
+        const yOffset = (1 - blockProgress) * 60
+        const rotation = (1 - blockProgress) * (i % 2 === 0 ? -15 : 15)
+
+        el.style.opacity = String(blockProgress)
+        el.style.transform = `translateY(${yOffset}px) scale(${scale}) rotate(${rotation}deg)`
+
+        // Color the border when fully visible
+        if (blockProgress > 0.8) {
+          const color = COLORS[i % COLORS.length]
+          el.style.borderColor = color
+          el.style.boxShadow = `0 0 ${20 + blockProgress * 15}px ${color}22, inset 0 0 ${10 + blockProgress * 10}px ${color}08`
+        }
+      })
+
+      // Animate chain links
+      document.querySelectorAll<HTMLElement>('[data-chain-idx]').forEach((el) => {
+        const i = parseInt(el.dataset.chainIdx || '0')
+        const linkStart = (i + 1) * 0.08 + 0.03
+        const linkProgress = Math.max(0, Math.min(1, (p - linkStart) / 0.06))
+        const color = COLORS[i % COLORS.length]
+
+        el.style.opacity = String(linkProgress)
+        el.style.transform = `scaleX(${linkProgress})`
+        el.style.background = `linear-gradient(90deg, ${color}, ${COLORS[(i + 1) % COLORS.length]})`
+      })
+
+      // Hash text reveal
+      document.querySelectorAll<HTMLElement>('[data-hash-idx]').forEach((el) => {
+        const i = parseInt(el.dataset.hashIdx || '0')
+        const hashStart = i * 0.08 + 0.07
+        const hashProgress = Math.max(0, Math.min(1, (p - hashStart) / 0.05))
+        el.style.opacity = String(hashProgress * 0.7)
+      })
+
+      // Nonce dots
+      document.querySelectorAll<HTMLElement>('[data-nonce-idx]').forEach((el) => {
+        const i = parseInt(el.dataset.nonceIdx || '0')
+        const nonceStart = i * 0.08 + 0.09
+        const nonceProgress = Math.max(0, Math.min(1, (p - nonceStart) / 0.04))
+        const color = COLORS[i % COLORS.length]
+        el.style.opacity = String(nonceProgress)
+        el.style.transform = `scale(${nonceProgress})`
+        el.style.backgroundColor = color
+      })
+
+      // Title fades out
+      const titleEl = document.querySelector<HTMLElement>('[data-intro-title]')
+      if (titleEl) {
+        const fadeOut = Math.max(0, 1 - p * 3)
+        titleEl.style.opacity = String(fadeOut)
+        titleEl.style.transform = `translateY(${-p * 80}px)`
+      }
+
+      // Overall section fade-out at end
+      const stickyEl = document.querySelector<HTMLElement>('[data-intro-sticky]')
+      if (stickyEl) {
+        const fadeStart = 0.85
+        const fadeProgress = Math.max(0, Math.min(1, (p - fadeStart) / 0.15))
+        stickyEl.style.opacity = String(1 - fadeProgress)
+      }
+
+      rafId.current = requestAnimationFrame(update)
+    }
+
+    rafId.current = requestAnimationFrame(update)
+    return () => cancelAnimationFrame(rafId.current)
+  }, [getProgress])
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      document.documentElement.classList.remove('intro-active')
+    }
+  }, [])
+
+  const titleText = "Building the chain"
+  const chars = titleText.split('')
 
   return (
     <section
       ref={sectionRef}
       className="relative -mt-20 md:-mt-24"
-      style={{ height: '250vh' }}
+      style={{ height: '300vh' }}
     >
-      <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
+      <div
+        data-intro-sticky
+        className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden bg-[#0a0a0b]"
+        style={{ zIndex: 45 }}
+      >
+        {/* Subtle grid background */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
+            backgroundSize: '60px 60px',
+          }}
+        />
+
         {/* Title */}
-        <div className="text-center mb-16 md:mb-20 px-6">
+        <div data-intro-title className="text-center mb-16 md:mb-24 px-6 relative z-10">
           <p
-            data-intro-text
-            className="text-xs font-mono text-zinc-600 uppercase tracking-[0.3em] mb-4 opacity-0"
+            data-intro-sub
+            className="text-xs font-mono text-zinc-600 uppercase tracking-[0.3em] mb-6 opacity-0"
           >
             Block by block
           </p>
-          <h2
-            data-intro-text
-            className="text-4xl md:text-6xl font-display text-zinc-50 opacity-0"
-          >
-            Building the chain
+          <h2 className="text-5xl md:text-8xl font-display text-zinc-50 leading-[0.9] tracking-tight">
+            {chars.map((char, i) => (
+              <span
+                key={i}
+                data-intro-char
+                className="inline-block opacity-0"
+                style={{ marginRight: char === ' ' ? '0.25em' : '0' }}
+              >
+                {char === ' ' ? '\u00A0' : char}
+              </span>
+            ))}
           </h2>
         </div>
 
         {/* Blockchain visualization */}
-        <div
-          ref={canvasRef}
-          className="flex items-center justify-center px-6 w-full max-w-5xl"
-        >
-          <div className="flex items-center overflow-x-auto hide-scrollbar">
-            {Array.from({ length: BLOCK_COUNT }).map((_, i) => (
-              <div key={i} className="flex items-center shrink-0">
-                {/* Block */}
-                <div
-                  data-block
-                  className="relative w-20 h-20 md:w-28 md:h-28 rounded-lg border border-zinc-700 bg-zinc-900 flex flex-col items-center justify-center opacity-0"
-                  style={{ transformOrigin: 'center' }}
-                >
-                  <span className="text-xs md:text-sm font-mono text-zinc-300 font-light">
-                    #{i}
-                  </span>
-                  <span
-                    data-hash
-                    className="text-[8px] md:text-[10px] font-mono text-zinc-600 mt-1 opacity-0"
+        <div className="relative z-10 w-full max-w-6xl px-6">
+          <div className="flex items-center justify-center">
+            <div className="flex items-center gap-0 overflow-x-auto hide-scrollbar">
+              {Array.from({ length: BLOCK_COUNT }).map((_, i) => (
+                <div key={i} className="flex items-center shrink-0">
+                  {/* Block */}
+                  <div
+                    data-block-idx={i}
+                    className="relative w-16 h-16 md:w-24 md:h-24 rounded-lg border-2 border-zinc-800 bg-zinc-950 flex flex-col items-center justify-center opacity-0"
+                    style={{ transformOrigin: 'center bottom' }}
                   >
-                    {hashes[i]}
-                  </span>
-                  {/* Nonce dot */}
-                  <div
-                    className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-zinc-500"
-                    style={{
-                      opacity: scrollProgress > (i * 0.1 + 0.08) ? 1 : 0,
-                      transition: 'opacity 0.3s',
-                    }}
-                  />
-                </div>
+                    {/* Block number */}
+                    <span
+                      className="text-sm md:text-lg font-mono font-light"
+                      style={{ color: COLORS[i % COLORS.length] }}
+                    >
+                      {i}
+                    </span>
+                    {/* Hash */}
+                    <span
+                      data-hash-idx={i}
+                      className="text-[7px] md:text-[9px] font-mono text-zinc-600 mt-0.5 opacity-0"
+                    >
+                      {generateHash(i)}
+                    </span>
+                    {/* Nonce dot */}
+                    <div
+                      data-nonce-idx={i}
+                      className="absolute -top-1.5 -right-1.5 w-2.5 h-2.5 md:w-3 md:h-3 rounded-full opacity-0"
+                      style={{ transformOrigin: 'center' }}
+                    />
+                  </div>
 
-                {/* Chain link */}
-                {i < BLOCK_COUNT - 1 && (
-                  <div
-                    data-link
-                    className="w-6 md:w-12 h-px bg-zinc-600 opacity-0"
-                    style={{ transformOrigin: 'left' }}
-                  />
-                )}
-              </div>
-            ))}
+                  {/* Chain link */}
+                  {i < BLOCK_COUNT - 1 && (
+                    <div
+                      data-chain-idx={i}
+                      className="w-4 md:w-8 h-0.5 rounded-full opacity-0"
+                      style={{ transformOrigin: 'left center' }}
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Scroll hint */}
+        {/* Scroll cue */}
         <div
-          data-scroll-hint
-          className="absolute bottom-12 text-zinc-600 text-xs font-mono tracking-wider opacity-0"
+          data-scroll-cue
+          className="absolute bottom-16 flex flex-col items-center gap-2 opacity-0"
         >
-          scroll
-        </div>
-
-        {/* Progress bar */}
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-zinc-900">
-          <div
-            className="h-full bg-zinc-600 transition-none"
-            style={{ width: `${scrollProgress * 100}%` }}
-          />
+          <span className="text-zinc-600 text-[10px] font-mono uppercase tracking-[0.3em]">
+            scroll
+          </span>
+          <div className="w-px h-6 bg-gradient-to-b from-zinc-600 to-transparent" />
         </div>
       </div>
     </section>

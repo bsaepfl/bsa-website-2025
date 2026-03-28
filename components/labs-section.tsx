@@ -27,7 +27,7 @@ export default function LabsSection() {
           <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
             Research
           </p>
-          <h2 className="text-3xl md:text-4xl font-display text-zinc-50 max-w-lg">
+          <h2 className="text-4xl md:text-6xl font-display text-zinc-50 max-w-lg leading-[1.05]">
             Our members contributed to research in these labs
           </h2>
         </div>

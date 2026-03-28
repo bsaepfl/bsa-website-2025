@@ -14,7 +14,7 @@ export default function EventsSection() {
             <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
               Events
             </p>
-            <h2 className="text-3xl md:text-4xl font-display text-zinc-50">
+            <h2 className="text-4xl md:text-6xl font-display text-zinc-50">
               What's happening
             </h2>
           </div>

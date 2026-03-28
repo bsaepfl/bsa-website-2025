@@ -17,7 +17,7 @@ export default function ConferenceHackathonBanner() {
               <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-2">
                 March 20-22 / EPFL Campus
               </p>
-              <h2 className="text-2xl md:text-3xl font-display text-zinc-50">
+              <h2 className="text-3xl md:text-4xl font-display text-zinc-50">
                 Stablecoin & Payments
               </h2>
               <p className="text-zinc-400 mt-1">

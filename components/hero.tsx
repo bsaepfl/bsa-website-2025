@@ -95,7 +95,7 @@ export default function Hero() {
             <p data-hero-text className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-6 opacity-0">
               Blockchain Student Association
             </p>
-            <h1 data-hero-text className="text-5xl md:text-7xl font-display text-zinc-50 leading-[0.95] tracking-tight mb-8 opacity-0">
+            <h1 data-hero-text className="text-6xl md:text-8xl font-display text-zinc-50 leading-[0.9] tracking-tight mb-8 opacity-0">
               Blockchain
               <br />
               at EPFL

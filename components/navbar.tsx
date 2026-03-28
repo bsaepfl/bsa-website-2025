@@ -15,10 +15,15 @@ const navLinks = [
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [introActive, setIntroActive] = useState(true)
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10)
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10)
+      setIntroActive(document.documentElement.classList.contains('intro-active'))
+    }
     window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -32,7 +37,7 @@ export default function Navbar() {
   }, [isMenuOpen])
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 flex justify-center px-4 pt-4">
+    <header className={`fixed top-0 left-0 right-0 z-40 flex justify-center px-4 pt-4 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${introActive ? 'opacity-0 -translate-y-4 pointer-events-none' : 'opacity-100 translate-y-0'}`}>
       <nav
         className={`
           w-full max-w-3xl rounded-full border border-zinc-800

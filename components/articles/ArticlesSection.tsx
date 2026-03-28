@@ -55,7 +55,7 @@ export default function ArticlesSection() {
             <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
               Articles
             </p>
-            <h2 className="text-3xl md:text-4xl font-display text-zinc-50">
+            <h2 className="text-4xl md:text-6xl font-display text-zinc-50">
               Recent writing
             </h2>
           </div>

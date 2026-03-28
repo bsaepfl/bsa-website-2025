@@ -39,7 +39,7 @@ export default function UniversitiesSection() {
           <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
             Community
           </p>
-          <h2 className="text-3xl md:text-4xl font-display text-zinc-50 max-w-md">
+          <h2 className="text-4xl md:text-6xl font-display text-zinc-50 max-w-md leading-[1.05]">
             Our members come from
           </h2>
         </div>
