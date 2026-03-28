@@ -11,7 +11,7 @@ export default function StartupsSection() {
             <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
               Startups
             </p>
-            <h2 className="text-4xl md:text-6xl font-display text-zinc-50">
+            <h2 className="text-5xl md:text-7xl font-display text-zinc-50 title-shimmer">
               Built by our members
             </h2>
           </div>

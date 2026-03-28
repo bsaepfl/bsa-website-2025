@@ -26,7 +26,7 @@ export default function AboutSection() {
             <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
               About BSA
             </p>
-            <h2 className="text-4xl md:text-6xl font-display text-zinc-50 leading-[1.05] mb-6">
+            <h2 className="text-5xl md:text-7xl font-display text-zinc-50 leading-[1.0] mb-6 title-shimmer">
               A student-led DAO for blockchain at EPFL
             </h2>
             <p className="text-zinc-400 text-lg leading-relaxed mb-8">
@@ -56,7 +56,7 @@ export default function AboutSection() {
                       {String(i + 1).padStart(2, '0')}
                     </span>
                     <div>
-                      <h3 className="text-2xl md:text-3xl font-display text-zinc-50 mb-3">{activity.label}</h3>
+                      <h3 className="text-3xl md:text-4xl font-display text-zinc-50 mb-3">{activity.label}</h3>
                       <p className="text-zinc-400 leading-relaxed">{activity.description}</p>
                     </div>
                   </div>

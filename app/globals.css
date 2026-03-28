@@ -93,6 +93,29 @@ html {
     display: none;
   }
 
+  /* Section title hover shimmer */
+  .title-shimmer {
+    position: relative;
+    display: inline;
+    background-image: linear-gradient(
+      120deg,
+      transparent 0%,
+      transparent 40%,
+      rgba(212, 212, 216, 0.12) 50%,
+      transparent 60%,
+      transparent 100%
+    );
+    background-size: 250% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    transition: background-position 0.8s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  .title-shimmer:hover {
+    background-position: -50% 0;
+  }
+
   /* Subtle noise overlay */
   .noise::after {
     content: '';
