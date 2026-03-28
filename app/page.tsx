@@ -2,6 +2,7 @@
 
 import Hero from "@/components/hero"
 import ConferenceHackathonBanner from "@/components/ConferenceHackathonBanner"
+import AboutSection from "@/components/about-section"
 import EventsSection from "@/components/events/EventsSection"
 import StartupsSection from "@/components/startups/StartupsSection"
 import ArticlesSection from "@/components/articles/ArticlesSection"
@@ -30,6 +31,7 @@ export default function Home() {
     <main className="flex flex-col min-h-screen">
       <ConferenceHackathonBanner />
       <Hero />
+      <AboutSection />
       <EventsSection />
       <StartupsSection />
       <ArticlesSection />
