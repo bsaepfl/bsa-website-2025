@@ -17,7 +17,7 @@ const socialLinks = [
 
 export default function Member({ member }: MemberProps) {
   return (
-    <div className="group">
+    <div className="group hover:-translate-y-1.5 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]">
       {/* Image */}
       <div className="relative aspect-square rounded-lg overflow-hidden bg-zinc-900 mb-3">
         {member.hasImage ? (

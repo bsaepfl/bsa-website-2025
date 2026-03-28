@@ -6,14 +6,16 @@ const pastEvents = [
     title: "Stablecoins & Payments Hackathon",
     type: "Hackathon",
     description: "36-hour coding competition focused on stablecoins, digital money, and payment infrastructure.",
-    stats: "$16k+ prizes / 127 participants / 55 projects submitted",
+    stats: "$16k+ prizes / 160 participants / 55 projects submitted",
+    sponsors: "AlphaTON Capital, XRPL Commons, ENS, Hyli",
   },
   {
     date: "March 2026",
     title: "Stablecoins & Payments Conference",
     type: "Conference",
     description: "Expert talks and panels on stablecoins, CBDCs, regulation, and institutional DeFi. Speakers from Circle, Swiss National Bank, Aave, Franklin Templeton, Ledger, and UNHCR.",
-    stats: "3 stages / 20+ speakers / Diamond sponsor: AlphaTON Capital",
+    stats: "3 stages / 20+ speakers",
+    sponsors: "AlphaTON Capital, Ledger, XRPL Commons, ENS, Hyli, Raiffeisen, Swissquote, Taurus, SYZ, Supernova, MiCA Crypto Alliance, CVA, WiW3CH, CMTA",
   },
   {
     date: "September 2025",
@@ -21,20 +23,23 @@ const pastEvents = [
     type: "Hackathon",
     description: "Third edition of Europe's biggest student-run Sui hackathon, with pre-hackathon workshops on Move language and advanced Sui features.",
     stats: "$20k+ prizes / 200 participants / Teams of up to 4",
+    sponsors: "Sui Foundation",
   },
   {
     date: "March 2025",
     title: "Privacy & Verifiability Hackathon",
     type: "Hackathon",
-    description: "Building innovative solutions focusing on privacy and verifiability in blockchain. Sponsored by Mina, Hedera Hashgraph Association, and Hyle.",
+    description: "Building innovative solutions focusing on privacy and verifiability in blockchain. 23 projects submitted across ZKP, MPC, and TEE tracks.",
     stats: "$15k prizes / 36 hackers / 23 projects submitted",
+    sponsors: "Mina Foundation, Hedera Hashgraph Association, Hyle",
   },
   {
     date: "March 2025",
     title: "Privacy & Verifiability Conference",
     type: "Conference",
     description: "Deep dive into blockchain privacy: ZKP, MPC, TEE, private DeFi, MEV, and AI & privacy. Co-organized with Privacy Guardians, CVA, and IEEE Blockchain.",
-    stats: "363 attendees / 8 topic tracks / BC Building, EPFL",
+    stats: "363 attendees / 8 topic tracks",
+    sponsors: "Hashgraph Association, Aleph Zero, Common Finance, Mina Foundation, Taurus",
   },
   {
     date: "October 2024",
@@ -42,20 +47,23 @@ const pastEvents = [
     type: "Hackathon",
     description: "Second edition of the European Sui Hackathon. 22 projects submitted, including Fair.fun, Proximity, Suimons, and Imaigine.",
     stats: "$25k+ prizes / 70+ participants / 22 projects",
+    sponsors: "Sui Foundation, Polygon, ETHIndia",
   },
   {
     date: "March 2024",
     title: "EPFL Blockchain Conference",
     type: "Conference",
     description: "BSA's inaugural conference exploring cryptocurrencies, blockchain, and digital assets. Five panels on Web3 jobs, tokenization, regulation, universities in Web3, and mass adoption.",
-    stats: "5 panels / Sponsors: Arbitrum, Swissborg, Avalanche, Syz Group",
+    stats: "5 panels / 10+ companies",
+    sponsors: "Arbitrum, Syz Group, Swissborg, Avalanche, Casper Association, Blockchain Acceleration Foundation, Crypto Valley Association",
   },
   {
     date: "October 2023",
     title: "Sui x BSA Hackathon (1st Edition)",
     type: "Hackathon",
-    description: "The first European Sui Hackathon. Students from 13+ universities built on Sui using the Move programming language. Winners included teams from TUM, EPFL, ETH Zurich, and Imperial College.",
+    description: "The first European Sui Hackathon. Students from 13+ universities built on Sui using the Move programming language. Winners from TUM, EPFL, ETH Zurich, and Imperial College.",
     stats: "$25k prizes / 100+ participants / 13+ universities",
+    sponsors: "Sui Foundation, Polygon",
   },
 ]
 
@@ -96,7 +104,7 @@ export default function EventsClient() {
             <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
               History
             </p>
-            <h2 className="text-4xl md:text-6xl font-display text-zinc-50 mb-16 title-shimmer">
+            <h2 className="text-4xl md:text-6xl font-display text-zinc-50 mb-24 title-shimmer">
               Previous events
             </h2>
 
@@ -104,35 +112,32 @@ export default function EventsClient() {
               {/* Timeline line */}
               <div className="absolute left-[7px] md:left-[11px] top-2 bottom-2 w-px bg-zinc-800" />
 
-              <div className="space-y-12">
+              <div className="space-y-16">
                 {pastEvents.map((event, i) => (
-                  <div key={i} className="relative pl-10 md:pl-14">
-                    {/* Dot */}
-                    <div className={`absolute left-0 md:left-1 top-2 w-[15px] h-[15px] md:w-[19px] md:h-[19px] rounded-full border-2 ${
-                      event.type === 'Conference'
-                        ? 'border-[#05dbe9] bg-[#05dbe9]/10'
-                        : 'border-[#ffa828] bg-[#ffa828]/10'
-                    }`} />
+                  <div key={i} className="group relative pl-10 md:pl-14">
+                    {/* Dot with subtle glow on hover */}
+                    <div
+                      className="absolute left-0 md:left-1 top-2 w-[15px] h-[15px] md:w-[19px] md:h-[19px] rounded-full border-2 border-zinc-600 bg-zinc-800 transition-all duration-300 group-hover:border-zinc-400 group-hover:bg-zinc-700 group-hover:shadow-[0_0_12px_rgba(250,250,250,0.15)]"
+                    />
 
-                    <div className="flex flex-wrap items-center gap-3 mb-2">
+                    <div className="flex flex-wrap items-center gap-3 mb-3">
                       <span className="text-xs font-mono text-zinc-500">{event.date}</span>
-                      <span className={`text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border ${
-                        event.type === 'Conference'
-                          ? 'text-[#05dbe9] border-[#05dbe9]/30'
-                          : 'text-[#ffa828] border-[#ffa828]/30'
-                      }`}>
+                      <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border text-zinc-500 border-zinc-700 group-hover:text-zinc-300 group-hover:border-zinc-500 transition-colors duration-300">
                         {event.type}
                       </span>
                     </div>
 
-                    <h3 className="text-xl md:text-2xl font-display text-zinc-50 mb-2">
+                    <h3 className="text-xl md:text-2xl font-display text-zinc-200 mb-2 group-hover:text-zinc-50 transition-colors duration-300">
                       {event.title}
                     </h3>
-                    <p className="text-zinc-400 leading-relaxed mb-2 max-w-2xl">
+                    <p className="text-zinc-400 leading-relaxed mb-3 max-w-2xl">
                       {event.description}
                     </p>
-                    <p className="text-xs font-mono text-zinc-600">
+                    <p className="text-xs font-mono text-zinc-600 mb-2">
                       {event.stats}
+                    </p>
+                    <p className="text-[11px] text-zinc-600">
+                      <span className="text-zinc-500">Sponsors:</span> {event.sponsors}
                     </p>
                   </div>
                 ))}
