@@ -7,7 +7,7 @@ import { animate, createTimeline, stagger, svg } from "animejs"
 
 const stats = [
   { value: "350+", label: "Conference attendees" },
-  { value: "$55k+", label: "Hackathon prizes" },
+  { value: "$90k+", label: "Hackathon prizes" },
   { value: "8", label: "Startups incubated" },
   { value: "2018", label: "Founded as a DAO" },
 ]

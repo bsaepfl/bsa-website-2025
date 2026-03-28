@@ -79,16 +79,16 @@ export default function BlockchainIntro() {
     const update = () => {
       const p = getProgress()
 
-      if (p >= 0.92) {
+      if (p >= 0.8) {
         document.documentElement.classList.remove('intro-active')
       } else {
         document.documentElement.classList.add('intro-active')
       }
 
-      // Phases
-      const blockPhase = Math.min(1, p / 0.55)
-      const logoPhase = Math.max(0, Math.min(1, (p - 0.58) / 0.22))
-      const fadePhase = Math.max(0, Math.min(1, (p - 0.85) / 0.15))
+      // Phases (shorter, snappier)
+      const blockPhase = Math.min(1, p / 0.5)
+      const logoPhase = Math.max(0, Math.min(1, (p - 0.52) / 0.15))
+      const fadePhase = Math.max(0, Math.min(1, (p - 0.75) / 0.15))
 
       // Blocks
       document.querySelectorAll<HTMLElement>('[data-block-i]').forEach((el) => {
@@ -111,12 +111,12 @@ export default function BlockchainIntro() {
         }
       })
 
-      // Connection lines
+      // Connection lines (more visible)
       document.querySelectorAll<HTMLElement>('[data-conn-i]').forEach((el) => {
         const i = parseInt(el.dataset.connI || '0')
         const start = ((i + 0.8) / BLOCK_COUNT) * 0.7
         const cp = Math.max(0, Math.min(1, (blockPhase - start) / 0.12))
-        el.style.opacity = String(cp * 0.6)
+        el.style.opacity = String(cp * 0.9)
       })
 
       // Hashes
@@ -185,11 +185,11 @@ export default function BlockchainIntro() {
     <section
       ref={sectionRef}
       className="relative -mt-20 md:-mt-24"
-      style={{ height: '350vh' }}
+      style={{ height: '280vh' }}
     >
       <div
         data-intro-sticky
-        className="sticky top-0 h-screen flex items-center justify-center overflow-hidden bg-[#0a0a0b]"
+        className="sticky top-0 h-screen flex items-center justify-center overflow-hidden bg-[#0d1a2b]"
         style={{ zIndex: 45 }}
       >
         {/* Grid */}
@@ -227,8 +227,8 @@ export default function BlockchainIntro() {
           {/* Desktop arc */}
           <div className="hidden md:block relative" style={{ width: `${arcRadius * 2 + blockSize + 40}px`, height: `${arcRadius * 2 + blockSize + 40}px` }}>
             {/* BSA Logo center */}
-            <div data-bsa-logo className="absolute opacity-0" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%) scale(0.1)', transformOrigin: 'center' }}>
-              <svg viewBox="20 20 160 175" className="w-48 h-48" fill="none">
+            <div data-bsa-logo className="absolute opacity-0 overflow-visible" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%) scale(0.1)', transformOrigin: 'center' }}>
+              <svg viewBox="0 0 200 215" className="w-48 h-48 overflow-visible" fill="none">
                 <path data-bsa-path d={BSA_LOGO_PATH} fill="#fafafa" fillRule="evenodd" />
               </svg>
             </div>
@@ -250,7 +250,7 @@ export default function BlockchainIntro() {
                     style={{
                       width: blockSize, height: blockSize,
                       left: cx + pos.x - half, top: cy + pos.y - half,
-                      borderRadius: 14, border: '1.5px solid #333', background: '#0d0d0d',
+                      borderRadius: 14, border: '1.5px solid #333', background: '#0f1c2e',
                       transformOrigin: 'center',
                     }}
                   >
@@ -266,8 +266,8 @@ export default function BlockchainIntro() {
                       <line
                         x1={cx + pos.x} y1={cy + pos.y}
                         x2={cx + nextPos.x} y2={cy + nextPos.y}
-                        stroke={color} strokeWidth="1" strokeOpacity="0.5"
-                        strokeDasharray="4 3"
+                        stroke={color} strokeWidth="1.5" strokeOpacity="0.7"
+                        strokeDasharray="6 4"
                       />
                     </svg>
                   )}
@@ -278,8 +278,8 @@ export default function BlockchainIntro() {
 
           {/* Mobile arc */}
           <div className="md:hidden relative" style={{ width: `${mobileArcRadius * 2 + mobileBlockSize + 24}px`, height: `${mobileArcRadius * 2 + mobileBlockSize + 24}px` }}>
-            <div data-bsa-logo className="absolute opacity-0 md:hidden" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%) scale(0.1)', transformOrigin: 'center' }}>
-              <svg viewBox="20 20 160 175" className="w-24 h-24" fill="none">
+            <div data-bsa-logo className="absolute opacity-0 md:hidden overflow-visible" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%) scale(0.1)', transformOrigin: 'center' }}>
+              <svg viewBox="0 0 200 215" className="w-24 h-24 overflow-visible" fill="none">
                 <path data-bsa-path d={BSA_LOGO_PATH} fill="#fafafa" fillRule="evenodd" />
               </svg>
             </div>
@@ -300,7 +300,7 @@ export default function BlockchainIntro() {
                     style={{
                       width: mobileBlockSize, height: mobileBlockSize,
                       left: cx + pos.x - half, top: cy + pos.y - half,
-                      borderRadius: 10, border: '1.5px solid #333', background: '#0d0d0d',
+                      borderRadius: 10, border: '1.5px solid #333', background: '#0f1c2e',
                       transformOrigin: 'center',
                     }}
                   >
@@ -316,8 +316,8 @@ export default function BlockchainIntro() {
                       <line
                         x1={cx + pos.x} y1={cy + pos.y}
                         x2={cx + nextPos.x} y2={cy + nextPos.y}
-                        stroke={color} strokeWidth="0.75" strokeOpacity="0.4"
-                        strokeDasharray="3 2"
+                        stroke={color} strokeWidth="1.5" strokeOpacity="0.7"
+                        strokeDasharray="5 3"
                       />
                     </svg>
                   )}
@@ -329,7 +329,7 @@ export default function BlockchainIntro() {
 
         {/* Scroll cue */}
         <div data-scroll-cue className="absolute bottom-10 flex flex-col items-center gap-2 opacity-0">
-          <span className="text-zinc-600 text-[10px] font-mono uppercase tracking-[0.3em]">scroll</span>
+          <span className="text-zinc-600 text-[10px] font-mono uppercase tracking-[0.3em]">scroll down</span>
           <div className="w-px h-6 bg-gradient-to-b from-zinc-600 to-transparent" />
         </div>
       </div>

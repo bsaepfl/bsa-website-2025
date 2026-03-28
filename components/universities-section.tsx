@@ -59,8 +59,8 @@ export default function UniversitiesSection() {
       {/* Full-width ticker */}
       <div className="overflow-hidden relative">
         {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-[#09090b] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-[#09090b] to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-[#152237] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-[#152237] to-transparent z-10 pointer-events-none" />
 
         <div ref={trackRef} className="flex gap-6 w-max will-change-transform">
           {tickerItems.map((uni, i) => (

@@ -28,7 +28,7 @@ export default function LabsSection() {
             Research
           </p>
           <h2 className="text-5xl md:text-7xl font-display text-zinc-50 max-w-lg leading-[1.0] title-shimmer">
-            Our members contributed to research in these labs
+            Labs our members have contributed to
           </h2>
         </div>
 

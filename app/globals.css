@@ -8,9 +8,9 @@ html {
 
 @layer base {
   :root {
-    --background: 0 0% 3.5%;
+    --background: 215 43% 15%;
     --foreground: 0 0% 98%;
-    --card: 0 0% 7%;
+    --card: 215 40% 12%;
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 7%;
     --popover-foreground: 0 0% 98%;
@@ -37,7 +37,11 @@ html {
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-sans);
-    background-color: #09090b;
+    background-color: #152237;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
   }
 
   h1, h2, h3 {

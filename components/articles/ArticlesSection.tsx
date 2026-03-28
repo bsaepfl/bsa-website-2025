@@ -86,7 +86,7 @@ export default function ArticlesSection() {
                 }
               </span>
 
-              <h3 className="text-zinc-300 group-hover:text-zinc-50 transition-colors duration-200 flex-1">
+              <h3 className="text-xl md:text-2xl font-display text-zinc-300 group-hover:text-zinc-50 transition-colors duration-200 flex-1">
                 {article.title}
               </h3>
 
