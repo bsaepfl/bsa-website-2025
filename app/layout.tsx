@@ -4,6 +4,7 @@ import { Instrument_Serif, Space_Grotesk, JetBrains_Mono } from "next/font/googl
 import "./globals.css"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
+import PageTransition from "@/components/page-transition"
 
 const instrumentSerif = Instrument_Serif({
   weight: ['400'],
@@ -41,7 +42,9 @@ export default function RootLayout({
       <body className={`${instrumentSerif.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased noise`}>
         <Navbar />
         <main className="pt-20 md:pt-24">
-          {children}
+          <PageTransition>
+            {children}
+          </PageTransition>
         </main>
         <Footer />
       </body>

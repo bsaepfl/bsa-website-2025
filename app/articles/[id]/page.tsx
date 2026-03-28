@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import Image from 'next/image'
+import Link from 'next/link'
 
 interface Article {
   title: string
@@ -30,178 +31,110 @@ export default function ArticlePage({ params }: ArticlePageProps) {
       try {
         const resolvedParams = await params
         const response = await fetch(`/api/articles/${resolvedParams.id}`)
-        
         if (!response.ok) {
-          if (response.status === 404) {
-            notFound()
-          }
+          if (response.status === 404) { notFound() }
           throw new Error('Failed to fetch article')
         }
-        
-        const articleData = await response.json()
-        setArticle(articleData)
+        setArticle(await response.json())
       } catch (err) {
         setError(err instanceof Error ? err.message : 'An error occurred')
       } finally {
         setLoading(false)
       }
     }
-
     fetchArticle()
   }, [params])
 
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="animate-pulse">
-          <div className="h-8 bg-gray-300 rounded mb-4"></div>
-          <div className="h-4 bg-gray-300 rounded mb-2"></div>
-          <div className="h-4 bg-gray-300 rounded mb-8"></div>
-          <div className="h-64 bg-gray-300 rounded"></div>
+      <div className="max-w-3xl mx-auto px-6 py-16">
+        <div className="space-y-4">
+          <div className="h-6 w-24 bg-zinc-800 rounded animate-pulse" />
+          <div className="h-10 w-3/4 bg-zinc-800 rounded animate-pulse" />
+          <div className="h-4 w-48 bg-zinc-800 rounded animate-pulse" />
+          <div className="h-64 bg-zinc-800 rounded-lg animate-pulse mt-8" />
         </div>
       </div>
     )
   }
 
-  if (error) {
+  if (error || !article) {
     return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-red-600 mb-4">Error</h1>
-          <p className="text-gray-600">{error}</p>
-        </div>
+      <div className="max-w-3xl mx-auto px-6 py-16 text-center">
+        <p className="text-zinc-400 mb-4">{error || 'Article not found'}</p>
+        <Link href="/articles" className="text-zinc-300 text-sm border border-zinc-700 rounded-full px-5 py-2 hover:text-zinc-50 hover:border-zinc-500 transition-all">
+          Back to articles
+        </Link>
       </div>
     )
-  }
-
-  if (!article) {
-    return notFound()
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
+    <div className="max-w-3xl mx-auto px-6 py-16 md:py-24">
       <article>
-        {/* Header Image */}
-        {article.thumbnail && (
-          <div className="relative w-full h-64 md:h-96 mb-8 rounded-lg overflow-hidden">
-            <Image
-              src={article.thumbnail}
-              alt={article.title}
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
-        )}
+        <Link href="/articles" className="text-zinc-500 text-sm hover:text-zinc-300 transition-colors mb-8 inline-block">
+          &larr; All articles
+        </Link>
 
-        {/* Article Header */}
-        <header className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">{article.title}</h1>
-          
-          <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-4">
+        <header className="mb-12">
+          <div className="flex items-center gap-4 text-xs font-mono text-zinc-500 mb-4">
             <time dateTime={article.date}>
-              {new Date(article.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-              })}
+              {new Date(article.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
             </time>
-            
             {article.authors.length > 0 && (
-              <div className="flex items-center gap-2">
-                <span>By</span>
-                <span className="font-medium">{article.authors.join(', ')}</span>
-              </div>
+              <span>{article.authors.join(', ')}</span>
             )}
           </div>
 
+          <h1 className="text-4xl md:text-6xl font-display text-zinc-50 leading-[1.05] mb-4">
+            {article.title}
+          </h1>
+
           {article.sponsor && (
-            <div className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+            <span className="text-xs font-mono text-zinc-500 border border-zinc-800 rounded-full px-3 py-1">
               Sponsored by {article.sponsor}
-            </div>
+            </span>
           )}
         </header>
 
-        {/* Article Content */}
-        <div className="prose prose-lg max-w-none">
+        {article.thumbnail && (
+          <div className="relative w-full h-64 md:h-96 mb-12 rounded-lg overflow-hidden">
+            <Image src={article.thumbnail} alt={article.title} fill className="object-cover" priority />
+          </div>
+        )}
+
+        <div className="prose prose-invert prose-lg max-w-none
+          prose-headings:font-display prose-headings:text-zinc-50
+          prose-p:text-zinc-400 prose-p:leading-relaxed
+          prose-a:text-zinc-300 prose-a:underline prose-a:underline-offset-4 hover:prose-a:text-zinc-50
+          prose-strong:text-zinc-200
+          prose-blockquote:border-zinc-700 prose-blockquote:text-zinc-400
+          prose-code:text-zinc-300 prose-code:bg-zinc-800/50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-mono
+          prose-pre:bg-zinc-900 prose-pre:border prose-pre:border-zinc-800 prose-pre:rounded-lg
+          prose-hr:border-zinc-800
+          prose-li:text-zinc-400
+        ">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
-              // Override paragraph component to prevent invalid nesting
               p: ({ children, ...props }) => {
-                // Convert children to array and check for block elements
                 const childArray = React.Children.toArray(children)
-                const hasBlockElements = childArray.some(child => {
-                  if (React.isValidElement(child)) {
-                    // Check if child is an image (which we render as div)
-                    if (child.type === 'img') return true
-                    // Check if child has block-level elements
-                    if (typeof child.type === 'string') {
-                      const blockElements = ['div', 'section', 'article', 'header', 'footer', 'nav', 'aside', 'main']
-                      return blockElements.includes(child.type)
-                    }
-                  }
-                  return false
-                })
-                
-                // If paragraph contains block elements, render as div instead
-                if (hasBlockElements) {
-                  return <div className="my-4" {...props}>{children}</div>
-                }
-                
+                const hasBlockElements = childArray.some(child =>
+                  React.isValidElement(child) && child.type === 'img'
+                )
+                if (hasBlockElements) return <div className="my-4" {...props}>{children}</div>
                 return <p {...props}>{children}</p>
               },
-              // Handle images without wrapping div to prevent nesting issues
-              img: ({ src, alt, ...props }) => {
+              img: ({ src, alt }) => {
                 if (!src) return null
-                
-                // Handle relative image paths
-                const imageSrc = src.startsWith('./') 
+                const imageSrc = src.startsWith('./')
                   ? `/articles/${article.id}/${src.replace('./', '')}`
-                  : src.startsWith('/') 
-                    ? src 
-                    : `/articles/${article.id}/${src}`
-                
+                  : src.startsWith('/') ? src : `/articles/${article.id}/${src}`
                 return (
-                  <Image
-                    src={imageSrc}
-                    alt={alt || ''}
-                    width={800}
-                    height={400}
-                    className="rounded-lg my-6 w-full h-auto"
-                    style={{ width: 'auto', height: 'auto' }}
-                  />
+                  <Image src={imageSrc} alt={alt || ''} width={800} height={400}
+                    className="rounded-lg my-6 w-full h-auto" style={{ width: 'auto', height: 'auto' }} />
                 )
               },
-              a: ({ href, children, ...props }) => {
-                if (!href) return <span>{children}</span>
-                
-                // Handle external links
-                if (href.startsWith('http')) {
-                  return (
-                    <a
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-600 hover:text-blue-800 underline"
-                      {...props}
-                    >
-                      {children}
-                    </a>
-                  )
-                }
-                
-                // Handle internal links
-                return (
-                  <a
-                    href={href}
-                    className="text-blue-600 hover:text-blue-800 underline"
-                    {...props}
-                  >
-                    {children}
-                  </a>
-                )
-              }
             }}
           >
             {article.content}

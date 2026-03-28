@@ -32,22 +32,6 @@ export default function EventsPage() {
             </div>
           </div>
 
-          {/* Past events */}
-          <div>
-            <h2 className="text-2xl md:text-3xl font-display text-zinc-50 mb-8">
-              Previous events
-            </h2>
-            <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 overflow-hidden">
-              <iframe
-                src="https://lu.ma/embed/calendar/cal-KuAvNkii7TFKkpK/events?lt=past"
-                className="w-full"
-                style={{ height: '600px', border: 'none' }}
-                allowFullScreen
-                aria-hidden="false"
-                tabIndex={0}
-              />
-            </div>
-          </div>
         </div>
       </section>
     </div>
