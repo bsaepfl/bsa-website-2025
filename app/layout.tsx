@@ -1,26 +1,29 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Roboto, Inter } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
+import { Instrument_Serif, Space_Grotesk, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 
-const roboto = Roboto({
-  weight: ['300', '700'],
+const instrumentSerif = Instrument_Serif({
+  weight: ['400'],
+  subsets: ["latin"],
+  variable: "--font-display",
+})
+
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-sans",
 })
 
-const inter = Inter({
-  weight: ['700'],
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-serif",
+  variable: "--font-mono",
 })
 
 export const metadata: Metadata = {
   title: "BSA - EPFL",
-  description: "The official website of the Blockchain Student Association at EPFL",
+  description: "Blockchain Student Association at EPFL. Conferences, hackathons, research, and a DAO-governed community.",
   icons: {
     icon: [
       { url: '/favicon.ico', type: 'image/x-icon' },
@@ -34,17 +37,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="dark">
-      <body className={`${roboto.variable} ${inter.variable} font-sans antialiased transition-colors duration-300`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          <Navbar />
-          <main className="pt-16 md:pt-20">
-            {children}
-          </main>
-          <Footer />
-        </ThemeProvider>
+    <html lang="en" className="dark">
+      <body className={`${instrumentSerif.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
+        <Navbar />
+        <main className="pt-20 md:pt-24">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   )
 }
-
