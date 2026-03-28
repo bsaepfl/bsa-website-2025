@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import Link from "next/link"
 
 export default function ArticlesClient() {
@@ -8,6 +8,19 @@ export default function ArticlesClient() {
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("all")
+  const sfxRef = useRef<HTMLAudioElement | null>(null)
+
+  useEffect(() => {
+    sfxRef.current = new Audio('/sfx/victory.wav')
+    sfxRef.current.volume = 0.6
+  }, [])
+
+  useEffect(() => {
+    if (searchTerm.toLowerCase().trim() === 'ai team' && sfxRef.current) {
+      sfxRef.current.currentTime = 0
+      sfxRef.current.play().catch(() => {})
+    }
+  }, [searchTerm])
 
   useEffect(() => {
     const fetchArticles = async () => {
