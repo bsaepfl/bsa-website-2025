@@ -7,7 +7,7 @@ const pastEvents = [
     type: "Hackathon",
     description: "36-hour coding competition focused on stablecoins, digital money, and payment infrastructure.",
     stats: "$16k+ prizes / 160 participants / 55 projects submitted",
-    sponsors: "AlphaTON Capital, XRPL Commons, ENS, Hyli",
+    sponsors: "AlphaTON Capital, XRPL Commons, ENS, Ledger",
   },
   {
     date: "March 2026",
@@ -104,7 +104,7 @@ export default function EventsClient() {
             <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
               History
             </p>
-            <h2 className="text-4xl md:text-6xl font-display text-zinc-50 mb-24 title-shimmer">
+            <h2 className="text-4xl md:text-6xl font-display text-zinc-50 mb-36 title-shimmer">
               Previous events
             </h2>
 
