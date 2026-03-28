@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 const navLinks = [
   { href: "/about", label: "About" },
@@ -15,6 +16,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [introActive, setIntroActive] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,15 +62,20 @@ export default function Navbar() {
 
           {/* Desktop links */}
           <div className={`hidden md:flex items-center gap-6 transition-opacity duration-300 ${navHidden ? 'pointer-events-none' : ''}`}>
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-zinc-400 text-sm hover:text-zinc-50 transition-colors duration-200"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href || pathname.startsWith(link.href + '/')
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`text-sm transition-colors duration-200 ${
+                    isActive ? 'text-zinc-50' : 'text-zinc-400 hover:text-zinc-50'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              )
+            })}
             <Link
               href="/contact"
               className="text-zinc-950 bg-zinc-50 text-sm font-medium rounded-full px-4 py-1.5 hover:bg-zinc-300 active:scale-[0.98] transition-all duration-200"
@@ -109,21 +116,25 @@ export default function Navbar() {
         </button>
 
         <div className="flex flex-col items-center gap-8">
-          {navLinks.map((link, i) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setIsMenuOpen(false)}
-              className={`
-                text-3xl font-display text-zinc-300 hover:text-zinc-50
-                transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]
-                ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
-              `}
-              style={{ transitionDelay: isMenuOpen ? `${(i + 1) * 80}ms` : '0ms' }}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link, i) => {
+            const isActive = pathname === link.href || pathname.startsWith(link.href + '/')
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsMenuOpen(false)}
+                className={`
+                  text-3xl font-display hover:text-zinc-50
+                  transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]
+                  ${isActive ? 'text-zinc-50' : 'text-zinc-400'}
+                  ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
+                `}
+                style={{ transitionDelay: isMenuOpen ? `${(i + 1) * 80}ms` : '0ms' }}
+              >
+                {link.label}
+              </Link>
+            )
+          })}
 
           <Link
             href="/contact"

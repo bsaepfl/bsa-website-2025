@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { startups } from "@/data/startups"
+import TiltCard from "@/components/tilt-card"
 
 export default function StartupsClient() {
   return (
@@ -20,12 +21,12 @@ export default function StartupsClient() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {startups.map((startup) => (
-              <a
+              <TiltCard
                 key={startup.title}
                 href={startup.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group rounded-lg border border-zinc-800 bg-zinc-900/50 overflow-hidden hover:border-zinc-700 transition-all duration-200"
+                className="group rounded-lg border border-zinc-800 bg-zinc-900/50 overflow-hidden hover:border-zinc-700"
               >
                 <div className="h-40 bg-zinc-950 flex items-center justify-center p-6">
                   <Image
@@ -43,7 +44,7 @@ export default function StartupsClient() {
                     Visit site &rarr;
                   </span>
                 </div>
-              </a>
+              </TiltCard>
             ))}
           </div>
         </div>
