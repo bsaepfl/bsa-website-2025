@@ -26,10 +26,10 @@ export default function AboutSection() {
             <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
               About BSA
             </p>
-            <h2 className="text-3xl md:text-4xl font-display text-zinc-50 leading-[1.1] mb-6">
+            <h2 className="text-3xl md:text-5xl font-display text-zinc-50 leading-[1.1] mb-6">
               A student-led DAO for blockchain at EPFL
             </h2>
-            <p className="text-zinc-400 leading-relaxed mb-8">
+            <p className="text-zinc-400 text-lg leading-relaxed mb-8">
               Founded in 2018 and officially recognized by EPFL in 2021, we are one of the few student associations
               globally structured as a Decentralized Autonomous Organization. Every member can vote on the
               association's direction.
@@ -48,15 +48,15 @@ export default function AboutSection() {
               {activities.map((activity, i) => (
                 <div
                   key={activity.label}
-                  className={`py-6 ${i !== activities.length - 1 ? 'border-b border-zinc-800' : ''}`}
+                  className={`py-8 ${i !== activities.length - 1 ? 'border-b border-zinc-800' : ''}`}
                 >
-                  <div className="flex items-start gap-4">
-                    <span className="text-xs font-mono text-zinc-600 tabular-nums mt-1.5 shrink-0 w-6">
+                  <div className="flex items-start gap-5">
+                    <span className="text-sm font-mono text-zinc-600 tabular-nums mt-2 shrink-0 w-7">
                       {String(i + 1).padStart(2, '0')}
                     </span>
                     <div>
-                      <h3 className="text-zinc-50 font-medium mb-2">{activity.label}</h3>
-                      <p className="text-zinc-400 text-sm leading-relaxed">{activity.description}</p>
+                      <h3 className="text-xl md:text-2xl font-display text-zinc-50 mb-3">{activity.label}</h3>
+                      <p className="text-zinc-400 leading-relaxed">{activity.description}</p>
                     </div>
                   </div>
                 </div>
