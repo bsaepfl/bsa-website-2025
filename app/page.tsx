@@ -6,6 +6,7 @@ import AboutSection from "@/components/about-section"
 import LabsSection from "@/components/labs-section"
 import EventsSection from "@/components/events/EventsSection"
 import StartupsSection from "@/components/startups/StartupsSection"
+import UniversitiesSection from "@/components/universities-section"
 import ArticlesSection from "@/components/articles/ArticlesSection"
 import { useEffect } from "react"
 
@@ -36,6 +37,7 @@ export default function Home() {
       <LabsSection />
       <EventsSection />
       <StartupsSection />
+      <UniversitiesSection />
       <ArticlesSection />
     </main>
   )
