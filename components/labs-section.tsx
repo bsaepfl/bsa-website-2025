@@ -40,7 +40,7 @@ export default function LabsSection() {
               target="_blank"
               rel="noopener noreferrer"
               data-reveal-child
-              className="group rounded-lg border border-zinc-800 bg-zinc-900/50 p-8 md:p-10 flex flex-col justify-between min-h-[180px] hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200"
+              className="group rounded-lg border border-zinc-800 bg-zinc-900/50 p-8 md:p-10 flex flex-col justify-between min-h-[180px] hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200 opacity-0"
             >
               <div>
                 {lab.logo ? (

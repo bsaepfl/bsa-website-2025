@@ -10,11 +10,12 @@ export function useScrollReveal() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const el = entry.target as HTMLElement
-
-            // Check if this element has stagger children
             const children = el.querySelectorAll('[data-reveal-child]')
 
             if (children.length > 0) {
+              // Make container visible immediately, animate children
+              el.style.opacity = '1'
+              el.style.transform = 'none'
               animate(children, {
                 opacity: [0, 1],
                 translateY: [20, 0],
@@ -35,7 +36,7 @@ export function useScrollReveal() {
           }
         })
       },
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.05, rootMargin: '0px 0px -20px 0px' }
     )
 
     const reveals = document.querySelectorAll('[data-reveal]')

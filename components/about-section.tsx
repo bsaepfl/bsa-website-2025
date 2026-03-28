@@ -49,7 +49,7 @@ export default function AboutSection() {
                 <div
                   key={activity.label}
                   data-reveal-child
-                  className={`py-8 ${i !== activities.length - 1 ? 'border-b border-zinc-800' : ''}`}
+                  className={`py-8 opacity-0 ${i !== activities.length - 1 ? 'border-b border-zinc-800' : ''}`}
                 >
                   <div className="flex items-start gap-5">
                     <span className="text-sm font-mono text-zinc-600 tabular-nums mt-2 shrink-0 w-7">

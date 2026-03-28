@@ -52,7 +52,7 @@ export default function UniversitiesSection() {
               target="_blank"
               rel="noopener noreferrer"
               data-reveal-child
-              className="group rounded-lg border border-zinc-800 bg-zinc-900/50 p-6 flex items-center justify-center min-h-[120px] hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200"
+              className="group rounded-lg border border-zinc-800 bg-zinc-900/50 p-6 flex items-center justify-center min-h-[120px] hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200 opacity-0"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img

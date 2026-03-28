@@ -73,7 +73,7 @@ export default function ArticlesSection() {
               key={article.id || i}
               href={`/articles/${article.id || i + 1}`}
               data-reveal-child
-              className={`group flex flex-col md:flex-row md:items-center gap-4 py-6 ${
+              className={`group flex flex-col md:flex-row md:items-center gap-4 py-6 opacity-0 ${
                 i !== displayed.length - 1 ? 'border-b border-zinc-800' : ''
               } hover:pl-2 transition-all duration-200`}
             >
