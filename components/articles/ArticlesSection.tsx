@@ -50,7 +50,7 @@ export default function ArticlesSection() {
   return (
     <section id="articles" className="py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6">
-        <div data-reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12 opacity-0">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
           <div>
             <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
               Articles
