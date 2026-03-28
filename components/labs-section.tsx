@@ -1,19 +1,19 @@
 const labs = [
   {
     acronym: "DEDIS",
-    name: "Decentralized and Distributed Systems",
+    fullName: "Laboratory for Decentralized and Distributed Systems",
     href: "https://dedis.epfl.ch",
     logo: null,
   },
   {
     acronym: "DCL",
-    name: "Distributed Computing Lab",
+    fullName: "Distributed Computing Laboratory",
     href: "https://dcl.epfl.ch",
     logo: null,
   },
   {
     acronym: "COMPSEC",
-    name: "Computation Security",
+    fullName: "Laboratory for Computation Security",
     href: "https://compsec.epfl.ch",
     logo: "/labs/compsec.svg",
   },
@@ -57,7 +57,7 @@ export default function LabsSection() {
                   </h3>
                 )}
                 <p className="text-sm text-zinc-500 leading-relaxed">
-                  {lab.name}
+                  {lab.fullName}
                 </p>
               </div>
               <p className="text-xs text-zinc-700 font-mono mt-6 group-hover:text-zinc-500 transition-colors duration-200">
