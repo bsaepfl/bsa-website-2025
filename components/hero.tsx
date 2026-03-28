@@ -19,23 +19,50 @@ export default function Hero() {
   const hasAnimated = useRef(false)
   const statsAnimated = useRef(false)
 
-  // Parallax mouse tracking on logo
+  // Parallax: mouse on desktop, gyroscope on mobile
   useEffect(() => {
     const wrap = logoWrapRef.current
     if (!wrap) return
+    const maxMove = 12
 
+    // Desktop: mouse tracking
     const handleMove = (e: MouseEvent) => {
       const rect = wrap.getBoundingClientRect()
-      const cx = rect.left + rect.width / 2
-      const cy = rect.top + rect.height / 2
-      const dx = (e.clientX - cx) / rect.width
-      const dy = (e.clientY - cy) / rect.height
-      const maxMove = 12
+      const dx = (e.clientX - rect.left - rect.width / 2) / rect.width
+      const dy = (e.clientY - rect.top - rect.height / 2) / rect.height
       wrap.style.transform = `translate(${dx * maxMove}px, ${dy * maxMove}px)`
     }
 
+    // Mobile: device orientation (gyroscope)
+    const handleOrientation = (e: DeviceOrientationEvent) => {
+      const x = (e.gamma || 0) / 45 // left-right tilt, normalized
+      const y = (e.beta || 0) / 45  // front-back tilt, normalized
+      wrap.style.transform = `translate(${x * maxMove}px, ${(y - 0.5) * maxMove}px)`
+    }
+
     window.addEventListener('mousemove', handleMove, { passive: true })
-    return () => window.removeEventListener('mousemove', handleMove)
+
+    // Request permission on iOS 13+
+    const doe = DeviceOrientationEvent as any
+    if (typeof doe.requestPermission === 'function') {
+      // Permission will be requested on first user tap
+      const requestOnTap = () => {
+        doe.requestPermission().then((state: string) => {
+          if (state === 'granted') {
+            window.addEventListener('deviceorientation', handleOrientation, { passive: true })
+          }
+        }).catch(() => {})
+        window.removeEventListener('touchstart', requestOnTap)
+      }
+      window.addEventListener('touchstart', requestOnTap, { once: true })
+    } else {
+      window.addEventListener('deviceorientation', handleOrientation, { passive: true })
+    }
+
+    return () => {
+      window.removeEventListener('mousemove', handleMove)
+      window.removeEventListener('deviceorientation', handleOrientation)
+    }
   }, [])
 
   // Entrance animation
