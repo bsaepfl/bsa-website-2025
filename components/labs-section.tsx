@@ -12,9 +12,9 @@ const labs = [
     logo: null,
   },
   {
-    acronym: "SPRING",
-    name: "Security and Privacy Engineering",
-    href: "https://spring.epfl.ch",
+    acronym: "COMPSEC",
+    name: "Computation Security",
+    href: "https://compsec.epfl.ch",
     logo: "/labs/compsec.svg",
   },
 ]
@@ -48,11 +48,11 @@ export default function LabsSection() {
                     <img
                       src={lab.logo}
                       alt={lab.acronym}
-                      className="h-10 w-auto object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-200"
+                      className="h-14 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-200 brightness-110"
                     />
                   </div>
                 ) : (
-                  <h3 className="text-2xl md:text-3xl font-mono font-light text-zinc-300 group-hover:text-zinc-50 tracking-tight mb-3 transition-colors duration-200">
+                  <h3 className="text-3xl md:text-4xl font-mono font-light text-zinc-200 group-hover:text-zinc-50 tracking-tight mb-3 transition-colors duration-200">
                     {lab.acronym}
                   </h3>
                 )}

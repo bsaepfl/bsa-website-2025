@@ -1,5 +1,3 @@
-import Image from "next/image"
-
 const universities = [
   {
     name: "EPFL",
@@ -17,7 +15,7 @@ const universities = [
     name: "HEC Lausanne",
     fullName: "Faculty of Business and Economics, UNIL",
     href: "https://hec.unil.ch",
-    logo: "/universities/hec-lausanne.svg",
+    logo: "/universities/hec-lausanne.png",
   },
   {
     name: "HEIG-VD",
@@ -53,13 +51,13 @@ export default function UniversitiesSection() {
               href={uni.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group rounded-lg border border-zinc-800 bg-zinc-900/50 p-6 flex items-center justify-center min-h-[100px] hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200"
+              className="group rounded-lg border border-zinc-800 bg-zinc-900/50 p-6 flex items-center justify-center min-h-[120px] hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={uni.logo}
                 alt={uni.fullName}
-                className="h-8 md:h-10 w-auto object-contain opacity-50 group-hover:opacity-90 transition-opacity duration-200"
+                className="h-12 md:h-14 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-200 brightness-110"
               />
             </a>
           ))}
