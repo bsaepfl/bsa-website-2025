@@ -35,7 +35,7 @@ export default function UniversitiesSection() {
   return (
     <section className="py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="mb-12">
+        <div data-reveal className="mb-12 opacity-0">
           <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
             Community
           </p>
@@ -44,13 +44,14 @@ export default function UniversitiesSection() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div data-reveal className="grid grid-cols-2 md:grid-cols-5 gap-4 opacity-0">
           {universities.map((uni) => (
             <a
               key={uni.name}
               href={uni.href}
               target="_blank"
               rel="noopener noreferrer"
+              data-reveal-child
               className="group rounded-lg border border-zinc-800 bg-zinc-900/50 p-6 flex items-center justify-center min-h-[120px] hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}

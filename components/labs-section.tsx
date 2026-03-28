@@ -23,7 +23,7 @@ export default function LabsSection() {
   return (
     <section className="py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="mb-12">
+        <div data-reveal className="mb-12 opacity-0">
           <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
             Research
           </p>
@@ -32,13 +32,14 @@ export default function LabsSection() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div data-reveal className="grid grid-cols-1 md:grid-cols-3 gap-4 opacity-0">
           {labs.map((lab) => (
             <a
               key={lab.acronym}
               href={lab.href}
               target="_blank"
               rel="noopener noreferrer"
+              data-reveal-child
               className="group rounded-lg border border-zinc-800 bg-zinc-900/50 p-8 md:p-10 flex flex-col justify-between min-h-[180px] hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200"
             >
               <div>

@@ -50,7 +50,7 @@ export default function ArticlesSection() {
   return (
     <section id="articles" className="py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
+        <div data-reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12 opacity-0">
           <div>
             <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
               Articles
@@ -67,11 +67,12 @@ export default function ArticlesSection() {
           </Link>
         </div>
 
-        <div className="space-y-0">
+        <div data-reveal className="space-y-0 opacity-0">
           {displayed.map((article, i) => (
             <Link
               key={article.id || i}
               href={`/articles/${article.id || i + 1}`}
+              data-reveal-child
               className={`group flex flex-col md:flex-row md:items-center gap-4 py-6 ${
                 i !== displayed.length - 1 ? 'border-b border-zinc-800' : ''
               } hover:pl-2 transition-all duration-200`}

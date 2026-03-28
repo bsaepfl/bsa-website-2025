@@ -5,7 +5,7 @@ import { HACKATHON_URL } from "@/lib/constants"
 export default function ConferenceHackathonBanner() {
   return (
     <section className="py-6 md:py-10">
-      <div className="max-w-6xl mx-auto px-6">
+      <div data-reveal className="max-w-6xl mx-auto px-6 opacity-0">
         <a
           href={HACKATHON_URL}
           target="_blank"

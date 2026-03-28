@@ -9,7 +9,7 @@ export default function EventsSection() {
   return (
     <section id="events" className="py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
+        <div data-reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12 opacity-0">
           <div>
             <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
               Events
@@ -26,7 +26,7 @@ export default function EventsSection() {
           </Link>
         </div>
 
-        <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 overflow-hidden">
+        <div data-reveal className="rounded-lg border border-zinc-800 bg-zinc-900/50 overflow-hidden opacity-0">
           <iframe
             ref={iframeRef}
             src="https://lu.ma/embed/calendar/cal-KuAvNkii7TFKkpK/events"

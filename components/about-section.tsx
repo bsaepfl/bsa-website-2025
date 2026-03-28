@@ -22,7 +22,7 @@ export default function AboutSection() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16">
 
           {/* Left column */}
-          <div className="md:col-span-5">
+          <div data-reveal className="md:col-span-5 opacity-0">
             <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
               About BSA
             </p>
@@ -43,11 +43,12 @@ export default function AboutSection() {
           </div>
 
           {/* Right column - activities */}
-          <div className="md:col-span-7 md:col-start-6">
+          <div data-reveal className="md:col-span-7 md:col-start-6 opacity-0">
             <div className="space-y-0">
               {activities.map((activity, i) => (
                 <div
                   key={activity.label}
+                  data-reveal-child
                   className={`py-8 ${i !== activities.length - 1 ? 'border-b border-zinc-800' : ''}`}
                 >
                   <div className="flex items-start gap-5">

@@ -6,7 +6,7 @@ export default function StartupsSection() {
   return (
     <section id="startups" className="py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
+        <div data-reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12 opacity-0">
           <div>
             <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
               Startups
@@ -23,13 +23,14 @@ export default function StartupsSection() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div data-reveal className="grid grid-cols-2 md:grid-cols-4 gap-4 opacity-0">
           {startups.map((startup, i) => (
             <a
               key={i}
               href={startup.link}
               target="_blank"
               rel="noopener noreferrer"
+              data-reveal-child
               className="group rounded-lg border border-zinc-800 bg-zinc-900/50 p-6 flex items-center justify-center h-28 md:h-32 hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200"
             >
               <Image
