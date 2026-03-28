@@ -80,16 +80,16 @@ export default function BlockchainIntro() {
     const update = () => {
       const p = getProgress()
 
-      if (p >= 0.7) {
+      if (p >= 0.85) {
         document.documentElement.classList.remove('intro-active')
       } else {
         document.documentElement.classList.add('intro-active')
       }
 
-      // Phases (tight)
-      const blockPhase = Math.min(1, p / 0.45)
-      const logoPhase = Math.max(0, Math.min(1, (p - 0.48) / 0.12))
-      const fadePhase = Math.max(0, Math.min(1, (p - 0.65) / 0.15))
+      // Phases: animation fills 0-75%, fade is 80-95%, minimal dead space
+      const blockPhase = Math.min(1, p / 0.55)
+      const logoPhase = Math.max(0, Math.min(1, (p - 0.58) / 0.17))
+      const fadePhase = Math.max(0, Math.min(1, (p - 0.8) / 0.12))
 
       // Blocks
       document.querySelectorAll<HTMLElement>('[data-block-i]').forEach((el) => {
@@ -202,7 +202,7 @@ export default function BlockchainIntro() {
     <section
       ref={sectionRef}
       className="relative -mt-20 md:-mt-24"
-      style={{ height: '200vh' }}
+      style={{ height: '260vh' }}
     >
       <div
         data-intro-sticky
