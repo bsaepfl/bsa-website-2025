@@ -4,7 +4,7 @@ date: 2025-06-01
 authors: ["Loris Tran", "Alexandre Mourot"]
 sponsor: "EPFL Distributed Computing Lab"
 sponsorLabel: "Made for the"
-image: "https://images.ctfassets.net/23fkqdsgbpuj/2wdw5vFopWXS3hUeE3XG2I/f5060ea3be41b2c209cf5e2be32de020/Sui_Logo_Ocean.svg"
+image: "https://unchainedcrypto.com/wp-content/uploads/2023/05/image001.png"
 categories: ["Sui", "DCL"]
 ---
 
