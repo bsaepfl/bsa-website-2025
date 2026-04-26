@@ -1,39 +1,41 @@
 "use client"
 
+import RoleFAQ from "@/components/about/RoleFAQ"
+
 export default function AboutClient() {
   return (
     <div className="min-h-screen">
-      <section className="py-16 md:py-24">
+      <section className="py-section">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
+          <p className="text-eyebrow font-mono text-zinc-500 uppercase mb-sm">
             About
           </p>
-          <h1 className="text-5xl md:text-8xl font-display text-zinc-50 leading-[0.9] mb-12 title-shimmer">
+          <h1 className="text-hero font-display text-zinc-50 mb-xl title-shimmer">
             About the BSA
           </h1>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <div className="space-y-6">
-              <p className="text-zinc-400 text-lg leading-relaxed">
+          <div className="grid lg:grid-cols-2 gap-2xl items-start">
+            <div className="space-y-md">
+              <p className="text-zinc-400 text-lead">
                 The Blockchain Student Association at EPFL is dedicated to fostering
                 blockchain education, innovation, and community among students passionate
                 about decentralized technologies.
               </p>
-              <p className="text-zinc-400 text-lg leading-relaxed">
+              <p className="text-zinc-400 text-lead">
                 We believe in the transformative potential of blockchain technology to
                 reshape industries, create new economic models, and build a more
                 transparent and equitable digital future.
               </p>
-              <p className="text-zinc-400 text-lg leading-relaxed">
+              <p className="text-zinc-400 text-lead">
                 Through workshops, hackathons, networking events, and collaborative
                 projects, we provide students with the knowledge, skills, and
                 connections needed to become leaders in the blockchain space.
               </p>
             </div>
 
-            <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-8">
-              <h3 className="text-xl font-medium text-zinc-50 mb-6">What we do</h3>
-              <div className="space-y-4">
+            <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-lg">
+              <h3 className="text-display-3 font-display text-zinc-50 mb-md">What we do</h3>
+              <div className="space-y-sm">
                 {[
                   "Educational workshops and seminars",
                   "Blockchain hackathons and competitions",
@@ -41,8 +43,8 @@ export default function AboutClient() {
                   "Research collaboration opportunities",
                   "Startup incubation support"
                 ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <span className="text-xs font-mono text-zinc-600 tabular-nums mt-1 shrink-0 w-5">
+                  <div key={i} className="flex items-start gap-xs">
+                    <span className="text-eyebrow font-mono text-zinc-600 tabular-nums mt-1 shrink-0 w-5">
                       {String(i + 1).padStart(2, '0')}
                     </span>
                     <span className="text-zinc-300">{item}</span>
@@ -51,6 +53,12 @@ export default function AboutClient() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="pb-section">
+        <div className="max-w-6xl mx-auto px-6">
+          <RoleFAQ />
         </div>
       </section>
     </div>

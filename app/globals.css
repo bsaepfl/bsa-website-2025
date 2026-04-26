@@ -28,6 +28,35 @@ html {
     --input: 0 0% 14.9%;
     --ring: 0 0% 83%;
     --radius: 0.5rem;
+
+    /* Spacing scale — 4pt base, semantic names. Expose via tailwind.config.ts. */
+    --space-3xs: 0.25rem;  /* 4  */
+    --space-2xs: 0.5rem;   /* 8  */
+    --space-xs:  0.75rem;  /* 12 */
+    --space-sm:  1rem;     /* 16 */
+    --space-md:  1.5rem;   /* 24 */
+    --space-lg:  2rem;     /* 32 */
+    --space-xl:  3rem;     /* 48 */
+    --space-2xl: 4rem;     /* 64 */
+    --space-3xl: 6rem;     /* 96 */
+    --space-4xl: 8rem;     /* 128 */
+
+    /* Vertical rhythm — fluid, for page-level sections */
+    --rhythm-page-top:   clamp(2rem, 5vw, 4rem);
+    --rhythm-section:    clamp(4rem, 8vw, 6rem);
+    --rhythm-subsection: clamp(2.5rem, 5vw, 4rem);
+    --rhythm-tight:      clamp(1.25rem, 2.5vw, 2rem);
+
+    /* Type scale — fluid for display, fixed for UI */
+    --text-hero:       clamp(3.25rem, 9vw, 7rem);
+    --text-display-1:  clamp(2.5rem, 6vw, 4.75rem);
+    --text-display-2:  clamp(1.875rem, 4vw, 3rem);
+    --text-display-3:  clamp(1.5rem, 2.5vw, 2rem);
+    --text-lead:       1.125rem;
+    --text-body:       1rem;
+    --text-small:      0.875rem;
+    --text-eyebrow:    0.75rem;
+    --text-micro:      0.6875rem;
   }
 
   * {
@@ -118,6 +147,16 @@ html {
 
   .title-shimmer:hover {
     background-position: -50% 0;
+  }
+
+  /* Role-gated FAQ reveal (used on /about) */
+  @keyframes faq-in {
+    from { opacity: 0; transform: translateY(1rem); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes faq-item-in {
+    from { opacity: 0; transform: translateY(0.5rem); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   /* Subtle noise overlay */

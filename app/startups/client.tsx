@@ -7,19 +7,19 @@ import TiltCard from "@/components/tilt-card"
 export default function StartupsClient() {
   return (
     <div className="min-h-screen">
-      <section className="py-16 md:py-24">
+      <section className="py-section">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
+          <p className="text-eyebrow font-mono text-zinc-500 uppercase mb-sm">
             Startups
           </p>
-          <h1 className="text-5xl md:text-8xl font-display text-zinc-50 leading-[0.9] mb-6 title-shimmer">
+          <h1 className="text-hero font-display text-zinc-50 mb-md title-shimmer">
             Built by our members
           </h1>
-          <p className="text-zinc-400 text-lg mb-16 max-w-xl">
+          <p className="text-zinc-400 text-lead mb-2xl max-w-xl">
             Innovative startups created and shaped by BSA members, pushing the boundaries of blockchain technology.
           </p>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-md">
             {startups.map((startup) => (
               <TiltCard
                 key={startup.title}
@@ -28,7 +28,7 @@ export default function StartupsClient() {
                 rel="noopener noreferrer"
                 className="group rounded-lg border border-zinc-800 bg-zinc-900/50 overflow-hidden hover:border-zinc-700"
               >
-                <div className="h-40 bg-zinc-950 flex items-center justify-center p-6">
+                <div className="h-40 bg-zinc-950 flex items-center justify-center p-md">
                   <Image
                     src={startup.img}
                     alt={startup.title}
@@ -37,10 +37,10 @@ export default function StartupsClient() {
                     className="object-contain max-h-16 opacity-60 group-hover:opacity-100 transition-opacity duration-200"
                   />
                 </div>
-                <div className="p-5">
-                  <h3 className="text-xl md:text-2xl font-display text-zinc-50 mb-2">{startup.title}</h3>
+                <div className="p-sm">
+                  <h3 className="text-display-3 font-display text-zinc-50 mb-2xs">{startup.title}</h3>
                   <p className="text-zinc-500 text-sm leading-relaxed line-clamp-2">{startup.description}</p>
-                  <span className="inline-block text-zinc-600 text-xs mt-3 group-hover:text-zinc-400 transition-colors">
+                  <span className="inline-block text-zinc-600 text-eyebrow mt-xs group-hover:text-zinc-400 transition-colors">
                     Visit site &rarr;
                   </span>
                 </div>

@@ -35,7 +35,7 @@ export default function ArticlesSection() {
 
   if (loading) {
     return (
-      <section className="py-24 md:py-32">
+      <section className="py-section">
         <div className="max-w-6xl mx-auto px-6">
           <div className="h-48 flex items-center justify-center">
             <p className="text-zinc-500 text-sm font-mono">Loading articles...</p>
@@ -48,17 +48,17 @@ export default function ArticlesSection() {
   if (displayed.length === 0) return null
 
   return (
-    <section id="articles" className="py-24 md:py-32">
+    <section id="articles" className="py-section">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-sm mb-xl">
           <div>
-            <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
+            <p className="text-eyebrow font-mono text-zinc-500 uppercase mb-sm">
               Articles
             </p>
-            <h2 className="text-5xl md:text-7xl font-display text-zinc-50 title-shimmer">
+            <h2 className="text-display-1 font-display text-zinc-50 title-shimmer">
               Read our latest research
             </h2>
-            <p className="text-zinc-400 mt-3 max-w-lg">
+            <p className="text-zinc-400 mt-xs max-w-lg">
               Blockchain technology, DeFi, privacy, and more from BSA members.
             </p>
           </div>
@@ -75,11 +75,11 @@ export default function ArticlesSection() {
             <Link
               key={article.id || i}
               href={`/articles/${article.id || i + 1}`}
-              className={`group flex flex-col md:flex-row md:items-center gap-4 py-6 ${
+              className={`group flex flex-col md:flex-row md:items-center gap-sm py-md ${
                 i !== displayed.length - 1 ? 'border-b border-zinc-800' : ''
               } hover:pl-2 transition-all duration-200`}
             >
-              <span className="text-xs font-mono text-zinc-600 tabular-nums shrink-0 w-16">
+              <span className="text-eyebrow font-mono text-zinc-600 tabular-nums shrink-0 w-16">
                 {article.pubDate
                   ? new Date(article.pubDate).toLocaleDateString('en-US', {
                       month: 'short',
@@ -89,16 +89,16 @@ export default function ArticlesSection() {
                 }
               </span>
 
-              <h3 className="text-xl md:text-2xl font-display text-zinc-300 group-hover:text-zinc-50 transition-colors duration-200 flex-1">
+              <h3 className="text-display-3 font-display text-zinc-300 group-hover:text-zinc-50 transition-colors duration-200 flex-1">
                 {article.title}
               </h3>
 
               {article.categories && article.categories.length > 0 && (
-                <div className="flex gap-2 shrink-0">
+                <div className="flex gap-2xs shrink-0">
                   {article.categories.slice(0, 2).map((cat, ci) => (
                     <span
                       key={ci}
-                      className="text-xs font-mono text-zinc-600 border border-zinc-800 rounded px-2 py-0.5"
+                      className="text-micro font-mono text-zinc-600 border border-zinc-800 rounded px-2xs py-0.5"
                     >
                       {cat}
                     </span>

@@ -17,26 +17,25 @@ const activities = [
 
 export default function AboutSection() {
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-section">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-2xl">
 
           {/* Left column */}
           <div data-reveal className="md:col-span-5 opacity-0">
-            <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
+            <p className="text-eyebrow font-mono text-zinc-500 uppercase mb-sm">
               About BSA
             </p>
-            <h2 className="text-5xl md:text-7xl font-display text-zinc-50 leading-[1.0] mb-6 title-shimmer">
-              A student-led DAO for blockchain at EPFL
+            <h2 className="text-display-1 font-display text-zinc-50 mb-md title-shimmer">
+              A student-run community for blockchain at EPFL
             </h2>
-            <p className="text-zinc-400 text-lg leading-relaxed mb-8">
-              Founded in 2018 and officially recognized by EPFL in 2021, we are one of the few student associations
-              globally structured as a Decentralized Autonomous Organization. Every member can vote on the
-              association's direction.
+            <p className="text-zinc-400 text-lead mb-lg">
+              Founded in 2018 and officially recognized by EPFL in 2021. Every member
+              can vote on the association's direction.
             </p>
             <Link
               href="/about"
-              className="text-zinc-300 text-sm border border-zinc-700 rounded-full px-5 py-2 hover:text-zinc-50 hover:border-zinc-500 active:scale-[0.98] transition-all duration-200 inline-block"
+              className="text-zinc-300 text-sm border border-zinc-700 rounded-full px-sm py-2xs hover:text-zinc-50 hover:border-zinc-500 active:scale-[0.98] transition-all duration-200 inline-block"
             >
               Read more about us
             </Link>
@@ -49,14 +48,14 @@ export default function AboutSection() {
                 <div
                   key={activity.label}
                   data-reveal-child
-                  className={`py-8 opacity-0 ${i !== activities.length - 1 ? 'border-b border-zinc-800' : ''}`}
+                  className={`py-lg opacity-0 ${i !== activities.length - 1 ? 'border-b border-zinc-800' : ''}`}
                 >
-                  <div className="flex items-start gap-5">
+                  <div className="flex items-start gap-sm">
                     <span className="text-sm font-mono text-zinc-600 tabular-nums mt-2 shrink-0 w-7">
                       {String(i + 1).padStart(2, '0')}
                     </span>
                     <div>
-                      <h3 className="text-3xl md:text-4xl font-display text-zinc-50 mb-3">{activity.label}</h3>
+                      <h3 className="text-display-2 font-display text-zinc-50 mb-xs">{activity.label}</h3>
                       <p className="text-zinc-400 leading-relaxed">{activity.description}</p>
                     </div>
                   </div>

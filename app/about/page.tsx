@@ -3,7 +3,7 @@ import AboutClient from "./client"
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Learn about the Blockchain Student Association at EPFL, a student-led DAO founded in 2018.",
+  description: "Learn about the Blockchain Student Association at EPFL, a student community founded in 2018.",
 }
 
 export default function AboutPage() {

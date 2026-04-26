@@ -70,21 +70,21 @@ const pastEvents = [
 export default function EventsClient() {
   return (
     <div className="min-h-screen">
-      <section className="py-16 md:py-24">
+      <section className="py-section">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
+          <p className="text-eyebrow font-mono text-zinc-500 uppercase mb-sm">
             Events
           </p>
-          <h1 className="text-5xl md:text-8xl font-display text-zinc-50 leading-[0.9] mb-6 title-shimmer">
+          <h1 className="text-hero font-display text-zinc-50 mb-md title-shimmer">
             Our events
           </h1>
-          <p className="text-zinc-400 text-lg mb-16 max-w-xl">
+          <p className="text-zinc-400 text-lead mb-2xl max-w-xl">
             Join us for workshops, hackathons, networking events, and more.
           </p>
 
           {/* Upcoming */}
-          <div className="mb-32">
-            <h2 className="text-2xl md:text-3xl font-display text-zinc-50 mb-8">
+          <div className="mb-4xl">
+            <h2 className="text-display-2 font-display text-zinc-50 mb-lg">
               Upcoming
             </h2>
             <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 overflow-hidden">
@@ -101,10 +101,10 @@ export default function EventsClient() {
 
           {/* Past events timeline */}
           <div>
-            <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
+            <p className="text-eyebrow font-mono text-zinc-500 uppercase mb-sm">
               History
             </p>
-            <h2 className="text-4xl md:text-6xl font-display text-zinc-50 mb-36 title-shimmer">
+            <h2 className="text-display-1 font-display text-zinc-50 mb-4xl title-shimmer">
               Previous events
             </h2>
 
@@ -112,7 +112,7 @@ export default function EventsClient() {
               {/* Timeline line */}
               <div className="absolute left-[7px] md:left-[11px] top-2 bottom-2 w-px bg-zinc-800" />
 
-              <div className="space-y-16">
+              <div className="space-y-2xl">
                 {pastEvents.map((event, i) => (
                   <div key={i} className="group relative pl-10 md:pl-14">
                     {/* Dot with subtle glow on hover */}
@@ -120,23 +120,23 @@ export default function EventsClient() {
                       className="absolute left-0 md:left-1 top-2 w-[15px] h-[15px] md:w-[19px] md:h-[19px] rounded-full border-2 border-zinc-600 bg-zinc-800 transition-all duration-300 group-hover:border-zinc-400 group-hover:bg-zinc-700 group-hover:shadow-[0_0_12px_rgba(250,250,250,0.15)]"
                     />
 
-                    <div className="flex flex-wrap items-center gap-3 mb-3">
-                      <span className="text-xs font-mono text-zinc-500">{event.date}</span>
-                      <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border text-zinc-500 border-zinc-700 group-hover:text-zinc-300 group-hover:border-zinc-500 transition-colors duration-300">
+                    <div className="flex flex-wrap items-center gap-xs mb-xs">
+                      <span className="text-eyebrow font-mono text-zinc-500">{event.date}</span>
+                      <span className="text-micro font-mono uppercase px-2 py-0.5 rounded-full border text-zinc-500 border-zinc-700 group-hover:text-zinc-300 group-hover:border-zinc-500 transition-colors duration-300">
                         {event.type}
                       </span>
                     </div>
 
-                    <h3 className="text-xl md:text-2xl font-display text-zinc-200 mb-2 group-hover:text-zinc-50 transition-colors duration-300">
+                    <h3 className="text-display-3 font-display text-zinc-200 mb-2xs group-hover:text-zinc-50 transition-colors duration-300">
                       {event.title}
                     </h3>
-                    <p className="text-zinc-400 leading-relaxed mb-3 max-w-2xl">
+                    <p className="text-zinc-400 leading-relaxed mb-xs max-w-2xl">
                       {event.description}
                     </p>
-                    <p className="text-xs font-mono text-zinc-600 mb-2">
+                    <p className="text-eyebrow font-mono text-zinc-600 mb-2xs">
                       {event.stats}
                     </p>
-                    <p className="text-[11px] text-zinc-600">
+                    <p className="text-micro text-zinc-600">
                       <span className="text-zinc-500">Sponsors:</span> {event.sponsors}
                     </p>
                   </div>

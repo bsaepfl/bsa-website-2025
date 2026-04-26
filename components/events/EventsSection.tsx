@@ -7,14 +7,14 @@ export default function EventsSection() {
   const iframeRef = useRef<HTMLIFrameElement>(null)
 
   return (
-    <section id="events" className="py-24 md:py-32">
+    <section id="events" className="py-section">
       <div className="max-w-6xl mx-auto px-6">
-        <div data-reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12 opacity-0">
+        <div data-reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-sm mb-xl opacity-0">
           <div>
-            <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
+            <p className="text-eyebrow font-mono text-zinc-500 uppercase mb-sm">
               Events
             </p>
-            <h2 className="text-5xl md:text-7xl font-display text-zinc-50 title-shimmer">
+            <h2 className="text-display-1 font-display text-zinc-50 title-shimmer">
               What's happening
             </h2>
           </div>

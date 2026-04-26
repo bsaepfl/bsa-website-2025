@@ -4,14 +4,14 @@ import { startups } from "@/data/startups"
 
 export default function StartupsSection() {
   return (
-    <section id="startups" className="py-24 md:py-32">
+    <section id="startups" className="py-section">
       <div className="max-w-6xl mx-auto px-6">
-        <div data-reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12 opacity-0">
+        <div data-reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-sm mb-xl opacity-0">
           <div>
-            <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
+            <p className="text-eyebrow font-mono text-zinc-500 uppercase mb-sm">
               Startups
             </p>
-            <h2 className="text-5xl md:text-7xl font-display text-zinc-50 title-shimmer">
+            <h2 className="text-display-1 font-display text-zinc-50 title-shimmer">
               Built by our members
             </h2>
           </div>
@@ -23,7 +23,7 @@ export default function StartupsSection() {
           </Link>
         </div>
 
-        <div data-reveal className="grid grid-cols-2 md:grid-cols-4 gap-4 opacity-0">
+        <div data-reveal className="grid grid-cols-2 md:grid-cols-4 gap-sm opacity-0">
           {startups.map((startup, i) => (
             <a
               key={i}
@@ -31,7 +31,7 @@ export default function StartupsSection() {
               target="_blank"
               rel="noopener noreferrer"
               data-reveal-child
-              className="group rounded-lg border border-zinc-800 bg-zinc-900/50 p-6 flex items-center justify-center h-28 md:h-32 hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200 opacity-0"
+              className="group rounded-lg border border-zinc-800 bg-zinc-900/50 p-md flex items-center justify-center h-28 md:h-32 hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200 opacity-0"
             >
               <Image
                 src={startup.img}

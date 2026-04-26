@@ -44,13 +44,13 @@ export default function UniversitiesSection() {
   }, [])
 
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-section">
       <div className="max-w-6xl mx-auto px-6">
-        <div data-reveal className="mb-12 opacity-0">
-          <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
+        <div data-reveal className="mb-xl opacity-0">
+          <p className="text-eyebrow font-mono text-zinc-500 uppercase mb-sm">
             Community
           </p>
-          <h2 className="text-5xl md:text-7xl font-display text-zinc-50 max-w-md leading-[1.0] title-shimmer">
+          <h2 className="text-display-1 font-display text-zinc-50 max-w-md title-shimmer">
             Our members come from
           </h2>
         </div>
@@ -62,7 +62,7 @@ export default function UniversitiesSection() {
         <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-[#152237] to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-[#152237] to-transparent z-10 pointer-events-none" />
 
-        <div ref={trackRef} className="flex gap-6 w-max will-change-transform">
+        <div ref={trackRef} className="flex gap-md w-max will-change-transform">
           {tickerItems.map((uni, i) => (
             <a
               key={`${uni.name}-${i}`}

@@ -21,18 +21,18 @@ const labs = [
 
 export default function LabsSection() {
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-section">
       <div className="max-w-6xl mx-auto px-6">
-        <div data-reveal className="mb-12 opacity-0">
-          <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
+        <div data-reveal className="mb-xl opacity-0">
+          <p className="text-eyebrow font-mono text-zinc-500 uppercase mb-sm">
             Research
           </p>
-          <h2 className="text-5xl md:text-7xl font-display text-zinc-50 max-w-lg leading-[1.0] title-shimmer">
+          <h2 className="text-display-1 font-display text-zinc-50 max-w-lg title-shimmer">
             Labs our members have contributed to
           </h2>
         </div>
 
-        <div data-reveal className="grid grid-cols-1 md:grid-cols-3 gap-4 opacity-0">
+        <div data-reveal className="grid grid-cols-1 md:grid-cols-3 gap-sm opacity-0">
           {labs.map((lab) => (
             <a
               key={lab.acronym}
@@ -40,11 +40,11 @@ export default function LabsSection() {
               target="_blank"
               rel="noopener noreferrer"
               data-reveal-child
-              className="group rounded-lg border border-zinc-800 bg-zinc-900/50 p-8 md:p-10 flex flex-col justify-between min-h-[180px] hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200 opacity-0"
+              className="group rounded-lg border border-zinc-800 bg-zinc-900/50 p-lg md:p-xl flex flex-col justify-between min-h-[180px] hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200 opacity-0"
             >
               <div>
                 {lab.logo ? (
-                  <div className="mb-4">
+                  <div className="mb-sm">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={lab.logo}
@@ -53,7 +53,7 @@ export default function LabsSection() {
                     />
                   </div>
                 ) : (
-                  <h3 className="text-3xl md:text-4xl font-mono font-light text-zinc-200 group-hover:text-zinc-50 tracking-tight mb-3 transition-colors duration-200">
+                  <h3 className="text-display-2 font-mono font-light text-zinc-200 group-hover:text-zinc-50 tracking-tight mb-xs transition-colors duration-200">
                     {lab.acronym}
                   </h3>
                 )}
@@ -61,7 +61,7 @@ export default function LabsSection() {
                   {lab.fullName}
                 </p>
               </div>
-              <p className="text-xs text-zinc-700 font-mono mt-6 group-hover:text-zinc-500 transition-colors duration-200">
+              <p className="text-eyebrow text-zinc-700 font-mono mt-md group-hover:text-zinc-500 transition-colors duration-200">
                 EPFL
               </p>
             </a>
