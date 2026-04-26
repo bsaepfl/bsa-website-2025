@@ -21,12 +21,22 @@ export default function Member({ member }: MemberProps) {
       {/* Image */}
       <div className="relative aspect-square rounded-lg overflow-hidden bg-zinc-900 mb-3">
         {member.hasImage ? (
-          <Image
-            src={`/members/${member.tag}/image.jpg`}
-            alt={member.name}
-            fill
-            className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-          />
+          member.image && /^https?:\/\//.test(member.image) ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={member.image}
+              alt={member.name}
+              className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+              referrerPolicy="no-referrer"
+            />
+          ) : (
+            <Image
+              src={member.image || `/members/${member.tag}/image.jpg`}
+              alt={member.name}
+              fill
+              className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+            />
+          )
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
             <User className="w-8 h-8 text-zinc-700" />
@@ -35,9 +45,9 @@ export default function Member({ member }: MemberProps) {
       </div>
 
       {/* Info */}
-      <h3 className="text-zinc-50 text-sm font-medium">{member.name}</h3>
+      <h3 className="text-zinc-50 text-base md:text-lg font-medium leading-snug">{member.name}</h3>
       {member.title && (
-        <p className="text-zinc-500 text-xs mt-0.5">{member.title}</p>
+        <p className="text-zinc-500 text-sm mt-1">{member.title}</p>
       )}
 
       {/* Social */}
@@ -53,7 +63,7 @@ export default function Member({ member }: MemberProps) {
               rel="noopener noreferrer"
               className="text-zinc-600 hover:text-zinc-300 transition-colors"
             >
-              <Icon className="w-3.5 h-3.5" />
+              <Icon className="w-4 h-4" />
             </a>
           )
         })}

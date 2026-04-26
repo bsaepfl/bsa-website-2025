@@ -11,6 +11,7 @@ export interface MemberData {
   linkedin?: string
   github?: string
   mail?: string
+  image?: string
   hasImage: boolean
 }
 
@@ -45,7 +46,8 @@ export async function getAllMembers(): Promise<MemberData[]> {
         try {
           const infoContent = fs.readFileSync(infoPath, 'utf-8')
           const memberInfo = JSON.parse(infoContent)
-          const hasImage = fs.existsSync(imagePath)
+          const hasLocalJpg = fs.existsSync(imagePath)
+          const hasImage = Boolean(memberInfo.image) || hasLocalJpg
 
           members.push({
             tag: folder,
@@ -57,6 +59,7 @@ export async function getAllMembers(): Promise<MemberData[]> {
             linkedin: memberInfo.linkedin,
             github: memberInfo.github,
             mail: memberInfo.mail,
+            image: memberInfo.image,
             hasImage
           })
         } catch (error) {
