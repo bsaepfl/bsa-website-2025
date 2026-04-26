@@ -40,6 +40,8 @@ export async function GET(
       date: frontmatter.date ? new Date(frontmatter.date).toISOString() : new Date().toISOString(),
       authors: frontmatter.authors || [],
       sponsor: frontmatter.sponsor || null,
+      sponsorLabel: frontmatter.sponsorLabel || null,
+      image: frontmatter.image || null,
       content: content, // Raw markdown content
       thumbnail,
       id

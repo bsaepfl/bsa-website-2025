@@ -3,6 +3,7 @@ title: "Aleph Zero : Pioneering Privacy in Blockchain"
 date: 2025-04-02
 authors: ["Walid Sofiane", "Victor Garbit"]
 sponsor: "Aleph Zero"
+categories: ["Aleph Zero"]
 ---
 
 # Aleph Zero : Pioneering Privacy in Blockchain

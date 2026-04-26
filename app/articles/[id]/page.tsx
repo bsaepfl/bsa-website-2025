@@ -12,6 +12,8 @@ interface Article {
   date: string
   authors: string[]
   sponsor?: string
+  sponsorLabel?: string
+  image?: string
   content: string
   thumbnail?: string
   id: string
@@ -47,12 +49,12 @@ export default function ArticlePage({ params }: ArticlePageProps) {
 
   if (loading) {
     return (
-      <div className="max-w-3xl mx-auto px-6 py-16">
-        <div className="space-y-4">
+      <div className="max-w-3xl mx-auto px-6 py-2xl">
+        <div className="space-y-sm">
           <div className="h-6 w-24 bg-zinc-800 rounded animate-pulse" />
           <div className="h-10 w-3/4 bg-zinc-800 rounded animate-pulse" />
           <div className="h-4 w-48 bg-zinc-800 rounded animate-pulse" />
-          <div className="h-64 bg-zinc-800 rounded-lg animate-pulse mt-8" />
+          <div className="h-64 bg-zinc-800 rounded-lg animate-pulse mt-lg" />
         </div>
       </div>
     )
@@ -60,9 +62,9 @@ export default function ArticlePage({ params }: ArticlePageProps) {
 
   if (error || !article) {
     return (
-      <div className="max-w-3xl mx-auto px-6 py-16 text-center">
-        <p className="text-zinc-400 mb-4">{error || 'Article not found'}</p>
-        <Link href="/articles" className="text-zinc-300 text-sm border border-zinc-700 rounded-full px-5 py-2 hover:text-zinc-50 hover:border-zinc-500 transition-all">
+      <div className="max-w-3xl mx-auto px-6 py-2xl text-center">
+        <p className="text-zinc-400 mb-sm">{error || 'Article not found'}</p>
+        <Link href="/articles" className="text-zinc-300 text-sm border border-zinc-700 rounded-full px-sm py-2xs hover:text-zinc-50 hover:border-zinc-500 transition-all">
           Back to articles
         </Link>
       </div>
@@ -70,14 +72,14 @@ export default function ArticlePage({ params }: ArticlePageProps) {
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-6 py-16 md:py-24">
+    <div className="max-w-3xl mx-auto px-6 py-section">
       <article>
-        <Link href="/articles" className="text-zinc-500 text-sm hover:text-zinc-300 transition-colors mb-8 inline-block">
+        <Link href="/articles" className="text-zinc-500 text-sm hover:text-zinc-300 transition-colors mb-lg inline-block">
           &larr; All articles
         </Link>
 
-        <header className="mb-12">
-          <div className="flex items-center gap-4 text-xs font-mono text-zinc-500 mb-4">
+        <header className="mb-xl">
+          <div className="flex items-center gap-sm text-eyebrow font-mono text-zinc-500 mb-sm">
             <time dateTime={article.date}>
               {new Date(article.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
             </time>
@@ -86,56 +88,106 @@ export default function ArticlePage({ params }: ArticlePageProps) {
             )}
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-display text-zinc-50 leading-[1.05] mb-4">
+          <h1 className="text-display-1 font-display text-zinc-50 mb-sm">
             {article.title}
           </h1>
 
           {article.sponsor && (
-            <span className="text-xs font-mono text-zinc-500 border border-zinc-800 rounded-full px-3 py-1">
-              Sponsored by {article.sponsor}
+            <span className="text-eyebrow font-mono text-zinc-500 border border-zinc-800 rounded-full px-xs py-1">
+              {article.sponsorLabel || 'Sponsored by'} {article.sponsor}
             </span>
           )}
         </header>
 
-        {article.thumbnail && (
-          <div className="relative w-full h-64 md:h-96 mb-12 rounded-lg overflow-hidden">
-            <Image src={article.thumbnail} alt={article.title} fill className="object-cover" priority />
-          </div>
+        {(article.image || article.thumbnail) && (
+          article.image ? (
+            <div className="relative w-full h-72 md:h-[28rem] lg:h-[32rem] mb-xl rounded-lg overflow-hidden bg-zinc-950 flex items-center justify-center md:-mx-12 lg:-mx-32 xl:-mx-48">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={article.image} alt={article.title} className="max-h-full max-w-full object-contain" />
+            </div>
+          ) : (
+            <div className="relative w-full h-72 md:h-[28rem] lg:h-[32rem] mb-xl rounded-lg overflow-hidden md:-mx-12 lg:-mx-32 xl:-mx-48">
+              <Image src={article.thumbnail!} alt={article.title} fill className="object-cover" priority />
+            </div>
+          )
         )}
 
-        <div className="prose prose-invert prose-lg max-w-none
-          prose-headings:font-display prose-headings:text-zinc-50
-          prose-h2:text-3xl prose-h2:md:text-4xl prose-h2:mt-16 prose-h2:mb-6
-          prose-h3:text-2xl prose-h3:md:text-3xl prose-h3:mt-12 prose-h3:mb-5
-          prose-h4:text-xl prose-h4:mt-10 prose-h4:mb-4
-          prose-p:text-zinc-400 prose-p:leading-relaxed prose-p:mb-6
-          prose-a:text-zinc-300 prose-a:underline prose-a:underline-offset-4 hover:prose-a:text-zinc-50
-          prose-strong:text-zinc-200
-          prose-blockquote:border-zinc-700 prose-blockquote:text-zinc-400
-          prose-code:text-zinc-300 prose-code:bg-zinc-800/50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-mono
-          prose-pre:bg-zinc-900 prose-pre:border prose-pre:border-zinc-800 prose-pre:rounded-lg
-          prose-hr:border-zinc-800
-          prose-li:text-zinc-400
-        ">
+        <div className="max-w-none text-zinc-300 [&>*:first-child]:mt-0">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
+              h1: ({ children, ...props }) => (
+                <h1 className="font-display text-zinc-50 tracking-tight text-4xl md:text-5xl leading-[1.05] mt-20 mb-8 pb-4 border-b border-zinc-800 scroll-mt-24" {...props}>
+                  {children}
+                </h1>
+              ),
+              h2: ({ children, ...props }) => (
+                <h2 className="font-display text-zinc-50 tracking-tight text-3xl md:text-4xl leading-tight mt-16 mb-6 scroll-mt-24" {...props}>
+                  {children}
+                </h2>
+              ),
+              h3: ({ children, ...props }) => (
+                <h3 className="font-display text-zinc-50 tracking-tight text-2xl md:text-3xl leading-tight mt-12 mb-5 scroll-mt-24" {...props}>
+                  {children}
+                </h3>
+              ),
+              h4: ({ children, ...props }) => (
+                <h4 className="font-display text-zinc-50 tracking-tight text-xl md:text-2xl mt-10 mb-4 scroll-mt-24" {...props}>
+                  {children}
+                </h4>
+              ),
               p: ({ children, ...props }) => {
                 const childArray = React.Children.toArray(children)
                 const hasBlockElements = childArray.some(child =>
                   React.isValidElement(child) && child.type === 'img'
                 )
                 if (hasBlockElements) return <div className="my-4" {...props}>{children}</div>
-                return <p {...props}>{children}</p>
+                return <p className="text-zinc-400 text-lg leading-relaxed mb-6" {...props}>{children}</p>
               },
+              a: ({ children, ...props }) => (
+                <a className="text-zinc-300 underline underline-offset-4 hover:text-zinc-50 transition-colors" {...props}>
+                  {children}
+                </a>
+              ),
+              strong: ({ children, ...props }) => (
+                <strong className="text-zinc-200 font-semibold" {...props}>{children}</strong>
+              ),
+              em: ({ children, ...props }) => (
+                <em className="italic text-zinc-300" {...props}>{children}</em>
+              ),
+              ul: ({ children, ...props }) => (
+                <ul className="list-disc pl-6 my-6 space-y-2 text-zinc-400 text-lg leading-relaxed marker:text-zinc-600" {...props}>{children}</ul>
+              ),
+              ol: ({ children, ...props }) => (
+                <ol className="list-decimal pl-6 my-6 space-y-2 text-zinc-400 text-lg leading-relaxed marker:text-zinc-600" {...props}>{children}</ol>
+              ),
+              li: ({ children, ...props }) => (
+                <li className="pl-1" {...props}>{children}</li>
+              ),
+              blockquote: ({ children, ...props }) => (
+                <blockquote className="border-l-2 border-zinc-700 pl-5 my-6 italic text-zinc-400" {...props}>{children}</blockquote>
+              ),
+              code: ({ children, className, ...props }) => {
+                const isBlock = className?.includes('language-')
+                if (isBlock) {
+                  return <code className={`${className} text-zinc-200 text-sm font-mono`} {...props}>{children}</code>
+                }
+                return <code className="text-zinc-200 bg-zinc-800/60 px-1.5 py-0.5 rounded text-[0.9em] font-mono" {...props}>{children}</code>
+              },
+              pre: ({ children, ...props }) => (
+                <pre className="bg-zinc-900 border border-zinc-800 rounded-lg p-4 my-6 overflow-x-auto" {...props}>{children}</pre>
+              ),
+              hr: (props) => <hr className="border-zinc-800 my-12" {...props} />,
               img: ({ src, alt }) => {
                 if (!src) return null
                 const imageSrc = src.startsWith('./')
                   ? `/articles/${article.id}/${src.replace('./', '')}`
                   : src.startsWith('/') ? src : `/articles/${article.id}/${src}`
                 return (
-                  <Image src={imageSrc} alt={alt || ''} width={800} height={400}
-                    className="rounded-lg my-6 w-full h-auto" style={{ width: 'auto', height: 'auto' }} />
+                  <span className="block my-8 md:-mx-12 lg:-mx-32 xl:-mx-48 rounded-lg overflow-hidden">
+                    <Image src={imageSrc} alt={alt || ''} width={1600} height={900}
+                      className="w-full h-auto" />
+                  </span>
                 )
               },
             }}
