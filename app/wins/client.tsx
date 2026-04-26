@@ -32,9 +32,8 @@ export default function WinsClient() {
             Built. Shipped. Won.
           </h1>
           <p className="text-zinc-400 text-lg mb-16 max-w-xl">
-            BSA members compete &mdash; and win &mdash; at hackathons, conferences, and
-            competitions across Europe and beyond. A running record of what the
-            community has shipped.
+            BSA members compete, and win, at hackathons
+            across Europe and beyond. A running record of what our members shipped.
           </p>
 
           {/* Stats */}
@@ -74,47 +73,66 @@ export default function WinsClient() {
                         {/* Dot */}
                         <div className="absolute left-0 md:left-1 top-2 w-[15px] h-[15px] md:w-[19px] md:h-[19px] rounded-full border-2 border-zinc-600 bg-zinc-800 transition-all duration-300 group-hover:border-zinc-400 group-hover:bg-zinc-700 group-hover:shadow-[0_0_12px_rgba(250,250,250,0.15)]" />
 
-                        <div className="flex flex-wrap items-center gap-3 mb-3">
-                          <span className="text-xs font-mono text-zinc-500">
-                            {win.date}
-                          </span>
-                          <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border text-zinc-500 border-zinc-700 group-hover:text-zinc-300 group-hover:border-zinc-500 transition-colors duration-300">
-                            {win.category}
-                          </span>
+                        <div className="flex flex-col md:flex-row md:items-start md:gap-10">
+                          {/* Main content */}
+                          <div className="flex-1 min-w-0">
+                            <div className="flex flex-wrap items-center gap-3 mb-3">
+                              <span className="text-xs font-mono text-zinc-500">
+                                {win.date}
+                              </span>
+                              <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border text-zinc-500 border-zinc-700 group-hover:text-zinc-300 group-hover:border-zinc-500 transition-colors duration-300">
+                                {win.category}
+                              </span>
+                            </div>
+
+                            <h3 className="text-xl md:text-2xl font-display text-zinc-200 mb-1 group-hover:text-zinc-50 transition-colors duration-300">
+                              {win.event}
+                            </h3>
+                            <p className="text-zinc-300 text-base mb-3">{win.placement}</p>
+
+                            {win.description && (
+                              <p className="text-zinc-400 leading-relaxed mb-3 max-w-2xl">
+                                {win.description}
+                              </p>
+                            )}
+
+                            {win.team && (
+                              <p className="text-xs font-mono text-zinc-600">
+                                <span className="text-zinc-500">Team:</span> {win.team}
+                              </p>
+                            )}
+
+                            {win.link && (
+                              <a
+                                href={win.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-block text-xs font-mono text-zinc-500 hover:text-zinc-300 transition-colors duration-200 mt-2"
+                              >
+                                Read more &rarr;
+                              </a>
+                            )}
+                          </div>
+
+                          {/* Prize, right column */}
                           {win.prize && (
-                            <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-300/80">
-                              {win.prize}
-                            </span>
+                            <div className="shrink-0 md:w-48 md:text-right mt-4 md:mt-0 order-first md:order-last">
+                              <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500 mb-1.5">
+                                Prize
+                              </p>
+                              <div className="space-y-0.5">
+                                {win.prize.split(" + ").map((part, pi) => (
+                                  <p
+                                    key={pi}
+                                    className="text-2xl md:text-3xl font-mono text-emerald-300/90 tabular-nums leading-tight"
+                                  >
+                                    {part}
+                                  </p>
+                                ))}
+                              </div>
+                            </div>
                           )}
                         </div>
-
-                        <h3 className="text-xl md:text-2xl font-display text-zinc-200 mb-1 group-hover:text-zinc-50 transition-colors duration-300">
-                          {win.event}
-                        </h3>
-                        <p className="text-zinc-300 text-base mb-3">{win.placement}</p>
-
-                        {win.description && (
-                          <p className="text-zinc-400 leading-relaxed mb-3 max-w-2xl">
-                            {win.description}
-                          </p>
-                        )}
-
-                        {win.team && (
-                          <p className="text-xs font-mono text-zinc-600">
-                            <span className="text-zinc-500">Team:</span> {win.team}
-                          </p>
-                        )}
-
-                        {win.link && (
-                          <a
-                            href={win.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-block text-xs font-mono text-zinc-500 hover:text-zinc-300 transition-colors duration-200 mt-2"
-                          >
-                            Read more &rarr;
-                          </a>
-                        )}
                       </div>
                     ))}
                   </div>

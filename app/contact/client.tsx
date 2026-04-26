@@ -47,9 +47,8 @@ export default function ContactClient() {
     {
       title: "For companies & partners",
       items: [
-        { question: "I'm a company interested in sponsoring — how does it work?", answer: "We partner with companies in a few different ways: hackathon sponsorships, conference partnerships, recruiting sessions, and longer-term ecosystem partnerships. The simplest first step is to reach out at bsa@epfl.ch and tell us a bit about your goals — we'll send back a deck with the formats and tiers that fit." },
+        { question: "I'm a company interested in sponsoring", answer: "We partner with companies in a few different ways: hackathon sponsorships, conference partnerships, recruiting sessions, and longer-term ecosystem partnerships. The simplest first step is to reach out at bsa@epfl.ch and tell us a bit about your goals." },
         { question: "What do sponsors get in return?", answer: "Depending on the partnership, sponsors typically get on-stage and online visibility, branded presence at our events, direct access to EPFL blockchain talent for recruiting, the chance to run technical workshops or bounties, and inclusion in our community communications." },
-        { question: "Can sponsors recruit BSA members or interns?", answer: "Yes — recruiting is one of the most common reasons companies partner with us. We can run dedicated recruiting events, share opportunities with our community, and help facilitate intros to students working in areas relevant to your team." },
         { question: "Can we co-host an event, workshop, or hackathon with the BSA?", answer: "Absolutely. We regularly co-organize technical workshops, panels, and hackathon tracks with partners. Get in touch with what you have in mind and we'll figure out the right format together." },
         { question: "Who do we contact to start a partnership?", answer: "Email us at bsa@epfl.ch with a short note about your company and what you're looking for. We aim to reply within a few working days." },
       ],
