@@ -31,6 +31,11 @@ export default function AboutClient() {
                 projects, we provide students with the knowledge, skills, and
                 connections needed to become leaders in the blockchain space.
               </p>
+              <p className="text-zinc-400 text-lg leading-relaxed">
+                We also work closely with companies, protocols, and research labs &mdash;
+                bringing partners together with EPFL talent through sponsorships,
+                hackathons, and joint initiatives.
+              </p>
             </div>
 
             <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-lg">
@@ -39,7 +44,7 @@ export default function AboutClient() {
                 {[
                   "Educational workshops and seminars",
                   "Blockchain hackathons and competitions",
-                  "Industry networking events",
+                  "Industry partnerships and sponsorships",
                   "Research collaboration opportunities",
                   "Startup incubation support"
                 ].map((item, i) => (
