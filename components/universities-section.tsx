@@ -59,23 +59,23 @@ export default function UniversitiesSection() {
       {/* Full-width ticker */}
       <div className="overflow-hidden relative">
         {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-[#152237] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-[#152237] to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-[#1d2e4a] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-[#1d2e4a] to-transparent z-10 pointer-events-none" />
 
-        <div ref={trackRef} className="flex gap-md w-max will-change-transform">
+        <div ref={trackRef} className="flex gap-lg w-max will-change-transform">
           {tickerItems.map((uni, i) => (
             <a
               key={`${uni.name}-${i}`}
               href={uni.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group shrink-0 rounded-lg border border-zinc-800 bg-zinc-900/50 px-10 py-6 flex items-center justify-center min-w-[180px] md:min-w-[220px] h-[100px] hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200"
+              className="group shrink-0 rounded-lg border border-zinc-800 bg-zinc-900/50 px-10 py-6 flex items-center justify-center min-w-[200px] md:min-w-[240px] h-[110px] md:h-[120px] hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={uni.logo}
                 alt={uni.fullName}
-                className="h-10 md:h-12 w-auto object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-200 brightness-110"
+                className="h-9 md:h-12 w-auto object-contain opacity-75 group-hover:opacity-100 transition-opacity duration-200 brightness-110"
               />
             </a>
           ))}

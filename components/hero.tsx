@@ -75,7 +75,6 @@ export default function Hero() {
     if (logoRef.current) {
       const drawable = svg.createDrawable(logoRef.current)
       tl.add(drawable, { draw: ['0 0', '0 1'], duration: 1200, easing: 'easeInOutQuad' }, 0)
-      tl.add(logoRef.current, { fillOpacity: [0, 1], duration: 600, easing: 'easeOutQuad' }, 800)
     }
 
     tl.add('[data-hero-text]', {
@@ -146,15 +145,15 @@ export default function Hero() {
             <div ref={logoWrapRef} className="transition-transform duration-200 ease-out">
               <svg
                 viewBox="20 20 160 175"
-                className="w-48 h-48 md:w-72 md:h-72"
+                className="w-60 h-60 md:w-96 md:h-96"
                 fill="none"
               >
                 <path
                   ref={logoRef}
                   d={BSA_LOGO_PATH}
-                  fill="#d4d4d8"
-                  fillOpacity={0}
-                  stroke="#d4d4d8"
+                  fill="#fafafa"
+                  fillOpacity={1}
+                  stroke="#fafafa"
                   strokeWidth="0.5"
                   fillRule="evenodd"
                 />
