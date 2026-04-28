@@ -172,7 +172,7 @@ export default function Hero() {
               <br />
               at EPFL
             </h1>
-            <p data-hero-text data-typewriter className="text-zinc-400 text-lead max-w-[50ch] mb-xl opacity-0">
+            <p data-hero-text data-typewriter className="text-zinc-400 text-lead font-serif max-w-[50ch] mb-xl opacity-0">
               <span data-typewriter-text></span>
               <span className="inline-block w-[2px] h-[1.1em] bg-zinc-400 ml-0.5 align-middle animate-pulse" />
             </p>

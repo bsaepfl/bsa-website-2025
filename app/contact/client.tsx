@@ -45,7 +45,7 @@ export default function ContactClient() {
           <h1 className="text-hero font-display text-zinc-50 mb-lg title-shimmer">
             Get in touch
           </h1>
-          <p className="text-zinc-400 text-lead mb-xl max-w-[50ch] mx-auto">
+          <p className="text-zinc-400 text-lead font-serif mb-xl max-w-[50ch] mx-auto">
             Questions about our events, interested in collaborating, or just want to say hello?
             We'd love to hear from you.
           </p>

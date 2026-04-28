@@ -78,7 +78,7 @@ export default function EventsClient() {
           <h1 className="text-hero font-display text-zinc-50 mb-md title-shimmer">
             Our events
           </h1>
-          <p className="text-zinc-400 text-lead mb-2xl max-w-xl">
+          <p className="text-zinc-400 text-lead font-serif mb-2xl max-w-xl">
             Join us for workshops, hackathons, networking events, and more.
           </p>
 
@@ -130,7 +130,7 @@ export default function EventsClient() {
                     <h3 className="text-display-3 font-display text-zinc-200 mb-2xs group-hover:text-zinc-50 transition-colors duration-300">
                       {event.title}
                     </h3>
-                    <p className="text-zinc-400 leading-relaxed mb-xs max-w-2xl">
+                    <p className="text-zinc-400 leading-relaxed font-serif mb-xs max-w-2xl">
                       {event.description}
                     </p>
                     <p className="text-eyebrow font-mono text-zinc-600 mb-2xs">

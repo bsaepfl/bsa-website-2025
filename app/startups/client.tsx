@@ -15,7 +15,7 @@ export default function StartupsClient() {
           <h1 className="text-hero font-display text-zinc-50 mb-md title-shimmer">
             Built by our members
           </h1>
-          <p className="text-zinc-400 text-lead mb-2xl max-w-xl">
+          <p className="text-zinc-400 text-lead font-serif mb-2xl max-w-xl">
             Innovative startups created and shaped by BSA members, pushing the boundaries of blockchain technology.
           </p>
 
@@ -39,7 +39,7 @@ export default function StartupsClient() {
                 </div>
                 <div className="p-sm">
                   <h3 className="text-display-3 font-display text-zinc-50 mb-2xs">{startup.title}</h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed line-clamp-2">{startup.description}</p>
+                  <p className="text-zinc-500 text-sm leading-relaxed font-serif line-clamp-2">{startup.description}</p>
                   <span className="inline-block text-zinc-600 text-eyebrow mt-xs group-hover:text-zinc-400 transition-colors">
                     Visit site &rarr;
                   </span>
