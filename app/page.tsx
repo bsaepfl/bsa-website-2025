@@ -17,7 +17,6 @@ export default function Home() {
   const [showIntro, setShowIntro] = useState(false)
 
   useEffect(() => {
-    // Only show intro on first visit per session
     const hasPlayed = sessionStorage.getItem('intro-played')
     if (!hasPlayed) {
       setShowIntro(true)
@@ -27,7 +26,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col min-h-screen">
-      {showIntro && <BlockchainIntro />}
+      {showIntro && <BlockchainIntro onComplete={() => setShowIntro(false)} />}
       <Hero />
       <AboutSection />
       <EventsSection />
