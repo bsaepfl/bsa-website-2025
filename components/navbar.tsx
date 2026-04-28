@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { BSA_LOGO_PATH } from "./bsa-logo-path"
 
 const navLinks = [
   { href: "/about", label: "About" },
@@ -41,58 +42,136 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Nav bar - visual only, fades but never loses pointer-events */}
       <header className="fixed top-0 left-0 right-0 z-40 flex justify-center px-4 pt-4">
         <nav
           className={`
-            w-full max-w-3xl rounded-full border border-zinc-800
-            px-6 py-3 flex items-center justify-between
+            group/nav relative w-full max-w-3xl rounded-full
+            flex items-center justify-between
             transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]
             ${navHidden ? 'opacity-0 -translate-y-4' : 'opacity-100 translate-y-0'}
             ${isScrolled
-              ? 'bg-[#152237]/90 backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,0.4)]'
-              : 'bg-[#152237]/80'
+              ? 'px-2.5 py-2 md:pl-3 md:pr-2 bg-[#152237]/85 backdrop-blur-md border border-zinc-700/60 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.5)]'
+              : 'px-3 py-2.5 md:pl-4 md:pr-2.5 bg-[#152237]/70 backdrop-blur-sm border border-zinc-800/80'
             }
           `}
         >
-          <Link href="/" className={`text-zinc-50 font-sans text-sm font-medium tracking-wide transition-opacity duration-300 ${navHidden ? 'pointer-events-none' : ''}`}>
-            BSA
-            <span className="text-zinc-500 ml-1">EPFL</span>
+          {/* Subtle gradient hairline that fades in on scroll */}
+          <span
+            aria-hidden="true"
+            className={`pointer-events-none absolute inset-0 rounded-full transition-opacity duration-500 ${
+              isScrolled ? 'opacity-100' : 'opacity-0'
+            }`}
+            style={{
+              background: 'linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 30%)',
+              maskImage: 'linear-gradient(180deg, black 0%, transparent 60%)',
+              WebkitMaskImage: 'linear-gradient(180deg, black 0%, transparent 60%)',
+            }}
+          />
+
+          {/* LEFT: logo + wordmark */}
+          <Link
+            href="/"
+            aria-label="BSA EPFL — home"
+            className={`
+              group/logo relative flex items-center gap-2.5 pl-1.5 pr-2 py-1 rounded-full
+              text-zinc-50 text-sm font-medium tracking-wide
+              transition-opacity duration-300
+              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#152237]
+              ${navHidden ? 'pointer-events-none' : ''}
+            `}
+          >
+            <span className="relative inline-flex items-center justify-center">
+              {/* Soft glow that appears on hover */}
+              <span
+                aria-hidden="true"
+                className="absolute inset-0 rounded-full blur-lg opacity-0 group-hover/logo:opacity-60 transition-opacity duration-300"
+                style={{ background: 'radial-gradient(circle, rgba(0,255,170,0.5) 0%, rgba(77,156,255,0.3) 50%, transparent 70%)' }}
+              />
+              <svg
+                viewBox="20 20 160 175"
+                className="relative w-7 h-7 md:w-8 md:h-8 shrink-0 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/logo:rotate-[8deg]"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path d={BSA_LOGO_PATH} fill="#fafafa" fillRule="evenodd" />
+              </svg>
+            </span>
+            <span className="hidden sm:inline-flex items-baseline">
+              <span>BSA</span>
+              <span className="ml-1 text-zinc-500 font-mono text-xs tracking-wider transition-colors duration-200 group-hover/logo:text-zinc-400">
+                EPFL
+              </span>
+            </span>
           </Link>
 
-          {/* Desktop links */}
-          <div className={`hidden md:flex items-center gap-6 transition-opacity duration-300 ${navHidden ? 'pointer-events-none' : ''}`}>
+          {/* RIGHT (desktop): nav links + CTA */}
+          <div
+            className={`
+              hidden md:flex items-center gap-0.5 transition-opacity duration-300
+              ${navHidden ? 'pointer-events-none' : ''}
+            `}
+          >
             {navLinks.map((link) => {
               const isActive = pathname === link.href || pathname.startsWith(link.href + '/')
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm transition-colors duration-200 ${
-                    isActive ? 'text-zinc-50' : 'text-zinc-400 hover:text-zinc-50'
-                  }`}
+                  aria-current={isActive ? 'page' : undefined}
+                  className={`
+                    relative px-3 py-1.5 rounded-full text-[13px] tracking-wide
+                    transition-colors duration-200
+                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300/60
+                    ${isActive
+                      ? 'text-zinc-50'
+                      : 'text-zinc-400 hover:text-zinc-50 hover:bg-white/[0.04]'
+                    }
+                  `}
                 >
-                  {link.label}
+                  <span className="relative inline-block">
+                    {link.label}
+                    {isActive && (
+                      <span
+                        aria-hidden="true"
+                        className="absolute -bottom-0.5 left-0 right-0 h-px rounded-full"
+                        style={{ background: 'linear-gradient(90deg, #00ffaa 0%, #4d9cff 100%)' }}
+                      />
+                    )}
+                  </span>
                 </Link>
               )
             })}
+
             <Link
               href="/contact"
-              className="text-zinc-950 bg-zinc-50 text-sm font-medium rounded-full px-4 py-1.5 hover:bg-zinc-300 active:scale-[0.98] transition-all duration-200"
+              className="
+                ml-2 inline-flex items-center gap-1.5
+                text-zinc-950 bg-zinc-50 text-[13px] font-medium tracking-wide
+                rounded-full px-4 py-1.5
+                shadow-[0_1px_0_0_rgba(255,255,255,0.6)_inset,0_-1px_0_0_rgba(0,0,0,0.08)_inset]
+                hover:bg-white hover:shadow-[0_4px_16px_-4px_rgba(255,255,255,0.3)]
+                active:scale-[0.97]
+                transition-all duration-200
+                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#152237]
+              "
             >
               Contact
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                <path d="M2 8L8 2M8 2H3.5M8 2V6.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </Link>
           </div>
 
-          {/* Mobile hamburger - ALWAYS interactive */}
+          {/* Mobile hamburger */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden relative w-8 h-8 flex items-center justify-center z-[70]"
-            aria-label="Toggle menu"
+            className="md:hidden relative w-11 h-11 flex items-center justify-center rounded-full hover:bg-white/[0.04] active:scale-[0.96] transition-all duration-200 z-[70] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300/60 cursor-pointer"
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMenuOpen}
           >
-            <span className={`absolute h-px w-5 bg-zinc-300 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center ${isMenuOpen ? 'rotate-45' : '-translate-y-1.5'}`} />
-            <span className={`absolute h-px w-5 bg-zinc-300 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${isMenuOpen ? 'opacity-0 scale-x-0' : ''}`} />
-            <span className={`absolute h-px w-5 bg-zinc-300 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center ${isMenuOpen ? '-rotate-45' : 'translate-y-1.5'}`} />
+            <span className={`absolute h-px w-5 bg-zinc-200 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center ${isMenuOpen ? 'rotate-45' : '-translate-y-1.5'}`} />
+            <span className={`absolute h-px w-5 bg-zinc-200 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${isMenuOpen ? 'opacity-0 scale-x-0' : ''}`} />
+            <span className={`absolute h-px w-5 bg-zinc-200 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center ${isMenuOpen ? '-rotate-45' : 'translate-y-1.5'}`} />
           </button>
         </nav>
       </header>
@@ -100,22 +179,43 @@ export default function Navbar() {
       {/* Mobile overlay */}
       <div
         className={`
-          fixed inset-0 z-[60] bg-[#0d1a2b]/98 backdrop-blur-sm
-          flex flex-col items-center justify-center
+          fixed inset-0 z-[60] bg-[#0d1a2b]/98 backdrop-blur-md
+          flex flex-col
           transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]
           ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}
         `}
       >
+        {/* Subtle ambient glow */}
+        <div
+          aria-hidden="true"
+          className="absolute pointer-events-none"
+          style={{
+            width: '600px', height: '600px', borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(0,255,170,0.04) 0%, rgba(77,156,255,0.03) 40%, transparent 70%)',
+            top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+          }}
+        />
+
         <button
           onClick={() => setIsMenuOpen(false)}
-          className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center z-[70]"
+          className="absolute top-6 right-6 w-11 h-11 flex items-center justify-center rounded-full hover:bg-white/[0.04] z-[70] transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300/60"
           aria-label="Close menu"
         >
           <span className="block h-px w-6 bg-zinc-300 rotate-45 absolute" />
           <span className="block h-px w-6 bg-zinc-300 -rotate-45 absolute" />
         </button>
 
-        <div className="flex flex-col items-center gap-8">
+        {/* Top wordmark in mobile menu */}
+        <div className={`absolute top-7 left-7 flex items-center gap-2.5 transition-all duration-500 ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'}`}>
+          <svg viewBox="20 20 160 175" className="w-7 h-7" fill="none" aria-hidden="true">
+            <path d={BSA_LOGO_PATH} fill="#fafafa" fillRule="evenodd" />
+          </svg>
+          <span className="text-zinc-50 text-sm font-medium tracking-wide">
+            BSA <span className="text-zinc-500 font-mono text-xs ml-0.5">EPFL</span>
+          </span>
+        </div>
+
+        <nav className="flex-1 flex flex-col items-start justify-center gap-1 px-8 relative">
           {navLinks.map((link, i) => {
             const isActive = pathname === link.href || pathname.startsWith(link.href + '/')
             return (
@@ -123,15 +223,29 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsMenuOpen(false)}
+                aria-current={isActive ? 'page' : undefined}
                 className={`
-                  text-3xl font-display hover:text-zinc-50
+                  group/mlink flex items-center gap-4 py-2
+                  text-5xl font-display
                   transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]
-                  ${isActive ? 'text-zinc-50' : 'text-zinc-400'}
-                  ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
+                  ${isActive ? 'text-zinc-50' : 'text-zinc-500 hover:text-zinc-50'}
+                  ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
                 `}
-                style={{ transitionDelay: isMenuOpen ? `${(i + 1) * 80}ms` : '0ms' }}
+                style={{ transitionDelay: isMenuOpen ? `${(i + 1) * 60}ms` : '0ms' }}
               >
-                {link.label}
+                <span className="font-mono text-xs text-zinc-700 tabular-nums w-6">
+                  0{i + 1}
+                </span>
+                <span className="relative">
+                  {link.label}
+                  {isActive && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full"
+                      style={{ background: 'linear-gradient(90deg, #00ffaa 0%, #4d9cff 100%)' }}
+                    />
+                  )}
+                </span>
               </Link>
             )
           })}
@@ -140,16 +254,27 @@ export default function Navbar() {
             href="/contact"
             onClick={() => setIsMenuOpen(false)}
             className={`
-              text-zinc-950 bg-zinc-50 text-sm font-medium rounded-full px-6 py-2.5
-              hover:bg-zinc-300 active:scale-[0.98] mt-4
+              mt-12 ml-10 inline-flex items-center gap-2
+              text-zinc-950 bg-zinc-50 text-sm font-medium rounded-full px-6 py-3
+              hover:bg-zinc-200 active:scale-[0.97]
               transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]
-              ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
+              ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
             `}
-            style={{ transitionDelay: isMenuOpen ? `${(navLinks.length + 1) * 80}ms` : '0ms' }}
+            style={{ transitionDelay: isMenuOpen ? `${(navLinks.length + 1) * 60}ms` : '0ms' }}
           >
             Contact
+            <svg width="12" height="12" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+              <path d="M2 8L8 2M8 2H3.5M8 2V6.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </Link>
-        </div>
+        </nav>
+
+        {/* Footer hint */}
+        <p className={`relative px-8 pb-8 text-eyebrow font-mono text-zinc-700 transition-all duration-500 ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}
+          style={{ transitionDelay: isMenuOpen ? `${(navLinks.length + 2) * 60}ms` : '0ms' }}
+        >
+          BLOCKCHAIN STUDENT ASSOCIATION — EPFL
+        </p>
       </div>
     </>
   )
