@@ -177,16 +177,19 @@ export default function Hero() {
             </p>
             <div data-hero-text className="flex flex-wrap gap-xs opacity-0">
               <Link
-                href="/about"
-                className="text-zinc-950 bg-zinc-50 text-sm font-medium rounded-full px-md py-2.5 hover:bg-zinc-300 active:scale-[0.98] transition-all duration-200"
-              >
-                Learn more
-              </Link>
-              <Link
                 href="/events"
-                className="text-zinc-300 text-sm border border-zinc-700 rounded-full px-md py-2.5 hover:text-zinc-50 hover:border-zinc-500 active:scale-[0.98] transition-all duration-200"
+                className="group text-zinc-950 bg-zinc-50 text-sm font-semibold rounded-full px-md py-2.5 shadow-[0_0_0_1px_rgba(250,250,250,0.18),0_10px_30px_rgba(250,250,250,0.12)] hover:bg-zinc-200 hover:shadow-[0_0_0_1px_rgba(250,250,250,0.28),0_14px_36px_rgba(250,250,250,0.18)] active:scale-[0.98] transition-all duration-200"
               >
                 See events
+                <span className="ml-1 inline-block transition-transform duration-200 group-hover:translate-x-0.5">
+                  &rarr;
+                </span>
+              </Link>
+              <Link
+                href="/about"
+                className="text-zinc-300 text-sm border border-zinc-700 rounded-full px-md py-2.5 hover:text-zinc-50 hover:border-zinc-500 active:scale-[0.98] transition-all duration-200"
+              >
+                Learn more
               </Link>
             </div>
           </div>

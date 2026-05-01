@@ -1,7 +1,4 @@
-"use client"
-
-import { useEffect, useRef } from "react"
-import { animate } from "animejs"
+import type { CSSProperties } from "react"
 
 const universities = [
   { name: "EPFL", fullName: "Ecole Polytechnique Federale de Lausanne", href: "https://epfl.ch", logo: "/universities/epfl.svg" },
@@ -15,34 +12,6 @@ const universities = [
 const tickerItems = [...universities, ...universities]
 
 export default function UniversitiesSection() {
-  const trackRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    if (!trackRef.current) return
-
-    const track = trackRef.current
-    const totalWidth = track.scrollWidth / 2
-
-    const anim = animate(track, {
-      translateX: [0, -totalWidth],
-      duration: 25000,
-      easing: 'linear',
-      loop: true,
-    })
-
-    // Pause on hover
-    const pause = () => anim.pause()
-    const play = () => anim.play()
-    track.addEventListener('mouseenter', pause)
-    track.addEventListener('mouseleave', play)
-
-    return () => {
-      anim.pause()
-      track.removeEventListener('mouseenter', pause)
-      track.removeEventListener('mouseleave', play)
-    }
-  }, [])
-
   return (
     <section className="py-section">
       <div className="max-w-6xl mx-auto px-6">
@@ -62,7 +31,10 @@ export default function UniversitiesSection() {
         <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-[#1d2e4a] to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-[#1d2e4a] to-transparent z-10 pointer-events-none" />
 
-        <div ref={trackRef} className="flex gap-lg w-max will-change-transform">
+        <div
+          className="marquee-left marquee-pause-on-hover flex gap-lg w-max will-change-transform"
+          style={{ "--marquee-duration": "25s" } as CSSProperties}
+        >
           {tickerItems.map((uni, i) => (
             <a
               key={`${uni.name}-${i}`}

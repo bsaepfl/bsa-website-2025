@@ -159,6 +159,28 @@ input[type="text"], input[type="email"], input[type="search"], input[type="url"]
     display: none;
   }
 
+  @keyframes marquee-left {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
+  }
+
+  @keyframes marquee-right {
+    from { transform: translate3d(-50%, 0, 0); }
+    to { transform: translate3d(0, 0, 0); }
+  }
+
+  .marquee-left {
+    animation: marquee-left var(--marquee-duration, 28s) linear infinite;
+  }
+
+  .marquee-right {
+    animation: marquee-right var(--marquee-duration, 28s) linear infinite;
+  }
+
+  .marquee-pause-on-hover:hover {
+    animation-play-state: paused;
+  }
+
   /* Section title hover shimmer */
   .title-shimmer {
     position: relative;

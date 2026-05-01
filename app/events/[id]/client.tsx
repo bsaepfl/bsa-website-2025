@@ -4,19 +4,6 @@ import Image from "next/image"
 import Link from "next/link"
 import type { ReactNode } from "react"
 import type { PastEvent } from "@/data/events"
-import alphaton from "../../../conf-website/src/app/images/sponsors/alphaton.png"
-import aleph from "../../../conf-website/src/app/images/sponsors/aleph.png"
-import ens from "../../../conf-website/src/app/images/sponsors/ens.png"
-import hedera from "../../../conf-website/src/app/images/sponsors/hedera.png"
-import hyle from "../../../conf-website/src/app/images/sponsors/hyle.png"
-import hyli from "../../../conf-website/src/app/images/sponsors/hyli.png"
-import ledger from "../../../conf-website/src/app/images/sponsors/ledger.png"
-import mina from "../../../conf-website/src/app/images/sponsors/mina.png"
-import raiffeisen from "../../../conf-website/src/app/images/sponsors/raiffeisen.png"
-import swissquote from "../../../conf-website/src/app/images/sponsors/swissquote.png"
-import taurus from "../../../conf-website/src/app/images/sponsors/taurus2.png"
-import wiw3ch from "../../../conf-website/src/app/images/sponsors/WiW3ch.png"
-import xrpl from "../../../conf-website/src/app/images/sponsors/xrpl.png"
 
 const heroGradient = "linear-gradient(180deg, #fafafa 0%, #d4d4d8 100%)"
 const accentGradient = "linear-gradient(180deg, #e4e4e7 0%, #a1a1aa 100%)"
@@ -103,55 +90,55 @@ const sponsorTiers: SponsorTier[] = [
 const sponsorCatalog: Record<string, Sponsor> = {
   "alphaton capital": {
     name: "AlphaTON Capital",
-    logo: alphaton.src,
+    logo: "/partners/alphaton.png",
     url: "https://alphatoncapital.com",
     tier: "Diamond",
   },
   ledger: {
     name: "Ledger",
-    logo: ledger.src,
+    logo: "/partners/ledger.png",
     url: "https://www.ledger.com",
     tier: "Gold",
   },
   "xrpl commons": {
     name: "XRPL Commons",
-    logo: xrpl.src,
+    logo: "/partners/xrpl.png",
     url: "https://xrplcommons.org",
     tier: "Gold",
   },
   hyli: {
     name: "Hyli",
-    logo: hyli.src,
+    logo: "/partners/hyli.png",
     url: "https://www.hyli.org/",
     tier: "Silver",
   },
   hyle: {
     name: "Hyle",
-    logo: hyle.src,
+    logo: "/partners/hyle.png",
     url: "https://www.hyli.org/",
     tier: "Silver",
   },
   ens: {
     name: "ENS",
-    logo: ens.src,
+    logo: "/partners/ens.png",
     url: "https://ens.domains",
     tier: "Silver",
   },
   raiffeisen: {
     name: "Raiffeisen",
-    logo: raiffeisen.src,
+    logo: "/partners/raiffeisen.png",
     url: "https://www.raiffeisen.ch",
     tier: "Bronze",
   },
   swissquote: {
     name: "Swissquote",
-    logo: swissquote.src,
+    logo: "/partners/swissquote.png",
     url: "https://www.swissquote.com",
     tier: "Bronze",
   },
   taurus: {
     name: "Taurus",
-    logo: taurus.src,
+    logo: "/partners/taurus2.png",
     url: "https://www.taurushq.com",
     tier: "Bronze",
   },
@@ -197,31 +184,31 @@ const sponsorCatalog: Record<string, Sponsor> = {
   },
   wiw3ch: {
     name: "WiW3ch",
-    logo: wiw3ch.src,
+    logo: "/partners/wiw3ch.png",
     url: "https://www.wiw3ch.com/",
     tier: "Community Partners",
   },
   "hedera hashgraph association": {
     name: "The Hashgraph Association",
-    logo: hedera.src,
+    logo: "/partners/hedera.png",
     url: "https://www.hashgraph.swiss/",
     tier: "Gold",
   },
   "hashgraph association": {
     name: "The Hashgraph Association",
-    logo: hedera.src,
+    logo: "/partners/hedera.png",
     url: "https://www.hashgraph.swiss/",
     tier: "Gold",
   },
   "aleph zero": {
     name: "Aleph Zero",
-    logo: aleph.src,
+    logo: "/partners/aleph.png",
     url: "https://alephzero.org/",
     tier: "Silver",
   },
   "mina foundation": {
     name: "Mina Foundation",
-    logo: mina.src,
+    logo: "/partners/mina.png",
     url: "https://minaprotocol.com/",
     tier: "Gold",
   },
