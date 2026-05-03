@@ -14,7 +14,7 @@ function groupMembersBySection(members: MemberData[]): { [section: string]: Memb
 
 const sectionOrder = [
   'Executive Committee', 'Research', 'Communication', 'Logistics',
-  'Education', 'IT', 'Sponsorship', 'Alumni'
+  'Education', 'IT', 'Sponsorship', 'Industry', 'Alumni'
 ]
 
 export default function MembersClient() {
