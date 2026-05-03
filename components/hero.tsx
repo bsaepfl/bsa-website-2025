@@ -51,7 +51,7 @@ export default function Hero() {
           if (state === 'granted') {
             window.addEventListener('deviceorientation', handleOrientation, { passive: true })
           }
-        }).catch(() => {})
+        }).catch(() => { })
         window.removeEventListener('touchstart', requestOnTap)
       }
       window.addEventListener('touchstart', requestOnTap, { once: true })
@@ -75,7 +75,6 @@ export default function Hero() {
     if (logoRef.current) {
       const drawable = svg.createDrawable(logoRef.current)
       tl.add(drawable, { draw: ['0 0', '0 1'], duration: 1200, easing: 'easeInOutQuad' }, 0)
-      tl.add(logoRef.current, { fillOpacity: [0, 1], duration: 600, easing: 'easeOutQuad' }, 800)
     }
 
     tl.add('[data-hero-text]', {
@@ -88,7 +87,7 @@ export default function Hero() {
     }, 1300)
 
     // Typewriter effect on subtitle
-    const typeText = "Join us for workshops, conferences, hackathons, and more."
+    const typeText = "Connecting students, founders, and industry through blockchain at EPFL. Join us for workshops, conferences, hackathons, and more."
     const target = document.querySelector<HTMLElement>('[data-typewriter-text]')
     if (target) {
       let i = 0
@@ -146,15 +145,15 @@ export default function Hero() {
             <div ref={logoWrapRef} className="transition-transform duration-200 ease-out">
               <svg
                 viewBox="20 20 160 175"
-                className="w-48 h-48 md:w-72 md:h-72"
+                className="w-60 h-60 md:w-96 md:h-96"
                 fill="none"
               >
                 <path
                   ref={logoRef}
                   d={BSA_LOGO_PATH}
-                  fill="#d4d4d8"
-                  fillOpacity={0}
-                  stroke="#d4d4d8"
+                  fill="#fafafa"
+                  fillOpacity={1}
+                  stroke="#fafafa"
                   strokeWidth="0.5"
                   fillRule="evenodd"
                 />
@@ -178,16 +177,19 @@ export default function Hero() {
             </p>
             <div data-hero-text className="flex flex-wrap gap-xs opacity-0">
               <Link
-                href="/about"
-                className="text-zinc-950 bg-zinc-50 text-sm font-medium rounded-full px-md py-2.5 hover:bg-zinc-300 active:scale-[0.98] transition-all duration-200"
-              >
-                Learn more
-              </Link>
-              <Link
                 href="/events"
-                className="text-zinc-300 text-sm border border-zinc-700 rounded-full px-md py-2.5 hover:text-zinc-50 hover:border-zinc-500 active:scale-[0.98] transition-all duration-200"
+                className="group text-zinc-950 bg-zinc-50 text-sm font-semibold rounded-full px-md py-2.5 shadow-[0_0_0_1px_rgba(250,250,250,0.18),0_10px_30px_rgba(250,250,250,0.12)] hover:bg-zinc-200 hover:shadow-[0_0_0_1px_rgba(250,250,250,0.28),0_14px_36px_rgba(250,250,250,0.18)] active:scale-[0.98] transition-all duration-200"
               >
                 See events
+                <span className="ml-1 inline-block transition-transform duration-200 group-hover:translate-x-0.5">
+                  &rarr;
+                </span>
+              </Link>
+              <Link
+                href="/about"
+                className="text-zinc-300 text-sm border border-zinc-700 rounded-full px-md py-2.5 hover:text-zinc-50 hover:border-zinc-500 active:scale-[0.98] transition-all duration-200"
+              >
+                Learn more
               </Link>
             </div>
           </div>

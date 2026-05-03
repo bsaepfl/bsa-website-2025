@@ -26,12 +26,12 @@ export default function AboutSection() {
             <p className="text-eyebrow font-mono text-zinc-500 uppercase mb-sm">
               About BSA
             </p>
-            <h2 className="text-display-1 font-display text-zinc-50 mb-md title-shimmer">
-              A student-run community for blockchain at EPFL
+            <h2 className="text-5xl md:text-7xl font-display text-zinc-50 leading-[1.0] mb-6 title-shimmer">
+              A student-led association for blockchain at EPFL
             </h2>
-            <p className="text-zinc-400 text-lead font-serif mb-lg">
-              Founded in 2018 and officially recognized by EPFL in 2021. Every member
-              can vote on the association's direction.
+            <p className="text-zinc-400 text-lg leading-relaxed mb-8">
+              Founded in 2018 and officially recognized by EPFL in 2021, we are the first blockchain student associations
+              in Switzerland.
             </p>
             <Link
               href="/about"

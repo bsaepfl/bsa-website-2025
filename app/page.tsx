@@ -7,7 +7,9 @@ import AboutSection from "@/components/about-section"
 import LabsSection from "@/components/labs-section"
 import EventsSection from "@/components/events/EventsSection"
 import StartupsSection from "@/components/startups/StartupsSection"
+import WinsSection from "@/components/wins/WinsSection"
 import UniversitiesSection from "@/components/universities-section"
+import PartnersSection from "@/components/partners-section"
 import ArticlesSection from "@/components/articles/ArticlesSection"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import { useState, useEffect } from "react"
@@ -31,7 +33,9 @@ export default function Home() {
       <AboutSection />
       <EventsSection />
       <StartupsSection />
+      <WinsSection />
       <UniversitiesSection />
+      <PartnersSection />
       <LabsSection />
       <ArticlesSection />
     </main>

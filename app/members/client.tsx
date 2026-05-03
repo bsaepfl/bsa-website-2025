@@ -13,8 +13,8 @@ function groupMembersBySection(members: MemberData[]): { [section: string]: Memb
 }
 
 const sectionOrder = [
-  'Executive Committee', 'Research', 'Education', 'Communication',
-  'Logistics', 'IT', 'Sponsorship', 'Alumni'
+  'Executive Committee', 'Research', 'Communication', 'Logistics',
+  'Education', 'IT', 'Sponsorship', 'Alumni'
 ]
 
 export default function MembersClient() {
@@ -61,7 +61,7 @@ export default function MembersClient() {
             sortedSections.map(([section, sectionMembers]) => (
               <div key={section} className="mb-20">
                 <div className="mb-8">
-                  <h2 className="text-3xl md:text-4xl font-display text-zinc-50">
+                  <h2 className="text-4xl md:text-5xl font-display text-zinc-50">
                     {section}
                   </h2>
                   <div className="w-12 h-px bg-zinc-700 mt-3" />

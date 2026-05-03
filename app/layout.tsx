@@ -7,6 +7,7 @@ import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import PageTransition from "@/components/page-transition"
 import BackToTop from "@/components/back-to-top"
+import ClickPop from "@/components/click-pop"
 
 const instrumentSerif = Instrument_Serif({
   weight: ['400'],
@@ -113,6 +114,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <BackToTop />
+        <ClickPop />
       </body>
     </html>
   )

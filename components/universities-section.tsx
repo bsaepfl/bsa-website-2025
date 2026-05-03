@@ -1,7 +1,4 @@
-"use client"
-
-import { useEffect, useRef } from "react"
-import { animate } from "animejs"
+import type { CSSProperties } from "react"
 
 const universities = [
   { name: "EPFL", fullName: "Ecole Polytechnique Federale de Lausanne", href: "https://epfl.ch", logo: "/universities/epfl.svg" },
@@ -15,34 +12,6 @@ const universities = [
 const tickerItems = [...universities, ...universities]
 
 export default function UniversitiesSection() {
-  const trackRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    if (!trackRef.current) return
-
-    const track = trackRef.current
-    const totalWidth = track.scrollWidth / 2
-
-    const anim = animate(track, {
-      translateX: [0, -totalWidth],
-      duration: 25000,
-      easing: 'linear',
-      loop: true,
-    })
-
-    // Pause on hover
-    const pause = () => anim.pause()
-    const play = () => anim.play()
-    track.addEventListener('mouseenter', pause)
-    track.addEventListener('mouseleave', play)
-
-    return () => {
-      anim.pause()
-      track.removeEventListener('mouseenter', pause)
-      track.removeEventListener('mouseleave', play)
-    }
-  }, [])
-
   return (
     <section className="py-section">
       <div className="max-w-6xl mx-auto px-6">
@@ -59,23 +28,26 @@ export default function UniversitiesSection() {
       {/* Full-width ticker */}
       <div className="overflow-hidden relative">
         {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-[#152237] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-[#152237] to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-[#1d2e4a] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-[#1d2e4a] to-transparent z-10 pointer-events-none" />
 
-        <div ref={trackRef} className="flex gap-md w-max will-change-transform">
+        <div
+          className="marquee-left marquee-pause-on-hover flex gap-lg w-max will-change-transform"
+          style={{ "--marquee-duration": "25s" } as CSSProperties}
+        >
           {tickerItems.map((uni, i) => (
             <a
               key={`${uni.name}-${i}`}
               href={uni.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group shrink-0 rounded-lg border border-zinc-800 bg-zinc-900/50 px-10 py-6 flex items-center justify-center min-w-[180px] md:min-w-[220px] h-[100px] hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200"
+              className="group shrink-0 rounded-lg border border-zinc-800 bg-zinc-900/50 px-10 py-6 flex items-center justify-center min-w-[200px] md:min-w-[240px] h-[110px] md:h-[120px] hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={uni.logo}
                 alt={uni.fullName}
-                className="h-10 md:h-12 w-auto object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-200 brightness-110"
+                className="h-9 md:h-12 w-auto object-contain opacity-75 group-hover:opacity-100 transition-opacity duration-200 brightness-110"
               />
             </a>
           ))}

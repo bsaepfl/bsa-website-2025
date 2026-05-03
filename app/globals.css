@@ -6,6 +6,39 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Custom cursor — minimal white ring + dot. Hotspot at center (12,12). */
+* {
+  cursor: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='8' fill='none' stroke='white' stroke-opacity='0.85' stroke-width='1.25'/%3E%3Ccircle cx='12' cy='12' r='1.5' fill='white'/%3E%3C/svg%3E") 12 12, auto;
+}
+
+a, button, [role="button"], label, summary, select, input[type="submit"], input[type="button"], input[type="checkbox"], input[type="radio"] {
+  cursor: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ccircle cx='14' cy='14' r='11' fill='white' fill-opacity='0.12' stroke='white' stroke-width='1.5'/%3E%3Ccircle cx='14' cy='14' r='3' fill='white'/%3E%3C/svg%3E") 14 14, pointer;
+}
+
+input[type="text"], input[type="email"], input[type="search"], input[type="url"], input[type="tel"], input[type="password"], input[type="number"], textarea {
+  cursor: text;
+}
+
+/* Click pop ripple — sleek expanding ring */
+.click-pop {
+  position: fixed;
+  width: 18px;
+  height: 18px;
+  margin-left: -9px;
+  margin-top: -9px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: transparent;
+  pointer-events: none;
+  z-index: 9999;
+  animation: click-pop 520ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  will-change: transform, opacity;
+}
+@keyframes click-pop {
+  0%   { transform: scale(0.35); opacity: 0.9; border-width: 1.5px; }
+  100% { transform: scale(2.6);  opacity: 0;   border-width: 0.5px; }
+}
+
 @layer base {
   :root {
     --background: 215 43% 15%;
@@ -126,6 +159,28 @@ html {
 
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
+  }
+
+  @keyframes marquee-left {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
+  }
+
+  @keyframes marquee-right {
+    from { transform: translate3d(-50%, 0, 0); }
+    to { transform: translate3d(0, 0, 0); }
+  }
+
+  .marquee-left {
+    animation: marquee-left var(--marquee-duration, 28s) linear infinite;
+  }
+
+  .marquee-right {
+    animation: marquee-right var(--marquee-duration, 28s) linear infinite;
+  }
+
+  .marquee-pause-on-hover:hover {
+    animation-play-state: paused;
   }
 
   /* Section title hover shimmer */
