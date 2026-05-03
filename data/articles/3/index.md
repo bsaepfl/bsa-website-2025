@@ -3,6 +3,9 @@ title: "Obsuidian: A Fully Decentralized RPC Solution for the Sui Network"
 date: 2025-06-01
 authors: ["Loris Tran", "Alexandre Mourot"]
 sponsor: "EPFL Distributed Computing Lab"
+sponsorLabel: "Made for the"
+image: "https://unchainedcrypto.com/wp-content/uploads/2023/05/image001.png"
+categories: ["Sui", "DCL"]
 ---
 
 
@@ -73,7 +76,7 @@ These issues create significant barriers to Sui's adoption and compromise the ne
 # Lava Network: A Decentralized RPC Solution
 
 
-To address all the RPC challenges in the Sui ecosystem, we propose leveraging the Lava Network—a decentralized protocol specifically designed to provide reliable, censorship-resistant, and incentivized access to blockchain data. Lava Network functions as a decentralized marketplace for RPC services, connecting blockchain applications (consumers) with infrastructure providers through a protocol layer that ensures quality, reliability, and fair compensation. This Network is RPC agnostic and consists of several components:
+To address all the RPC challenges in the Sui ecosystem, we propose leveraging the Lava Network, a decentralized protocol specifically designed to provide reliable, censorship-resistant, and incentivized access to blockchain data. Lava Network functions as a decentralized marketplace for RPC services, connecting blockchain applications (consumers) with infrastructure providers through a protocol layer that ensures quality, reliability, and fair compensation. This Network is RPC agnostic and consists of several components:
 
 Providers are node operators who run Sui Full Nodes and offer RPC services through the Lava protocol, forming the backbone of the network's infrastructure. 
 
@@ -124,7 +127,7 @@ Our testing framework was designed to compare Lava's RPC performance against exi
 | **Error Rate (%)**           | 0.00   | 0.00   | 0.00%     |
 
 
-Across 300 total RPC calls with a 0% error rate, Lava achieved an average latency of 46.20ms compared to 48.27ms for the centralized provider, representing a negligeable 4.28% performance advantage. While the centralized provider showed a slightly better median latency (35.48ms vs 42.35ms), Lava demonstrated significantly better consistency with a maximum latency of 122.38ms compared to the centralized provider's 401.86ms—a 69.55%.
+Across 300 total RPC calls with a 0% error rate, Lava achieved an average latency of 46.20ms compared to 48.27ms for the centralized provider, representing a negligeable 4.28% performance advantage. While the centralized provider showed a slightly better median latency (35.48ms vs 42.35ms), Lava demonstrated significantly better consistency with a maximum latency of 122.38ms compared to the centralized provider's 401.86ms, a 69.55% improvement.
 
 Method-specific analysis revealed varying performance characteristics across different RPC calls. For the multiGetObjects method, Lava was marginally slower with a 3.67% overhead (49.35ms vs 47.60ms). However, Lava demonstrated clear advantages in other methods, with getLatestCheckpoint showing a 12.35% performance improvement (42.50ms vs 48.49ms) and getReferenceGasPrice performing 4.03% faster (46.77ms vs 48.73ms). 
 

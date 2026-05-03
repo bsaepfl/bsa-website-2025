@@ -47,8 +47,8 @@ export async function GET() {
           ? `/articles/${dir}/header.jpg` 
           : null
         
-        // Extract categories from frontmatter or default to blockchain-related categories
-        const categories = frontmatter.categories || ['Blockchain', 'Web3']
+        // Extract categories from frontmatter or default to a blockchain category
+        const categories = frontmatter.categories || ['Blockchain']
         
         return {
           title: frontmatter.title || `Article ${dir}`,

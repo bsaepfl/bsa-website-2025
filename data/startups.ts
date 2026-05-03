@@ -41,7 +41,7 @@ export const startups: StartupType[] = [
     title: "Automate the management of Convex (CVX) and Aura (AURA) positions:",
     description:
       "By depositing and minting WAR, users can stake into the system to earn revenue from protocol rewards and vote incentives.",
-    link: "https://warlord.paladin.vote/",
+    link: "https://paladin.vote/#/",
   },
   {
     img: "/startups/OnDefy.webp",
@@ -56,5 +56,12 @@ export const startups: StartupType[] = [
     description:
       "Join the Crypties community and be part of the first NFT collection on Starknet, with unique art and exclusive benefits.",
     link: "https://crypties.xyz",
+  },
+  {
+    img: "/startups/zyfai.png",
+    title: "AI-powered DeFi portfolio management:",
+    description:
+      "Zyfai leverages artificial intelligence to optimize DeFi yield strategies and portfolio management.",
+    link: "https://www.zyf.ai/",
   }
 ]; 
