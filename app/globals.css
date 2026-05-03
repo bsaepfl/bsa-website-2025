@@ -90,6 +90,8 @@ input[type="text"], input[type="email"], input[type="search"], input[type="url"]
     --text-small:      0.875rem;
     --text-eyebrow:    0.75rem;
     --text-micro:      0.6875rem;
+
+    --font-serif: "Google Sans Text", "Switzer", system-ui, sans-serif;
   }
 
   * {
@@ -98,8 +100,8 @@ input[type="text"], input[type="email"], input[type="search"], input[type="url"]
 
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-sans);
-    background-color: #1d2e4a;
+    font-family: "Google Sans Text", var(--font-sans), system-ui, sans-serif;
+    background-color: #152237;
     background-image:
       linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
@@ -111,7 +113,7 @@ input[type="text"], input[type="email"], input[type="search"], input[type="url"]
   }
 
   h4, h5, h6 {
-    font-family: var(--font-sans);
+    font-family: "Google Sans Text", var(--font-sans), system-ui, sans-serif;
     font-weight: 500;
   }
 }

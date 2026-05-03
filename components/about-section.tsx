@@ -56,7 +56,7 @@ export default function AboutSection() {
                     </span>
                     <div>
                       <h3 className="text-display-2 font-display text-zinc-50 mb-xs">{activity.label}</h3>
-                      <p className="text-zinc-400 leading-relaxed">{activity.description}</p>
+                      <p className="text-zinc-400 leading-relaxed font-serif">{activity.description}</p>
                     </div>
                   </div>
                 </div>

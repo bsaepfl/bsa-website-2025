@@ -75,7 +75,7 @@ export default function RoleFAQ() {
         <h2 className="text-display-1 font-display text-zinc-50 mb-sm title-shimmer">
           Depends on who's asking.
         </h2>
-        <p className="text-zinc-400 text-lead max-w-[50ch]">
+        <p className="text-zinc-400 text-lead font-serif max-w-[50ch]">
           Identify yourself. The answers split two ways.
         </p>
       </div>
@@ -187,7 +187,7 @@ export default function RoleFAQ() {
                 <AccordionTrigger className="text-zinc-200 hover:text-zinc-50 py-lg text-display-3 text-left font-medium">
                   {faq.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-zinc-400 pb-lg text-lead leading-relaxed">
+                <AccordionContent className="text-zinc-400 pb-lg text-lead font-serif leading-relaxed">
                   {faq.a}
                 </AccordionContent>
               </AccordionItem>

@@ -25,7 +25,7 @@ export default function Footer() {
 
             {/* Left: wordmark */}
             <div>
-              <p className="text-zinc-50 font-sans text-sm font-medium tracking-wide">
+              <p className="text-zinc-50 text-sm font-medium tracking-wide">
                 BSA
                 <span className="text-zinc-500 ml-1">EPFL</span>
               </p>

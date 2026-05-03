@@ -16,17 +16,17 @@ export default function AboutClient() {
 
           <div className="grid lg:grid-cols-2 gap-2xl items-start">
             <div className="space-y-md">
-              <p className="text-zinc-400 text-lead">
+              <p className="text-zinc-400 text-lead font-serif">
                 The Blockchain Student Association at EPFL is dedicated to fostering
                 blockchain education, innovation, and community among students passionate
                 about decentralized technologies.
               </p>
-              <p className="text-zinc-400 text-lead">
+              <p className="text-zinc-400 text-lead font-serif">
                 We believe in the transformative potential of blockchain technology to
                 reshape industries, create new economic models, and build a more
                 transparent and equitable digital future.
               </p>
-              <p className="text-zinc-400 text-lead">
+              <p className="text-zinc-400 text-lead font-serif">
                 Through workshops, hackathons, networking events, and collaborative
                 projects, we provide students with the knowledge, skills, and
                 connections needed to become leaders in the blockchain space.

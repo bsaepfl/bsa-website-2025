@@ -94,12 +94,18 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&display=swap"
+          rel="stylesheet"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${instrumentSerif.variable} ${switzer.variable} ${monaspace.variable} font-sans antialiased noise`}>
+      <body className={`${instrumentSerif.variable} ${switzer.variable} ${monaspace.variable} antialiased noise`}>
         <Navbar />
         <main className="pt-20 md:pt-24">
           <PageTransition>
