@@ -51,7 +51,7 @@ export default function Hero() {
           if (state === 'granted') {
             window.addEventListener('deviceorientation', handleOrientation, { passive: true })
           }
-        }).catch(() => {})
+        }).catch(() => { })
         window.removeEventListener('touchstart', requestOnTap)
       }
       window.addEventListener('touchstart', requestOnTap, { once: true })
@@ -87,7 +87,7 @@ export default function Hero() {
     }, 1300)
 
     // Typewriter effect on subtitle
-    const typeText = "Join us for workshops, conferences, hackathons, and more."
+    const typeText = "Connecting students, founders, and industry through blockchain at EPFL. Join us for workshops, conferences, hackathons, and more."
     const target = document.querySelector<HTMLElement>('[data-typewriter-text]')
     if (target) {
       let i = 0
