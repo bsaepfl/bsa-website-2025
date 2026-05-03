@@ -75,7 +75,7 @@ export default function Navbar() {
             aria-label="BSA EPFL — home"
             className={`
               group/logo relative flex items-center gap-2.5 pl-1.5 pr-2 py-1 rounded-full
-              text-zinc-50 text-sm font-medium tracking-wide
+              text-zinc-50 text-base font-medium tracking-wide
               transition-opacity duration-300
               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#152237]
               ${navHidden ? 'pointer-events-none' : ''}
@@ -90,7 +90,7 @@ export default function Navbar() {
               />
               <svg
                 viewBox="20 20 160 175"
-                className="relative w-7 h-7 md:w-8 md:h-8 shrink-0 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/logo:rotate-[8deg]"
+                className="relative w-8 h-8 md:w-9 md:h-9 shrink-0 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/logo:rotate-[8deg]"
                 fill="none"
                 aria-hidden="true"
               >
@@ -99,9 +99,6 @@ export default function Navbar() {
             </span>
             <span className="hidden sm:inline-flex items-baseline">
               <span>BSA</span>
-              <span className="ml-1 text-zinc-500 font-mono text-xs tracking-wider transition-colors duration-200 group-hover/logo:text-zinc-400">
-                EPFL
-              </span>
             </span>
           </Link>
 
@@ -134,8 +131,7 @@ export default function Navbar() {
                     {isActive && (
                       <span
                         aria-hidden="true"
-                        className="absolute -bottom-0.5 left-0 right-0 h-px rounded-full"
-                        style={{ background: 'linear-gradient(90deg, #00ffaa 0%, #4d9cff 100%)' }}
+                        className="absolute -bottom-0.5 left-0 right-0 h-px rounded-full bg-zinc-50"
                       />
                     )}
                   </span>
@@ -143,8 +139,8 @@ export default function Navbar() {
               )
             })}
 
-            <Link
-              href="/contact"
+            <a
+              href="mailto:bsa@epfl.ch"
               className="
                 ml-2 inline-flex items-center gap-1.5
                 text-zinc-950 bg-zinc-50 text-[13px] font-medium tracking-wide
@@ -160,7 +156,7 @@ export default function Navbar() {
               <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
                 <path d="M2 8L8 2M8 2H3.5M8 2V6.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-            </Link>
+            </a>
           </div>
 
           {/* Mobile hamburger */}
@@ -211,8 +207,8 @@ export default function Navbar() {
           <svg viewBox="20 20 160 175" className="w-7 h-7" fill="none" aria-hidden="true">
             <path d={BSA_LOGO_PATH} fill="#fafafa" fillRule="evenodd" />
           </svg>
-          <span className="text-zinc-50 text-sm font-medium tracking-wide">
-            BSA <span className="text-zinc-500 font-mono text-xs ml-0.5">EPFL</span>
+          <span className="text-zinc-50 text-base font-medium tracking-wide">
+            BSA
           </span>
         </div>
 
@@ -242,8 +238,7 @@ export default function Navbar() {
                   {isActive && (
                     <span
                       aria-hidden="true"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full"
-                      style={{ background: 'linear-gradient(90deg, #00ffaa 0%, #4d9cff 100%)' }}
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-zinc-50"
                     />
                   )}
                 </span>
@@ -251,8 +246,8 @@ export default function Navbar() {
             )
           })}
 
-          <Link
-            href="/contact"
+          <a
+            href="mailto:bsa@epfl.ch"
             onClick={() => setIsMenuOpen(false)}
             className={`
               mt-12 ml-10 inline-flex items-center gap-2
@@ -267,7 +262,7 @@ export default function Navbar() {
             <svg width="12" height="12" viewBox="0 0 10 10" fill="none" aria-hidden="true">
               <path d="M2 8L8 2M8 2H3.5M8 2V6.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </Link>
+          </a>
         </nav>
 
         {/* Footer hint */}
