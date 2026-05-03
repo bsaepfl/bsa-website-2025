@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
 export default function ContactClient() {
   const [formData, setFormData] = useState({
@@ -113,40 +114,42 @@ export default function ContactClient() {
                     {isSubmitting ? "Sending..." : "Send message"}
                   </button>
                 </div>
+              </form>
 
-                {/* FAQ */}
-                <div>
-                  <h2 className="text-3xl md:text-5xl font-display text-zinc-50 mb-8">
-                    Frequently asked questions
-                  </h2>
-                  <div className="space-y-10">
-                    {faqGroups.map((group, gi) => (
-                      <div key={group.title}>
-                        <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
-                          {group.title}
-                        </p>
-                        <div className="space-y-3">
-                          {group.items.map((faq, i) => (
-                            <div key={i} className="rounded-lg border border-zinc-800 bg-zinc-900/50">
-                              <Accordion type="single" collapsible>
-                                <AccordionItem value={`item-${gi}-${i}`} className="border-0">
-                                  <AccordionTrigger className="text-zinc-200 hover:text-zinc-50 px-5 py-5 text-lg md:text-xl text-left font-medium">
-                                    {faq.question}
-                                  </AccordionTrigger>
-                                  <AccordionContent className="px-5 pb-5 text-zinc-400 text-base leading-relaxed">
-                                    {faq.answer}
-                                  </AccordionContent>
-                                </AccordionItem>
-                              </Accordion>
-                            </div>
-                          ))}
-                        </div>
+              {/* FAQ */}
+              <div className="mt-2xl">
+                <h2 className="text-3xl md:text-5xl font-display text-zinc-50 mb-8">
+                  Frequently asked questions
+                </h2>
+                <div className="space-y-10">
+                  {faqGroups.map((group, gi) => (
+                    <div key={group.title}>
+                      <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.2em] mb-4">
+                        {group.title}
+                      </p>
+                      <div className="space-y-3">
+                        {group.items.map((faq, i) => (
+                          <div key={i} className="rounded-lg border border-zinc-800 bg-zinc-900/50">
+                            <Accordion type="single" collapsible>
+                              <AccordionItem value={`item-${gi}-${i}`} className="border-0">
+                                <AccordionTrigger className="text-zinc-200 hover:text-zinc-50 px-5 py-5 text-lg md:text-xl text-left font-medium">
+                                  {faq.question}
+                                </AccordionTrigger>
+                                <AccordionContent className="px-5 pb-5 text-zinc-400 text-base leading-relaxed">
+                                  {faq.answer}
+                                </AccordionContent>
+                              </AccordionItem>
+                            </Accordion>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  ))}
                 </div>
+              </div>
             </div>
           </div>
+        </div>
       </section>
     </div>
   )
