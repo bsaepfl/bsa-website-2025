@@ -32,12 +32,12 @@ export default function Home() {
       <Hero />
       <AboutSection />
       <EventsSection />
-      <StartupsSection />
-      <WinsSection />
-      <UniversitiesSection />
       <PartnersSection />
       <LabsSection />
+      <UniversitiesSection />
+      <StartupsSection />
       <ArticlesSection />
+      <WinsSection />
     </main>
   )
 }

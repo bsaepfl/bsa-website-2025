@@ -56,7 +56,7 @@ export default function ArticlesSection() {
               Articles
             </p>
             <h2 className="text-display-1 font-display text-zinc-50 title-shimmer">
-              Read our latest research
+              Read our latest Research & Articles
             </h2>
             <p className="text-zinc-400 mt-xs max-w-lg">
               Blockchain technology, DeFi, privacy, and more from BSA members.
