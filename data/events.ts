@@ -67,14 +67,14 @@ export const pastEvents: PastEvent[] = [
           "Final-round teams pitched on the conference main stage to a panel of investors and operators.",
       },
     ],
-    location: "EPFL — BC Building, Lausanne",
+    location: "EPFL - BC Building, Lausanne",
   },
   {
     id: "stablecoin-payments-conference-2026",
     date: "March 2026",
     title: "Stablecoins & Payments Conference",
     type: "Conference",
-    tagline: "The state of stablecoins, on-chain — live from EPFL",
+    tagline: "The state of stablecoins, on-chain - live from EPFL",
     description:
       "Expert talks and panels on stablecoins, CBDCs, regulation, and institutional DeFi. Speakers from Circle, Swiss National Bank, Aave, Franklin Templeton, Ledger, and UNHCR.",
     longDescription:
@@ -117,7 +117,7 @@ export const pastEvents: PastEvent[] = [
           "UNHCR shared real-world deployments of stablecoin payouts for aid distribution.",
       },
     ],
-    location: "EPFL — BC Building, Lausanne",
+    location: "EPFL - BC Building, Lausanne",
   },
   {
     id: "sui-bsa-hackathon-2025",
@@ -148,29 +148,29 @@ export const pastEvents: PastEvent[] = [
       },
     ],
     cohosts: ["Sui Foundation"],
-    location: "EPFL — BC Building, Lausanne",
+    location: "EPFL - BC Building, Lausanne",
   },
   {
     id: "privacy-verifiability-hackathon-2025",
     date: "March 2025",
     title: "Privacy & Verifiability Hackathon",
     type: "Hackathon",
-    tagline: "ZKP, MPC, and TEE — built in 36 hours",
+    tagline: "ZKP, MPC, and TEE - built in 36 hours",
     description:
       "Building innovative solutions focusing on privacy and verifiability in blockchain. 23 projects submitted across ZKP, MPC, and TEE tracks.",
     longDescription:
-      "36 hackers shipped 23 projects spanning zero-knowledge proofs, multi-party computation, and trusted execution environments. Judges from Mina, Hedera, and Hyle evaluated submissions on technical depth and applicability to real-world privacy problems.",
+      "36 hackers shipped 23 projects spanning zero-knowledge proofs, multi-party computation, and trusted execution environments. Judges from Mina, Hedera, and Hyli evaluated submissions on technical depth and applicability to real-world privacy problems.",
     stats: [
       { label: "Prize pool", value: "$15k" },
       { label: "Hackers", value: "36" },
       { label: "Projects", value: "23" },
     ],
-    sponsors: ["Mina Foundation", "Hedera Hashgraph Association", "Hyle"],
+    sponsors: ["Mina Foundation", "Hedera Hashgraph Association", "Hyli"],
     highlights: [
       {
         title: "Three privacy primitives",
         description:
-          "Dedicated tracks for ZKP, MPC, and TEE — hackers picked their primitive and shipped.",
+          "Dedicated tracks for ZKP, MPC, and TEE - hackers picked their primitive and shipped.",
       },
       {
         title: "Co-located with conference",
@@ -178,7 +178,7 @@ export const pastEvents: PastEvent[] = [
           "Hackers had access to all conference talks and panels happening in parallel.",
       },
     ],
-    location: "EPFL — BC Building, Lausanne",
+    location: "EPFL - BC Building, Lausanne",
     photos: [
       "/events/2/IMG_0492.JPG",
       "/events/2/IMG_0578.JPG",
@@ -219,7 +219,7 @@ export const pastEvents: PastEvent[] = [
       },
     ],
     cohosts: ["Privacy Guardians", "CVA", "IEEE Blockchain"],
-    location: "EPFL — BC Building, Lausanne",
+    location: "EPFL - BC Building, Lausanne",
     photos: [
       "/events/1/IMG_0492.JPG",
       "/events/1/IMG_0578.JPG",
@@ -235,7 +235,7 @@ export const pastEvents: PastEvent[] = [
     description:
       "Second edition of the European Sui Hackathon. 22 projects submitted, including Fair.fun, Proximity, Suimons, and Imaigine.",
     longDescription:
-      "The second edition of the Sui x BSA Hackathon gathered 70+ participants for a weekend of building on Move and Sui. Standout projects included Fair.fun, Proximity, Suimons, and Imaigine — several of which went on to graduate into independent products.",
+      "The second edition of the Sui x BSA Hackathon gathered 70+ participants for a weekend of building on Move and Sui. Standout projects included Fair.fun, Proximity, Suimons, and Imaigine - several of which went on to graduate into independent products.",
     stats: [
       { label: "Prize pool", value: "$25k+" },
       { label: "Participants", value: "70+" },
@@ -246,7 +246,7 @@ export const pastEvents: PastEvent[] = [
       {
         title: "Notable submissions",
         description:
-          "Fair.fun, Proximity, Suimons, and Imaigine — projects that went on to ship beyond the hackathon.",
+          "Fair.fun, Proximity, Suimons, and Imaigine - projects that went on to ship beyond the hackathon.",
       },
     ],
     cohosts: ["Sui Foundation"],
@@ -298,7 +298,7 @@ export const pastEvents: PastEvent[] = [
     description:
       "The first European Sui Hackathon. Students from 13+ universities built on Sui using the Move programming language. Winners from TUM, EPFL, ETH Zurich, and Imperial College.",
     longDescription:
-      "The very first European Sui Hackathon. 100+ students from 13+ universities — including TUM, EPFL, ETH Zurich, and Imperial College — built on Sui using the Move programming language. The event laid the foundation for what would become a recurring partnership between BSA and the Sui Foundation.",
+      "The very first European Sui Hackathon. 100+ students from 13+ universities - including TUM, EPFL, ETH Zurich, and Imperial College - built on Sui using the Move programming language. The event laid the foundation for what would become a recurring partnership between BSA and the Sui Foundation.",
     stats: [
       { label: "Prize pool", value: "$25k" },
       { label: "Participants", value: "100+" },
@@ -314,7 +314,7 @@ export const pastEvents: PastEvent[] = [
       {
         title: "First Move hackathon at EPFL",
         description:
-          "A first taste of the Move programming language for many participants — and the start of a series.",
+          "A first taste of the Move programming language for many participants - and the start of a series.",
       },
     ],
     cohosts: ["Sui Foundation"],

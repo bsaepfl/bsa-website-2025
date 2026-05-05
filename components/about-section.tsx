@@ -11,7 +11,7 @@ const activities = [
   },
   {
     label: "Research",
-    description: "Published work on decentralized RPC infrastructure, privacy architectures, and ZK proofs. Academic rigor, real-world applications.",
+    description: "Published work on decentralized RPC infrastructure, privacy architectures, and ZK proofs.",
   },
 ]
 

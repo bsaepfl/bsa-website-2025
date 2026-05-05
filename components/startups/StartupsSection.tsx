@@ -38,7 +38,7 @@ export default function StartupsSection() {
                 alt={startup.title}
                 width={140}
                 height={60}
-                className="object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-200 max-h-12"
+                className={`object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-200 ${startup.imgClass ?? "max-h-12"}`}
               />
             </a>
           ))}

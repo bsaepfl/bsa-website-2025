@@ -34,7 +34,7 @@ export default function StartupsClient() {
                     alt={startup.title}
                     width={180}
                     height={80}
-                    className="object-contain max-h-16 opacity-60 group-hover:opacity-100 transition-opacity duration-200"
+                    className={`object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-200 ${startup.imgClass ?? "max-h-16"}`}
                   />
                 </div>
                 <div className="p-sm">

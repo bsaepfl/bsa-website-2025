@@ -112,12 +112,6 @@ const sponsorCatalog: Record<string, Sponsor> = {
     url: "https://www.hyli.org/",
     tier: "Silver",
   },
-  hyle: {
-    name: "Hyle",
-    logo: "/partners/hyle.png",
-    url: "https://www.hyli.org/",
-    tier: "Silver",
-  },
   ens: {
     name: "ENS",
     logo: "/partners/ens.png",

@@ -3,4 +3,5 @@ export interface StartupType {
   title: string;
   description: string;
   link: string;
+  imgClass?: string;
 } 

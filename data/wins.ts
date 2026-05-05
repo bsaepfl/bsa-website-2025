@@ -13,7 +13,7 @@ export type Win = {
 }
 
 // Order: most recent first.
-// Skipped from source CSV (insufficient data — placement/prize TBA):
+// Skipped from source CSV (insufficient data - placement/prize TBA):
 //   - XRPL Rome (Stan Stelcher / Alexandre Huou / Alexandre Mourot)
 //   - ETHRome Oct 2025 (Alex Huou / Jeanne Louise Bassier / Elyes Ben Abid)
 export const wins: Win[] = [
@@ -21,7 +21,7 @@ export const wins: Win[] = [
     date: "April 2026",
     year: "2026",
     event: "ETHGlobal Cannes",
-    placement: "1st place — Unlink track",
+    placement: "1st place - Unlink track",
     category: "Hackathon",
     team: "Guillaume Lepin",
     prize: "3,000 USDC",
@@ -31,7 +31,7 @@ export const wins: Win[] = [
     date: "April 2026",
     year: "2026",
     event: "ETHGlobal Cannes",
-    placement: "3rd place — 0G track",
+    placement: "3rd place - 0G track",
     category: "Hackathon",
     team: "Youssef Jeddi, Hassene Ezzeddine, Sylane Jawadi",
     prize: "1,000 USDC",
@@ -41,7 +41,7 @@ export const wins: Win[] = [
     date: "March 2026",
     year: "2026",
     event: "Stablecoins & Payments Hackathon",
-    placement: "1st place — AlphaTON track",
+    placement: "1st place - AlphaTON track",
     category: "Hackathon",
     team: "Antoine Bastide, Hedi Kharouf, Ahmed Chaouachi",
     prize: "1,500 USD + 1,000 TON",
@@ -51,7 +51,7 @@ export const wins: Win[] = [
     date: "March 2026",
     year: "2026",
     event: "Stablecoins & Payments Hackathon",
-    placement: "3rd place — TON track",
+    placement: "3rd place - TON track",
     category: "Hackathon",
     team: "Balthazar Golovtchiner, Charles Dupouy, Augustin Monpays, Antoine Lepin",
     prize: "500 USD + 500 TON",
@@ -61,7 +61,7 @@ export const wins: Win[] = [
     date: "March 2026",
     year: "2026",
     event: "Stablecoins & Payments Hackathon",
-    placement: "3rd place — ENS track",
+    placement: "3rd place - ENS track",
     category: "Hackathon",
     team: "Antoine Heurtier",
     prize: "150 USD",
@@ -81,7 +81,7 @@ export const wins: Win[] = [
     date: "October 2025",
     year: "2025",
     event: "ETHRome",
-    placement: "1st place — iExec track",
+    placement: "1st place - iExec track",
     category: "Hackathon",
     team: "Youssef Jeddi, Hassene Ezzeddine",
     prize: "3,000 USD",
@@ -91,7 +91,7 @@ export const wins: Win[] = [
     date: "September 2025",
     year: "2025",
     event: "Sui x BSA Hackathon (3rd Edition)",
-    placement: "Honorable Mention — Main Track",
+    placement: "Honorable Mention - Main Track",
     category: "Hackathon",
     team: "Balthazar Golovtchiner, Charles Dupouy, Elio le Dortz, Antoine Lepin",
     prize: "1,000 USDC",
