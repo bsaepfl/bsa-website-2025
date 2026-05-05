@@ -20,11 +20,13 @@ const partnerCatalog: Record<string, Partner> = {
     name: "Ledger",
     href: "https://www.ledger.com",
     logo: "/partners/ledger.png",
+    logoClass: "h-16 md:h-20",
   },
   "xrpl commons": {
     name: "XRPL Commons",
     href: "https://xrplcommons.org",
     logo: "/partners/xrpl.png",
+    logoClass: "h-16 md:h-20",
   },
   ens: {
     name: "ENS",
@@ -35,11 +37,6 @@ const partnerCatalog: Record<string, Partner> = {
     name: "Hyli",
     href: "https://www.hyli.org/",
     logo: "/partners/hyli.png",
-  },
-  hyle: {
-    name: "Hyle",
-    href: "https://www.hyli.org/",
-    logo: "/partners/hyle.png",
   },
   raiffeisen: {
     name: "Raiffeisen",
@@ -65,6 +62,17 @@ const partnerCatalog: Record<string, Partner> = {
     name: "Mina Foundation",
     href: "https://minaprotocol.com",
     logo: "/partners/mina.png",
+    logoClass: "h-12 md:h-14",
+  },
+  arbitrum: {
+    name: "Arbitrum",
+    href: "https://arbitrum.io",
+    logo: "https://cryptologos.cc/logos/arbitrum-arb-logo.png",
+  },
+  starknet: {
+    name: "Starknet",
+    href: "https://www.starknet.io",
+    logo: "https://cryptologos.cc/logos/starknet-token-strk-logo.png",
   },
   "hedera hashgraph association": {
     name: "The Hashgraph Association",
@@ -119,10 +127,14 @@ const partnerCatalog: Record<string, Partner> = {
   },
 }
 
+const extraPartnerKeys = ["arbitrum", "starknet"]
+
 const partners = Array.from(
   new Map(
-    pastEvents
-      .flatMap((event) => event.sponsors)
+    [
+      ...pastEvents.flatMap((event) => event.sponsors),
+      ...extraPartnerKeys,
+    ]
       .map((name) => partnerCatalog[name.trim().toLowerCase()])
       .filter(Boolean)
       .map((partner) => [partner.name, partner])

@@ -5,7 +5,7 @@ export default function WinsSection() {
   const featured = wins.slice(0, 3)
 
   return (
-    <section id="wins" className="py-24 md:py-32">
+    <section id="wins" className="pt-24 md:pt-32 pb-12 md:pb-16">
       <div className="max-w-6xl mx-auto px-6">
         <div data-reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12 opacity-0">
           <div>
