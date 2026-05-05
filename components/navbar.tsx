@@ -10,8 +10,8 @@ const navLinks = [
   { href: "/events", label: "Events" },
   { href: "/articles", label: "Articles" },
   { href: "/startups", label: "Startups" },
-  { href: "/wins", label: "Wins" },
   { href: "/members", label: "Members" },
+  { href: "/wins", label: "Wins" },
 ]
 
 export default function Navbar() {
@@ -72,7 +72,7 @@ export default function Navbar() {
           {/* LEFT: logo + wordmark */}
           <Link
             href="/"
-            aria-label="BSA EPFL — home"
+            aria-label="BSA EPFL - home"
             className={`
               group/logo relative flex items-center gap-2.5 pl-1.5 pr-2 py-1 rounded-full
               text-zinc-50 text-base font-medium tracking-wide
@@ -96,9 +96,6 @@ export default function Navbar() {
               >
                 <path d={BSA_LOGO_PATH} fill="#fafafa" fillRule="evenodd" />
               </svg>
-            </span>
-            <span className="hidden sm:inline-flex items-baseline">
-              <span>BSA</span>
             </span>
           </Link>
 
@@ -207,9 +204,6 @@ export default function Navbar() {
           <svg viewBox="20 20 160 175" className="w-7 h-7" fill="none" aria-hidden="true">
             <path d={BSA_LOGO_PATH} fill="#fafafa" fillRule="evenodd" />
           </svg>
-          <span className="text-zinc-50 text-base font-medium tracking-wide">
-            BSA
-          </span>
         </div>
 
         <nav className="flex-1 flex flex-col items-start justify-center gap-1 px-8 relative">
@@ -269,7 +263,7 @@ export default function Navbar() {
         <p className={`relative px-8 pb-8 text-eyebrow font-mono text-zinc-700 transition-all duration-500 ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}
           style={{ transitionDelay: isMenuOpen ? `${(navLinks.length + 2) * 60}ms` : '0ms' }}
         >
-          BLOCKCHAIN STUDENT ASSOCIATION — EPFL
+          BLOCKCHAIN STUDENT ASSOCIATION - EPFL
         </p>
       </div>
     </>
