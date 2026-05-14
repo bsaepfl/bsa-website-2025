@@ -20,23 +20,13 @@ export default function Member({ member }: MemberProps) {
     <div className="group relative transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-2">
       {/* Image */}
       <div className="relative aspect-square rounded-lg overflow-hidden bg-zinc-900 mb-3 ring-1 ring-white/5 group-hover:ring-white/20 shadow-lg shadow-black/20 group-hover:shadow-2xl group-hover:shadow-black/40 transition-[box-shadow,ring] duration-500">
-        {member.hasImage ? (
-          member.image && /^https?:\/\//.test(member.image) ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={member.image}
-              alt={member.name}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-[700ms] ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.06]"
-              referrerPolicy="no-referrer"
-            />
-          ) : (
-            <Image
-              src={member.image || `/members/${member.tag}/image.jpg`}
-              alt={member.name}
-              fill
-              className="object-cover transition-transform duration-[700ms] ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.06]"
-            />
-          )
+        {member.image ? (
+          <Image
+            src={member.image}
+            alt={member.name}
+            fill
+            className="object-cover transition-transform duration-[700ms] ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.06]"
+          />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
             <User className="w-8 h-8 text-zinc-700" />
