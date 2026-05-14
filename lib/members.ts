@@ -12,7 +12,6 @@ export interface MemberData {
   github?: string
   mail?: string
   image?: string
-  hasImage: boolean
 }
 
 function getTitleRank(title?: string): number {
@@ -40,14 +39,14 @@ export async function getAllMembers(): Promise<MemberData[]> {
     for (const folder of memberFolders) {
       const memberPath = path.join(membersDir, folder)
       const infoPath = path.join(memberPath, 'info.json')
-      const imagePath = path.join(memberPath, 'image.jpg')
 
       if (fs.existsSync(infoPath)) {
         try {
           const infoContent = fs.readFileSync(infoPath, 'utf-8')
           const memberInfo = JSON.parse(infoContent)
-          const hasLocalJpg = fs.existsSync(imagePath)
-          const hasImage = Boolean(memberInfo.image) || hasLocalJpg
+          const imageFile = fs
+            .readdirSync(memberPath)
+            .find((f) => /^image\.(jpe?g|png|webp|avif|gif)$/i.test(f))
 
           members.push({
             tag: folder,
@@ -59,8 +58,7 @@ export async function getAllMembers(): Promise<MemberData[]> {
             linkedin: memberInfo.linkedin,
             github: memberInfo.github,
             mail: memberInfo.mail,
-            image: memberInfo.image,
-            hasImage
+            image: imageFile ? `/members/${folder}/${imageFile}` : undefined,
           })
         } catch (error) {
           console.error(`Error reading member info for ${folder}:`, error)
