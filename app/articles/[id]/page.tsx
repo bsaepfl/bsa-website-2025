@@ -102,12 +102,12 @@ export default function ArticlePage({ params }: ArticlePageProps) {
 
         {(article.image || article.thumbnail) && (
           article.image ? (
-            <div className="relative w-full h-72 md:h-[28rem] lg:h-[32rem] mb-xl rounded-lg overflow-hidden bg-zinc-950 flex items-center justify-center md:-mx-12 lg:-mx-32 xl:-mx-48">
+            <div className="relative h-72 md:h-[28rem] lg:h-[32rem] mb-xl rounded-lg overflow-hidden bg-zinc-950 flex items-center justify-center md:-mx-12 lg:-mx-32 xl:-mx-48">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={article.image} alt={article.title} className="max-h-full max-w-full object-contain" />
             </div>
           ) : (
-            <div className="relative w-full h-72 md:h-[28rem] lg:h-[32rem] mb-xl rounded-lg overflow-hidden md:-mx-12 lg:-mx-32 xl:-mx-48">
+            <div className="relative h-72 md:h-[28rem] lg:h-[32rem] mb-xl rounded-lg overflow-hidden md:-mx-12 lg:-mx-32 xl:-mx-48">
               <Image src={article.thumbnail!} alt={article.title} fill className="object-cover" priority />
             </div>
           )
