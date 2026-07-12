@@ -6,7 +6,7 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Download } from 'lucide-react'
+import { Download, Github } from 'lucide-react'
 
 interface Article {
   title: string
@@ -146,14 +146,19 @@ export default function ArticlePage({ params }: ArticlePageProps) {
                 return <p className="text-zinc-400 text-lg leading-relaxed mb-6" {...props}>{children}</p>
               },
               a: ({ children, href, ...props }) => {
-                if (href && href.toLowerCase().endsWith('.pdf')) {
+                const label = typeof children === 'string' ? children : ''
+                const isPdf = !!href && href.toLowerCase().endsWith('.pdf')
+                const isRepo = !!href && href.includes('github.com') && /github/i.test(label)
+                if (isPdf || isRepo) {
                   return (
                     <a
                       href={href}
-                      download
+                      download={isPdf || undefined}
+                      target={isRepo ? '_blank' : undefined}
+                      rel={isRepo ? 'noopener noreferrer' : undefined}
                       className="not-prose inline-flex items-center gap-2 mt-2 mb-4 rounded-full border border-zinc-700 bg-zinc-900/60 px-5 py-2.5 text-sm font-medium text-zinc-200 no-underline hover:text-zinc-50 hover:border-zinc-500 hover:bg-zinc-900 transition-all"
                     >
-                      <Download className="w-4 h-4" />
+                      {isRepo ? <Github className="w-4 h-4" /> : <Download className="w-4 h-4" />}
                       {children}
                     </a>
                   )
