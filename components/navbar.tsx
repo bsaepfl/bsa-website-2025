@@ -137,7 +137,9 @@ export default function Navbar() {
             })}
 
             <a
-              href="mailto:bsa@epfl.ch"
+              href="https://edu.bsaepfl.ch"
+              target="_blank"
+              rel="noopener noreferrer"
               className="
                 ml-2 inline-flex items-center gap-1.5
                 text-zinc-950 bg-zinc-50 text-[13px] font-medium tracking-wide
@@ -149,7 +151,7 @@ export default function Navbar() {
                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#152237]
               "
             >
-              Contact
+              Education
               <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
                 <path d="M2 8L8 2M8 2H3.5M8 2V6.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -241,7 +243,9 @@ export default function Navbar() {
           })}
 
           <a
-            href="mailto:bsa@epfl.ch"
+            href="https://edu.bsaepfl.ch"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setIsMenuOpen(false)}
             className={`
               mt-12 ml-10 inline-flex items-center gap-2
@@ -252,7 +256,7 @@ export default function Navbar() {
             `}
             style={{ transitionDelay: isMenuOpen ? `${(navLinks.length + 1) * 60}ms` : '0ms' }}
           >
-            Contact
+            Education
             <svg width="12" height="12" viewBox="0 0 10 10" fill="none" aria-hidden="true">
               <path d="M2 8L8 2M8 2H3.5M8 2V6.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>

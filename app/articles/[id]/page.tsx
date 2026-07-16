@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Download, Github } from 'lucide-react'
 
 interface Article {
   title: string
@@ -101,12 +102,12 @@ export default function ArticlePage({ params }: ArticlePageProps) {
 
         {(article.image || article.thumbnail) && (
           article.image ? (
-            <div className="relative w-full h-72 md:h-[28rem] lg:h-[32rem] mb-xl rounded-lg overflow-hidden bg-zinc-950 flex items-center justify-center md:-mx-12 lg:-mx-32 xl:-mx-48">
+            <div className="relative h-72 md:h-[28rem] lg:h-[32rem] mb-xl rounded-lg overflow-hidden bg-zinc-950 flex items-center justify-center md:-mx-12 lg:-mx-32 xl:-mx-48">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={article.image} alt={article.title} className="max-h-full max-w-full object-contain" />
             </div>
           ) : (
-            <div className="relative w-full h-72 md:h-[28rem] lg:h-[32rem] mb-xl rounded-lg overflow-hidden md:-mx-12 lg:-mx-32 xl:-mx-48">
+            <div className="relative h-72 md:h-[28rem] lg:h-[32rem] mb-xl rounded-lg overflow-hidden md:-mx-12 lg:-mx-32 xl:-mx-48">
               <Image src={article.thumbnail!} alt={article.title} fill className="object-cover" priority />
             </div>
           )
@@ -144,11 +145,30 @@ export default function ArticlePage({ params }: ArticlePageProps) {
                 if (hasBlockElements) return <div className="my-4" {...props}>{children}</div>
                 return <p className="text-zinc-400 text-lg leading-relaxed mb-6" {...props}>{children}</p>
               },
-              a: ({ children, ...props }) => (
-                <a className="text-zinc-300 underline underline-offset-4 hover:text-zinc-50 transition-colors" {...props}>
-                  {children}
-                </a>
-              ),
+              a: ({ children, href, ...props }) => {
+                const label = typeof children === 'string' ? children : ''
+                const isPdf = !!href && href.toLowerCase().endsWith('.pdf')
+                const isRepo = !!href && href.includes('github.com') && /github/i.test(label)
+                if (isPdf || isRepo) {
+                  return (
+                    <a
+                      href={href}
+                      download={isPdf || undefined}
+                      target={isRepo ? '_blank' : undefined}
+                      rel={isRepo ? 'noopener noreferrer' : undefined}
+                      className="not-prose inline-flex items-center gap-2 mt-2 mb-4 rounded-full border border-zinc-700 bg-zinc-900/60 px-5 py-2.5 text-sm font-medium text-zinc-200 no-underline hover:text-zinc-50 hover:border-zinc-500 hover:bg-zinc-900 transition-all"
+                    >
+                      {isRepo ? <Github className="w-4 h-4" /> : <Download className="w-4 h-4" />}
+                      {children}
+                    </a>
+                  )
+                }
+                return (
+                  <a href={href} className="text-zinc-300 underline underline-offset-4 hover:text-zinc-50 transition-colors" {...props}>
+                    {children}
+                  </a>
+                )
+              },
               strong: ({ children, ...props }) => (
                 <strong className="text-zinc-200 font-semibold" {...props}>{children}</strong>
               ),
