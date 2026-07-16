@@ -59,9 +59,8 @@ export default function Navbar() {
           {/* Subtle gradient hairline that fades in on scroll */}
           <span
             aria-hidden="true"
-            className={`pointer-events-none absolute inset-0 rounded-full transition-opacity duration-500 ${
-              isScrolled ? 'opacity-100' : 'opacity-0'
-            }`}
+            className={`pointer-events-none absolute inset-0 rounded-full transition-opacity duration-500 ${isScrolled ? 'opacity-100' : 'opacity-0'
+              }`}
             style={{
               background: 'linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 30%)',
               maskImage: 'linear-gradient(180deg, black 0%, transparent 60%)',
@@ -175,7 +174,7 @@ export default function Navbar() {
       {/* Mobile overlay */}
       <div
         className={`
-          fixed inset-0 z-[60] bg-[#0d1a2b]/98 backdrop-blur-md
+          fixed inset-0 z-[60] bg-[#0d1a2b]/80 backdrop-blur-2xl
           flex flex-col
           transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]
           ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}
@@ -221,12 +220,12 @@ export default function Navbar() {
                   group/mlink flex items-center gap-4 py-2
                   text-5xl font-display
                   transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]
-                  ${isActive ? 'text-zinc-50' : 'text-zinc-500 hover:text-zinc-50'}
+                  ${isActive ? 'text-zinc-50' : 'text-zinc-200 hover:text-zinc-50'}
                   ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
                 `}
                 style={{ transitionDelay: isMenuOpen ? `${(i + 1) * 60}ms` : '0ms' }}
               >
-                <span className="font-mono text-xs text-zinc-700 tabular-nums w-6">
+                <span className="font-mono text-xs text-zinc-500 tabular-nums w-6">
                   0{i + 1}
                 </span>
                 <span className="relative">
@@ -264,7 +263,7 @@ export default function Navbar() {
         </nav>
 
         {/* Footer hint */}
-        <p className={`relative px-8 pb-8 text-eyebrow font-mono text-zinc-700 transition-all duration-500 ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}
+        <p className={`relative px-8 pb-8 text-eyebrow font-mono text-zinc-400 transition-all duration-500 ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}
           style={{ transitionDelay: isMenuOpen ? `${(navLinks.length + 2) * 60}ms` : '0ms' }}
         >
           BLOCKCHAIN STUDENT ASSOCIATION - EPFL
