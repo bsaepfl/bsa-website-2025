@@ -164,7 +164,7 @@ export default function Hero() {
           {/* Text */}
           <div>
             <p data-hero-text className="text-eyebrow font-mono text-zinc-500 uppercase mb-md opacity-0">
-              Blockchain Student Association
+              Blockchain Student Association — CI TEST
             </p>
             <h1 data-hero-text className="text-hero font-display text-zinc-50 mb-lg opacity-0">
               Blockchain
