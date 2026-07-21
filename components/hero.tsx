@@ -87,7 +87,7 @@ export default function Hero() {
     }, 1300)
 
     // Typewriter effect on subtitle
-    const typeText = "Connecting students, founders, and industry through blockchain at EPFL. Join us for workshops, conferences, hackathons, and more."
+    const typeText = "Connecting students, founders, and industry through blockchain at EPFL. Join us for workshops, conferences, hackathons and more."
     const target = document.querySelector<HTMLElement>('[data-typewriter-text]')
     if (target) {
       let i = 0
