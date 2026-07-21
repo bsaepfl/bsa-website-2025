@@ -14,7 +14,6 @@ export type Win = {
 
 // Order: most recent first.
 // Skipped from source CSV (insufficient data - placement/prize TBA):
-//   - XRPL Rome (Stan Stelcher / Alexandre Huou / Alexandre Mourot)
 //   - ETHRome Oct 2025 (Alex Huou / Jeanne Louise Bassier / Elyes Ben Abid)
 export const wins: Win[] = [
   {
@@ -36,6 +35,16 @@ export const wins: Win[] = [
     team: "Youssef Jeddi, Hassene Ezzeddine, Sylane Jawadi",
     prize: "1,000 USDC",
     link: "https://github.com/youssef-jeddi/Orchestra",
+  },
+  {
+    date: "April 2026",
+    year: "2026",
+    event: "Paris Blockchain Week Hackathon",
+    placement: "3rd place - Main track",
+    category: "Hackathon",
+    team: "Stan Stelcher, Dylan Fehlmann, Djason Gadiou",
+    prize: "1,000 USD",
+    link: "https://github.com/Magicred-1/Ed4l02",
   },
   {
     date: "March 2026",
@@ -78,6 +87,16 @@ export const wins: Win[] = [
     link: "https://github.com/Hassene26/VolVantage",
   },
   {
+    date: "February 2026",
+    year: "2026",
+    event: "ETH Oxford 2026",
+    placement: "2nd place - Flare track",
+    category: "Hackathon",
+    team: "Stan Stelcher, Dylan Fehlmann, Hugo Germano",
+    prize: "2,000 USD",
+    link: "https://github.com/Balkghar/edelPay",
+  },
+  {
     date: "October 2025",
     year: "2025",
     event: "ETHRome",
@@ -88,6 +107,16 @@ export const wins: Win[] = [
     link: "https://github.com/youssef-jeddi/TradeVault",
   },
   {
+    date: "October 2025",
+    year: "2025",
+    event: "XRPL Rome",
+    placement: "1st place - XRPL track",
+    category: "Hackathon",
+    team: "Stan Stelcher, Alexandre Huou, Alexandre Mourot",
+    prize: "2,500 USD",
+    link: "https://github.com/hliosone/Permix",
+  },
+  {
     date: "September 2025",
     year: "2025",
     event: "Sui x BSA Hackathon (3rd Edition)",
@@ -96,6 +125,26 @@ export const wins: Win[] = [
     team: "Balthazar Golovtchiner, Charles Dupouy, Elio le Dortz, Antoine Lepin",
     prize: "1,000 USDC",
     link: "https://github.com/CharlesDupouy/SUI_hackaton_2025",
+  },
+  {
+    date: "March 2025",
+    year: "2025",
+    event: "Privacy & Verifiability Hackathon",
+    placement: "1st place - Hedera track",
+    category: "Hackathon",
+    team: "Stan Stelcher",
+    prize: "2,000 CHF",
+    link: "https://github.com/hliosone/atlasid-app",
+  },
+  {
+    date: "November 2024",
+    year: "2024",
+    event: "Ripple Student Builder Residency 1.0",
+    placement: "1st place - Best Deployed Project, 2nd place - Most Innovative Solution",
+    category: "Competition",
+    team: "Stan Stelcher",
+    prize: "1,250 USD",
+    link: "https://github.com/hliosone/LegacyX",
   },
   {
     date: "October 2024",

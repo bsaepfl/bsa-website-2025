@@ -22,11 +22,11 @@ const faqs: Record<Role, { q: string; a: string }[]> = {
     },
     {
       q: "Can non-EPFL students participate?",
-      a: "Our community is EPFL-first, but most conferences and hackathons are open to students from any university. Check the events page.",
+      a: "Yes. Any student enrolled at a Swiss university or school can join the association even if our community is EPFL-first. Our conferences and hackathons go further and welcome students from any university.",
     },
     {
       q: "What teams exist inside BSA?",
-      a: "Research, Education, Communication, Logistics, IT, and Sponsorship, plus a rotating executive committee. Come meet a team lead at the next event.",
+      a: "Research, Education, Communication, Logistics, IT, Sponsorship, and Industry, plus a rotating executive committee. Come meet a team lead at the next event.",
     },
     {
       q: "Does joining cost anything?",
