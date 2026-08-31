@@ -72,7 +72,7 @@ export default function ContactClient() {
             <div>
               <p className="text-zinc-400 text-lg leading-relaxed mb-8">
                 Whether you&apos;re a student curious about our events, a company exploring
-                a partnership, or a researcher looking to collaborate &mdash; we&apos;d love
+                a partnership, or a researcher looking to collaborate, we&apos;d love
                 to hear from you.
               </p>
 

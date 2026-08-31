@@ -32,7 +32,7 @@ export default function AboutClient() {
                 connections needed to become leaders in the blockchain space.
               </p>
               <p className="text-zinc-400 text-lg leading-relaxed">
-                We also work closely with companies, protocols, and research labs &mdash;
+                We also work closely with companies, protocols, and research labs,
                 bringing partners together with EPFL talent through sponsorships,
                 hackathons, and joint initiatives.
               </p>
