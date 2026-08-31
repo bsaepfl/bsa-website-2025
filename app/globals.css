@@ -6,7 +6,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom cursor — minimal white ring + dot. Hotspot at center (12,12). */
+/* Custom cursor: minimal white ring + dot. Hotspot at center (12,12). */
 * {
   cursor: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='8' fill='none' stroke='white' stroke-opacity='0.85' stroke-width='1.25'/%3E%3Ccircle cx='12' cy='12' r='1.5' fill='white'/%3E%3C/svg%3E") 12 12, auto;
 }
@@ -19,7 +19,7 @@ input[type="text"], input[type="email"], input[type="search"], input[type="url"]
   cursor: text;
 }
 
-/* Click pop ripple — sleek expanding ring */
+/* Click pop ripple: sleek expanding ring */
 .click-pop {
   position: fixed;
   width: 18px;
@@ -62,7 +62,7 @@ input[type="text"], input[type="email"], input[type="search"], input[type="url"]
     --ring: 0 0% 83%;
     --radius: 0.5rem;
 
-    /* Spacing scale — 4pt base, semantic names. Expose via tailwind.config.ts. */
+    /* Spacing scale: 4pt base, semantic names. Expose via tailwind.config.ts. */
     --space-3xs: 0.25rem;  /* 4  */
     --space-2xs: 0.5rem;   /* 8  */
     --space-xs:  0.75rem;  /* 12 */
@@ -74,13 +74,13 @@ input[type="text"], input[type="email"], input[type="search"], input[type="url"]
     --space-3xl: 6rem;     /* 96 */
     --space-4xl: 8rem;     /* 128 */
 
-    /* Vertical rhythm — fluid, for page-level sections */
+    /* Vertical rhythm: fluid, for page-level sections */
     --rhythm-page-top:   clamp(2rem, 5vw, 4rem);
     --rhythm-section:    clamp(4rem, 8vw, 6rem);
     --rhythm-subsection: clamp(2.5rem, 5vw, 4rem);
     --rhythm-tight:      clamp(1.25rem, 2.5vw, 2rem);
 
-    /* Type scale — fluid for display, fixed for UI */
+    /* Type scale: fluid for display, fixed for UI */
     --text-hero:       clamp(3.25rem, 9vw, 7rem);
     --text-display-1:  clamp(2.5rem, 6vw, 4.75rem);
     --text-display-2:  clamp(1.875rem, 4vw, 3rem);

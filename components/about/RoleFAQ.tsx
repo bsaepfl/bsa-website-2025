@@ -44,7 +44,7 @@ const faqs: Record<Role, { q: string; a: string }[]> = {
     },
     {
       q: "What reach do sponsors get?",
-      a: "Recent events drew 350+ conference attendees and 200+ hackathon participants from 20+ universities, alongside direct exposure to EPFL research faculty and the Zürich–Lausanne corridor.",
+      a: "Recent events drew 350+ conference attendees and 200+ hackathon participants from 20+ universities, alongside direct exposure to EPFL research faculty and the Zürich and Lausanne corridor.",
     },
     {
       q: "Can we recruit through BSA?",
@@ -52,7 +52,7 @@ const faqs: Record<Role, { q: string; a: string }[]> = {
     },
     {
       q: "Do you co-organize with other student associations?",
-      a: "Often. BSA regularly runs joint events with peer associations across Europe and the Zürich–Lausanne corridor.",
+      a: "Often. BSA regularly runs joint events with peer associations across Europe and the Zürich and Lausanne corridor.",
     },
   ],
 }
